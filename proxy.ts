@@ -30,8 +30,31 @@ function getLocale(request: NextRequest): Locale {
   return defaultLocale
 }
 
+function withoutParallelSlots(pathname: string) {
+  const parts = pathname.split('/').filter((part) => part.length > 0 && !part.startsWith('@'))
+  return parts.length > 0 ? `/${parts.join('/')}` : '/'
+}
+
+function localeFromPath(pathname: string): Locale | undefined {
+  const first = pathname.split('/').find(Boolean)
+  return first && hasLocale(first) ? first : undefined
+}
+
+function isRscRequest(request: NextRequest) {
+  return request.headers.get('rsc') === '1' || request.headers.has('next-router-state-tree')
+}
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
+  const cleaned = withoutParallelSlots(pathname)
+
+  if (pathname !== cleaned) {
+    if (isRscRequest(request)) return NextResponse.next()
+
+    const locale = localeFromPath(cleaned) ?? getLocale(request)
+    request.nextUrl.pathname = cleaned === '/' ? `/${locale}` : cleaned
+    return NextResponse.redirect(request.nextUrl)
+  }
 
   if (pathname === '/sv' || pathname.startsWith('/sv/')) {
     request.nextUrl.pathname = pathname.replace(/^\/sv/, '/se')
@@ -39,16 +62,16 @@ export function proxy(request: NextRequest) {
   }
 
   const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   )
 
   if (pathnameHasLocale) return
 
   const locale = getLocale(request)
-  request.nextUrl.pathname = `/${locale}${pathname}`
+  request.nextUrl.pathname = pathname === '/' ? `/${locale}` : `/${locale}${pathname}`
   return NextResponse.redirect(request.nextUrl)
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|icon.svg|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)'],
+  matcher: ['/((?!_next|api|favicon.ico|icon.svg|.*\\..*).*)'],
 }
