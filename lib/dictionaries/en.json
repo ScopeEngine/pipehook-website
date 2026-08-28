@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "PipeHook — Closed-loop customer engines for the pipe trades",
+    "description": "PipeHook builds automated diagnostic funnels that fill pipe and plumbing companies’ calendars with qualified inspections and site visits."
+  },
+  "nav": {
+    "why": "Why PipeHook",
+    "how": "How it works",
+    "regions": "Regions",
+    "requestDemo": "Request a demo",
+    "toggleMenu": "Toggle menu",
+    "language": "Language",
+    "english": "EN",
+    "swedish": "SE"
+  },
+  "hero": {
+    "pill": "Built for the pipe trades",
+    "titleBefore": "The turnkey customer engine for ",
+    "titleHighlight": "pipe relining",
+    "titleAfter": " and plumbing firms.",
+    "sub": "We are your Growth Partner. We handle the funnel, the AI follow-up, and the bookings under your brand — so your team gets qualified inspections without learning another piece of software.",
+    "noCard": "No obligation · No pitch deck",
+    "trust": "POWERED BY INDUSTRY-LEADING TECH"
+  },
+  "preview": {
+    "label": "Placeholder preview for your branded funnel screenshots",
+    "url": "yourbrand.com / your-funnel",
+    "desktop": "Insert desktop funnel screenshot",
+    "mobile": "Insert mobile funnel screenshot"
+  },
+  "difference": {
+    "kicker": "THE PIPEHOOK DIFFERENCE",
+    "title": "More control. Better conversations.",
+    "titleMuted": "Fewer dead ends.",
+    "body": "Most lead programs optimize for volume. We optimize for the one thing that matters: a full schedule of jobs your team actually wants."
+  },
+  "benefits": [
+    {
+      "title": "Exclusive leads",
+      "text": "Every inquiry belongs to your team. Never shared with a competitor down the road."
+    },
+    {
+      "title": "One flat monthly fee",
+      "text": "A predictable growth engine without admin, bidding wars, or pay-per-lead stress."
+    },
+    {
+      "title": "Active disqualification",
+      "text": "We filter out tire-kickers so your technicians spend time on real opportunities."
+    }
+  ],
+  "process": {
+    "kicker": "THE ENGINE, END TO END",
+    "titleLine1": "From raw traffic",
+    "titleLine2": "to booked inspections.",
+    "body": "One connected system that makes marketing, qualification, and scheduling feel like one conversation."
+  },
+  "steps": [
+    {
+      "number": "01",
+      "title": "Targeted reach",
+      "text": "Local ads find homeowners already searching for a permanent fix."
+    },
+    {
+      "number": "02",
+      "title": "Interactive hook",
+      "text": "A diagnostic quiz turns curiosity into a clear, qualified inspection request."
+    },
+    {
+      "number": "03",
+      "title": "AI booking",
+      "text": "The right jobs go straight to your technicians’ calendar, around the clock."
+    }
+  ],
+  "regions": {
+    "kicker": "REGION EXCLUSIVITY",
+    "title": "One region.",
+    "titleMuted": "One partner.",
+    "body": "To guarantee lead quality and completely eliminate shared leads, we only license our system to a single contractor per geographical area. Once a territory is claimed, it’s locked out for your competitors.",
+    "checkAvailability": "Check availability",
+    "mapLabel": "Territory exclusivity map illustration",
+    "claimed": "CLAIMED TERRITORY",
+    "city": "Austin, TX"
+  },
+  "availability": {
+    "kicker": "REGION EXCLUSIVITY",
+    "title": "Ready to own your",
+    "titleHighlight": "customer acquisition?",
+    "body": "We only partner with one firm per service region to guarantee exclusivity. Let’s see if yours is still open.",
+    "note": "14 service regions currently available"
+  },
+  "footer": {
+    "copyright": "© 2026 PipeHook. Built for better pipes.",
+    "difference": "Difference",
+    "process": "Process",
+    "contact": "Contact"
+  },
+  "modal": {
+    "kicker": "REGION CHECK",
+    "title": "Let's check your region.",
+    "body": "Fill in your details below. We'll check if your service area is still available and show you exactly how the engine works.",
+    "close": "Close dialog",
+    "fullName": "Full Name",
+    "companyName": "Company Name",
+    "serviceRegion": "Service Region / City",
+    "serviceRegionPlaceholder": "e.g. Austin, TX",
+    "phone": "Phone Number",
+    "email": "Work Email",
+    "submit": "Request Demo & Check Availability",
+    "finePrint": "No obligation. No pitch deck."
+  }
+}

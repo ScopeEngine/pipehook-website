@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "PipeHook — Slutna kundmotorer för VVS-branschen",
+    "description": "PipeHook bygger automatiserade diagnostiska trattar som fyller relining- och VVS-företags kalendrar med kvalificerade inspektioner och platsbesök."
+  },
+  "nav": {
+    "why": "Varför PipeHook",
+    "how": "Så fungerar det",
+    "regions": "Regioner",
+    "requestDemo": "Boka en demo",
+    "toggleMenu": "Öppna meny",
+    "language": "Språk",
+    "english": "EN",
+    "swedish": "SE"
+  },
+  "hero": {
+    "pill": "Byggt för VVS-branschen",
+    "titleBefore": "Den nyckelfärdiga kundmotorn för ",
+    "titleHighlight": "relining",
+    "titleAfter": " och VVS-företag.",
+    "sub": "Vi är er tillväxtpartner. Vi sköter tratten, AI-uppföljningen och bokningarna under ert varumärke — så att teamet får kvalificerade inspektioner utan att lära sig ännu ett system.",
+    "noCard": "Ingen förpliktelse · Ingen pitch",
+    "trust": "DRIVS AV BRANSCHLEDANDE TEKNIK"
+  },
+  "preview": {
+    "label": "Platshållare för skärmdumpar av er branded funnel",
+    "url": "ertvarumarke.se / er-tratt",
+    "desktop": "Infoga skärmdump av tratten på dator",
+    "mobile": "Infoga skärmdump av tratten på mobil"
+  },
+  "difference": {
+    "kicker": "SKILLNADEN MED PIPEHOOK",
+    "title": "Mer kontroll. Bättre samtal.",
+    "titleMuted": "Färre återvändsgränder.",
+    "body": "De flesta leadprogram optimerar för volym. Vi optimerar för det enda som räknas: ett fullbokat schema med jobb som ert team faktiskt vill ha."
+  },
+  "benefits": [
+    {
+      "title": "Exklusiva leads",
+      "text": "Varje förfrågan tillhör ert team. Aldrig delad med en konkurrent längre ner på gatan."
+    },
+    {
+      "title": "En fast månadsavgift",
+      "text": "En förutsägbar tillväxtmotor utan administration, budgivning eller stress över att betala per lead."
+    },
+    {
+      "title": "Aktiv diskvalificering",
+      "text": "Vi filtrerar bort nyfikna som inte är redo, så att teknikerna lägger tiden på riktiga affärer."
+    }
+  ],
+  "process": {
+    "kicker": "MOTORN, FRÅN BÖRJAN TILL SLUT",
+    "titleLine1": "Från råtrafik",
+    "titleLine2": "till bokade inspektioner.",
+    "body": "Ett sammanhängande system där marknadsföring, kvalificering och schemaläggning känns som ett enda samtal."
+  },
+  "steps": [
+    {
+      "number": "01",
+      "title": "Riktad räckvidd",
+      "text": "Lokala annonser hittar villaägare som redan söker en permanent lösning."
+    },
+    {
+      "number": "02",
+      "title": "Interaktiv hook",
+      "text": "Ett diagnostiskt quiz förvandlar nyfikenhet till en tydlig, kvalificerad förfrågan om inspektion."
+    },
+    {
+      "number": "03",
+      "title": "AI-bokning",
+      "text": "Rätt jobb går rakt in i teknikernas kalender, dygnet runt."
+    }
+  ],
+  "regions": {
+    "kicker": "REGIONS-EXKLUSIVITET",
+    "title": "En region.",
+    "titleMuted": "En partner.",
+    "body": "För att garantera leadkvalitet och helt eliminera delade leads licensierar vi systemet till endast en entreprenör per geografiskt område. När ett område är taget är det låst för konkurrenterna.",
+    "checkAvailability": "Kolla tillgänglighet",
+    "mapLabel": "Illustration av territoriell exklusivitet",
+    "claimed": "RESERVERAT OMRÅDE",
+    "city": "Stockholm"
+  },
+  "availability": {
+    "kicker": "REGIONS-EXKLUSIVITET",
+    "title": "Redo att äga er",
+    "titleHighlight": "kundanskaffning?",
+    "body": "Vi samarbetar med bara ett företag per serviceregion för att garantera exklusivitet. Låt oss se om er fortfarande är öppen.",
+    "note": "14 serviceregioner tillgängliga just nu"
+  },
+  "footer": {
+    "copyright": "© 2026 PipeHook. Byggt för bättre rör.",
+    "difference": "Skillnaden",
+    "process": "Process",
+    "contact": "Kontakt"
+  },
+  "modal": {
+    "kicker": "REGIONSKOLL",
+    "title": "Låt oss kolla er region.",
+    "body": "Fyll i era uppgifter nedan. Vi kollar om ert serviceområde fortfarande är ledigt och visar exakt hur motorn fungerar.",
+    "close": "Stäng dialog",
+    "fullName": "Namn",
+    "companyName": "Företagsnamn",
+    "serviceRegion": "Serviceregion / Stad",
+    "serviceRegionPlaceholder": "t.ex. Stockholm",
+    "phone": "Telefonnummer",
+    "email": "Jobbmejl",
+    "submit": "Boka demo och kolla tillgänglighet",
+    "finePrint": "Ingen förpliktelse. Ingen pitch."
+  }
+}
