@@ -16,7 +16,7 @@ function persistLocale(next: Locale) {
 
 export function LanguageSwitcher({ lang, label, english, swedish }: LanguageSwitcherProps) {
   return (
-    <div className="lang-switch" aria-label={label}>
+    <div className="lang-switch font-sans text-sm font-medium tracking-wide" aria-label={label}>
       <Link
         href="/en"
         hrefLang="en"

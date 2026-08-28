@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
-import { DM_Mono, Inter } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { getDictionary } from '@/lib/get-dictionary'
 import { hasLocale, htmlLang, locales } from '@/lib/i18n'
 import '../globals.css'
@@ -10,13 +10,6 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
-})
-
-const dmMono = DM_Mono({
-  weight: ['400', '500'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-dm-mono',
 })
 
 export const viewport: Viewport = {
@@ -63,7 +56,7 @@ export default async function RootLayout({
   if (!hasLocale(lang)) notFound()
 
   return (
-    <html lang={htmlLang[lang]} className={`${inter.variable} ${dmMono.variable}`}>
+    <html lang={htmlLang[lang]} className={`${inter.variable} ${inter.className}`}>
       <body className="antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

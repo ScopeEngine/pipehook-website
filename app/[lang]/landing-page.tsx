@@ -68,7 +68,7 @@ export function LandingPage({ lang, dict }: { lang: Locale; dict: Dictionary }) 
           <a className="logo" href="#top">
             <span className="logo-pipe">P</span> pipehook
           </a>
-          <div className={`nav-links ${menuOpen ? 'is-open' : ''}`}>
+          <div className={`nav-links font-sans text-sm font-medium tracking-wide ${menuOpen ? 'is-open' : ''}`}>
             <a href="#difference" onClick={() => setMenuOpen(false)}>
               {dict.nav.why}
             </a>
@@ -85,7 +85,7 @@ export function LandingPage({ lang, dict }: { lang: Locale; dict: Dictionary }) 
             english={dict.nav.english}
             swedish={dict.nav.swedish}
           />
-          <button className="nav-cta" type="button" onClick={() => setRegionOpen(true)}>
+          <button className="nav-cta font-sans text-sm font-medium tracking-wide" type="button" onClick={() => setRegionOpen(true)}>
             {dict.nav.requestDemo} <ArrowRight size={15} />
           </button>
           <button
@@ -100,7 +100,7 @@ export function LandingPage({ lang, dict }: { lang: Locale; dict: Dictionary }) 
         </nav>
 
         <div className="hero-copy wrap">
-          <div className="status-pill">
+          <div className="status-pill font-sans text-sm font-medium tracking-wide">
             <span /> {dict.hero.pill}
           </div>
           <h1 className="leading-tight">

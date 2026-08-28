@@ -8,7 +8,7 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
   --font-sans: var(--font-inter), sans-serif;
-  --font-mono: var(--font-dm-mono), monospace;
+  --font-mono: var(--font-inter), sans-serif;
 }
 
 :root {
@@ -140,7 +140,9 @@ button {
   gap: 30px;
   margin-left: auto;
   color: #9aabc0;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.025em;
 }
 
 .nav-links a:hover,
@@ -153,7 +155,9 @@ button {
   align-items: center;
   gap: 7px;
   color: #c9d6e5;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.025em;
 }
 
 .nav-cta:hover {
@@ -166,8 +170,9 @@ button {
   gap: 8px;
   flex-shrink: 0;
   color: #6e8299;
-  font: 11px var(--font-dm-mono), monospace;
-  letter-spacing: 0.08em;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.025em;
 }
 
 .lang-switch a {
@@ -202,8 +207,9 @@ button {
   align-items: center;
   gap: 8px;
   color: #a8bad0;
-  font: 11px var(--font-dm-mono), monospace;
-  letter-spacing: 0.05em;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -274,7 +280,8 @@ h1 em,
   align-items: center;
   gap: 6px;
   color: #73869c;
-  font: 11px var(--font-dm-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 /* ---------- Funnel preview (browser + phone mock) ---------- */
@@ -308,7 +315,7 @@ h1 em,
   padding: 0 13px;
   color: #7b8da2;
   background: #e6edf5;
-  font: 9px var(--font-dm-mono), monospace;
+  font: 9px var(--font-inter), sans-serif;
 }
 
 .browser-bar > span {
@@ -347,7 +354,7 @@ h1 em,
   border-radius: 6px;
   color: #8ca0b3;
   background: #f7fafc;
-  font: 11px var(--font-dm-mono), monospace;
+  font: 11px var(--font-inter), sans-serif;
 }
 
 .phone-frame {
@@ -379,7 +386,7 @@ h1 em,
   color: #8ca0b3;
   background: #f7fafc;
   text-align: center;
-  font: 9px var(--font-dm-mono), monospace;
+  font: 9px var(--font-inter), sans-serif;
 }
 
 /*
@@ -431,8 +438,9 @@ h1 em,
 .kicker {
   margin: 0;
   color: #1681f0;
-  font: 10px var(--font-dm-mono), monospace;
-  letter-spacing: 0.11em;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
 }
 
 .mock-hero h3 {
@@ -599,7 +607,9 @@ h1 em,
   gap: 35px;
   margin-top: 48px;
   color: #6e8299;
-  font: 10px var(--font-dm-mono), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
 }
 
 .trust-row div {
@@ -716,8 +726,9 @@ h1 em,
 .map-city {
   position: absolute;
   color: #1681f0;
-  font: 10px var(--font-dm-mono), monospace;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
 }
 
 .map-label {
@@ -858,7 +869,9 @@ h1 em,
 
 .step-number {
   color: #96a6b7;
-  font: 11px var(--font-dm-mono), monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
 }
 
 .step h3 {
@@ -1031,7 +1044,8 @@ h1 em,
 
 .region-modal small {
   color: #8493a2;
-  font: 11px var(--font-dm-mono), monospace;
+  font-size: 12px;
+  font-weight: 500;
   text-align: center;
 }
 
