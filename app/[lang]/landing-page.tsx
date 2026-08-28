@@ -103,7 +103,7 @@ export function LandingPage({ lang, dict }: { lang: Locale; dict: Dictionary }) 
           <div className="status-pill">
             <span /> {dict.hero.pill}
           </div>
-          <h1>
+          <h1 className="leading-tight">
             {dict.hero.titleBefore}
             <em>{dict.hero.titleHighlight}</em>
             {dict.hero.titleAfter}

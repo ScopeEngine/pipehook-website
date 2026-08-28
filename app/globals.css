@@ -219,7 +219,7 @@ h1 {
   max-width: 850px;
   margin: 20px auto 0;
   font-size: clamp(44px, 6vw, 76px);
-  line-height: 0.99;
+  line-height: 1.25;
   letter-spacing: -0.075em;
   font-weight: 700;
 }

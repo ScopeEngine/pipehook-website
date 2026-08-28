@@ -18,8 +18,8 @@
     "titleBefore": "Den nyckelfärdiga kundmotorn för ",
     "titleHighlight": "relining",
     "titleAfter": " och VVS-företag.",
-    "sub": "Vi är er tillväxtpartner. Vi sköter tratten, AI-uppföljningen och bokningarna under ert varumärke — så att teamet får kvalificerade inspektioner utan att lära sig ännu ett system.",
-    "noCard": "Ingen förpliktelse · Ingen pitch",
+    "sub": "Vi är er tillväxtpartner. Vi bygger och driftar er säljtratt, AI-uppföljning och bokningar under ert varumärke — så att era tekniker får kvalificerade hembesök inbokade utan att behöva lära sig ett nytt system.",
+    "noCard": "Ingen bindningstid. Ingen säljpitch.",
     "trust": "DRIVS AV BRANSCHLEDANDE TEKNIK"
   },
   "preview": {
@@ -37,46 +37,46 @@
   "benefits": [
     {
       "title": "Exklusiva leads",
-      "text": "Varje förfrågan tillhör ert team. Aldrig delad med en konkurrent längre ner på gatan."
+      "text": "Varje förfrågan går direkt till er. Vi säljer aldrig samma lead till flera företag eller konkurrenter i ert område."
     },
     {
       "title": "En fast månadsavgift",
-      "text": "En förutsägbar tillväxtmotor utan administration, budgivning eller stress över att betala per lead."
+      "text": "En förutsägbar tillväxtmotor utan administration, klickpriser eller stress över att betala per lead."
     },
     {
       "title": "Aktiv diskvalificering",
-      "text": "Vi filtrerar bort nyfikna som inte är redo, så att teknikerna lägger tiden på riktiga affärer."
+      "text": "Vi filtrerar ut 'däcksparkare' och oseriösa förfrågningar, så att era tekniker bara lägger tid på riktiga affärer."
     }
   ],
   "process": {
     "kicker": "MOTORN, FRÅN BÖRJAN TILL SLUT",
-    "titleLine1": "Från råtrafik",
-    "titleLine2": "till bokade inspektioner.",
-    "body": "Ett sammanhängande system där marknadsföring, kvalificering och schemaläggning känns som ett enda samtal."
+    "titleLine1": "Från kalla klick",
+    "titleLine2": "till bokade hembesök.",
+    "body": "Ett sammanhängande system där marknadsföring, kvalificering och schemaläggning känns som ett och samma samtal."
   },
   "steps": [
     {
       "number": "01",
       "title": "Riktad räckvidd",
-      "text": "Lokala annonser hittar villaägare som redan söker en permanent lösning."
+      "text": "Lokala annonser fångar husägare som redan letar efter en permanent lösning."
     },
     {
       "number": "02",
-      "title": "Interaktiv hook",
-      "text": "Ett diagnostiskt quiz förvandlar nyfikenhet till en tydlig, kvalificerad förfrågan om inspektion."
+      "title": "Interaktivt test",
+      "text": "Ett diagnostiskt test förvandlar nyfikenhet till en tydlig, kvalificerad mötesförfrågan."
     },
     {
       "number": "03",
       "title": "AI-bokning",
-      "text": "Rätt jobb går rakt in i teknikernas kalender, dygnet runt."
+      "text": "De bästa jobben bokas automatiskt rakt in i era teknikers kalendrar, dygnet runt."
     }
   ],
   "regions": {
     "kicker": "REGIONS-EXKLUSIVITET",
     "title": "En region.",
     "titleMuted": "En partner.",
-    "body": "För att garantera leadkvalitet och helt eliminera delade leads licensierar vi systemet till endast en entreprenör per geografiskt område. När ett område är taget är det låst för konkurrenterna.",
-    "checkAvailability": "Kolla tillgänglighet",
+    "body": "För att garantera högsta kvalitet och helt eliminera delade leads, licensierar vi endast ut systemet till ett företag per geografiskt område. När en region är tagen, är den låst för era konkurrenter.",
+    "checkAvailability": "Se om er region är ledig",
     "mapLabel": "Illustration av territoriell exklusivitet",
     "claimed": "RESERVERAT OMRÅDE",
     "city": "Stockholm"
@@ -85,8 +85,8 @@
     "kicker": "REGIONS-EXKLUSIVITET",
     "title": "Redo att äga er",
     "titleHighlight": "kundanskaffning?",
-    "body": "Vi samarbetar med bara ett företag per serviceregion för att garantera exklusivitet. Låt oss se om er fortfarande är öppen.",
-    "note": "14 serviceregioner tillgängliga just nu"
+    "body": "Vi samarbetar med max ett företag per serviceregion för att garantera exklusivitet. Låt oss se om er region fortfarande är ledig.",
+    "note": "Begränsat antal regioner tillgängliga."
   },
   "footer": {
     "copyright": "© 2026 PipeHook. Byggt för bättre rör.",
