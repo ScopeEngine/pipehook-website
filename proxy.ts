@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { defaultLocale, hasLocale, localeCookieName, locales, type Locale } from '@/lib/i18n'
+import { requireInternalAuth } from '@/lib/internal-auth'
 
 function getCountry(request: NextRequest) {
   const fromQuery = request.nextUrl.searchParams.get('country')
@@ -44,9 +45,31 @@ function isRscRequest(request: NextRequest) {
   return request.headers.get('rsc') === '1' || request.headers.has('next-router-state-tree')
 }
 
+function isLocaleExempt(pathname: string) {
+  return (
+    pathname === '/demo' ||
+    pathname.startsWith('/demo/') ||
+    pathname === '/internal' ||
+    pathname.startsWith('/internal/')
+  )
+}
+
+function passThrough() {
+  return NextResponse.next()
+}
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   const cleaned = withoutParallelSlots(pathname)
+
+  if (pathname.startsWith('/internal')) {
+    const authError = requireInternalAuth(request)
+    if (authError) return authError
+  }
+
+  if (isLocaleExempt(pathname) || isLocaleExempt(cleaned)) {
+    return passThrough()
+  }
 
   if (pathname !== cleaned) {
     if (isRscRequest(request)) return NextResponse.next()

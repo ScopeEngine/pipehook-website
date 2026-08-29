@@ -1,16 +1,10 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
-import { Inter } from 'next/font/google'
+import { inter } from '@/lib/fonts'
 import { getDictionary } from '@/lib/get-dictionary'
 import { hasLocale, htmlLang, locales } from '@/lib/i18n'
-import '../globals.css'
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
+import '../../globals.css'
 
 export const viewport: Viewport = {
   colorScheme: 'light dark',
@@ -48,7 +42,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function RootLayout({
+export default async function MarketingLayout({
   children,
   params,
 }: LayoutProps<'/[lang]'>) {
