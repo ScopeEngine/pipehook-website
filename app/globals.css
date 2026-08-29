@@ -118,21 +118,13 @@ button {
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.05em;
+  flex-shrink: 0;
 }
 
-.logo-pipe {
-  display: grid;
-  place-items: center;
-  width: 27px;
-  height: 27px;
-  color: #08111f;
-  background: #5fafff;
-  border-radius: 8px 8px 8px 2px;
-  font-weight: 800;
+.logo img {
+  display: block;
+  height: 36px;
+  width: auto;
 }
 
 .nav-links {
@@ -955,9 +947,8 @@ h1 em,
   gap: 20px;
 }
 
-.footer .logo {
-  color: #eaf2fb;
-  font-size: 16px;
+.footer .logo img {
+  height: 32px;
 }
 
 /* ---------- Region modal ---------- */

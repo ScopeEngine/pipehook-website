@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ArrowRight, CalendarCheck, Check, ExternalLink, Play } from 'lucide-react'
+import { BrandLogo } from '@/components/brand-logo'
 import { buildDemoUrl, industryLabels, resolveCopy, resolvedAccent } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
 
@@ -37,9 +38,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
   return (
     <main className="demo-page" style={{ '--lead-accent': accent } as CSSProperties}>
       <header className="demo-nav wrap">
-        <a className="logo" href="/se">
-          <span className="logo-pipe">P</span> pipehook
-        </a>
+        <BrandLogo href="/se" priority />
         <div className="demo-nav-meta">
           {lead.logoUrl ? (
             // External prospect logos are not in next/image remotePatterns.

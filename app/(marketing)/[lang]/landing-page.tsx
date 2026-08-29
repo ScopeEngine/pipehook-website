@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import type { Dictionary } from '@/lib/get-dictionary'
 import type { Locale } from '@/lib/i18n'
+import { BrandLogo } from '@/components/brand-logo'
 import { LanguageSwitcher } from './language-switcher'
 
 const benefitIcons = [Droplets, Gauge, Filter]
@@ -65,9 +66,7 @@ export function LandingPage({ lang, dict }: { lang: Locale; dict: Dictionary }) 
         <div className="hero-glow" />
 
         <nav className="nav wrap">
-          <a className="logo" href="#top">
-            <span className="logo-pipe">P</span> pipehook
-          </a>
+          <BrandLogo href="#top" priority />
           <div className={`nav-links font-sans text-sm font-medium tracking-wide ${menuOpen ? 'is-open' : ''}`}>
             <a href="#difference" onClick={() => setMenuOpen(false)}>
               {dict.nav.why}
@@ -242,9 +241,7 @@ export function LandingPage({ lang, dict }: { lang: Locale; dict: Dictionary }) 
         </div>
 
         <footer className="wrap footer">
-          <a className="logo" href="#top">
-            <span className="logo-pipe">P</span> pipehook
-          </a>
+          <BrandLogo href="#top" />
           <span>{dict.footer.copyright}</span>
           <div>
             <a href="#difference">{dict.footer.difference}</a>

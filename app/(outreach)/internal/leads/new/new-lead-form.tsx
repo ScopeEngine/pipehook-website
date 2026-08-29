@@ -1,6 +1,7 @@
 'use client'
 
 import { useActionState, useState } from 'react'
+import { BrandLogo } from '@/components/brand-logo'
 import { industries, industryAccents, industryLabels, type Industry } from '@/lib/lead-demo.config'
 import { createLead, type CreateLeadState } from './actions'
 
@@ -26,9 +27,7 @@ export function NewLeadForm() {
   return (
     <div className="lead-admin">
       <header className="lead-admin-top">
-        <a className="logo" href="/se">
-          <span className="logo-pipe">P</span> pipehook
-        </a>
+        <BrandLogo href="/se" />
         <span className="lead-admin-kicker">Internt · inte indexerat</span>
       </header>
 
