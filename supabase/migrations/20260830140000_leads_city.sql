@@ -3,3 +3,5 @@
 
 alter table leads
   add column if not exists city text not null default '';
+
+notify pgrst, 'reload schema';

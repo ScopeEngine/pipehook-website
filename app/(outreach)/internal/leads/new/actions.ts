@@ -17,6 +17,16 @@ async function originFromHeaders() {
   return host ? `${proto}://${host}` : 'https://www.pipehook.co'
 }
 
+function formatCaughtError(error: unknown) {
+  if (error instanceof Error && error.message) return error.message
+  if (typeof error === 'object' && error !== null && 'message' in error) {
+    const message = String((error as { message: unknown }).message ?? '')
+    if (message) return message
+  }
+  if (typeof error === 'string' && error) return error
+  return 'Kunde inte spara leaden.'
+}
+
 async function assertInternalAuth() {
   const expected = process.env.INTERNAL_ADMIN_PASSWORD
   if (!expected) throw new Error('INTERNAL_ADMIN_PASSWORD is not configured')
@@ -102,7 +112,7 @@ export async function createLead(
       demoUrl: `${origin}/demo/${slug}`,
     }
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Kunde inte spara leaden.'
-    return { status: 'error', message }
+    console.error('createLead failed', error)
+    return { status: 'error', message: formatCaughtError(error) }
   }
 }
