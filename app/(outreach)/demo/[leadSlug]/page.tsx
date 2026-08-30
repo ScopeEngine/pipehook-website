@@ -1,16 +1,9 @@
 import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { ArrowRight, CalendarCheck, Check, MapPin, Play } from 'lucide-react'
+import { ArrowRight, MapPin, Play } from 'lucide-react'
 import { BrandLogo } from '@/components/brand-logo'
-import {
-  buildDemoUrl,
-  industryLabels,
-  resolveCopy,
-  resolvedAccent,
-  type AidaCopy,
-  type LeadDemoConfig,
-} from '@/lib/lead-demo.config'
+import { buildDemoUrl, resolvedAccent, type LeadDemoConfig } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
 
 export const dynamic = 'force-dynamic'
@@ -33,71 +26,77 @@ export async function generateMetadata({
   }
 }
 
-const quizSteps = [
+const resultPoints = [
+  'Varje förfrågan går bara till er. Vi arbetar inte med flera firmor i samma område.',
+  'Husägaren har redan svarat på fyra frågor om huset innan ni ser förfrågan.',
+  'Ni betalar en fast summa per månad — inte per klick, inte per förfrågan.',
+  'Tiden bokas automatiskt i teknikerns kalender. Ingen ringer, ingen mejlar fram och tillbaka.',
+] as const
+
+const flowSteps = [
   {
-    screen: '',
-    label: '01',
-    title: 'Byggår',
-    prompt: 'När byggdes huset?',
-    caption: 'Vi filtrerar bort fastigheter där jobbet inte är värt resan.',
+    number: '1',
+    title: 'Annonsen visas.',
+    text: 'En husägare i ert område ser en annons om gamla rörsystem, antingen för att de sökt efter det eller för att huset matchar rätt ålder.',
   },
   {
-    screen: 'q1',
-    label: '02',
-    title: 'Symptom',
-    prompt: 'Vad har ni märkt i rören?',
-    caption: 'Rätt symptom leder till rätt samtal — inte ett generellt offertramsa.',
+    number: '2',
+    title: 'Husägaren gör testet.',
+    text: 'Fyra frågor om huset — byggår, symptom, ägande, nuvarande skick.',
   },
   {
-    screen: 'q2',
-    label: '03',
-    title: 'Ägande',
-    prompt: 'Äger ni fastigheten?',
-    caption: 'Hyresgäster och nyfikna diskvalificeras innan de når kalendern.',
+    number: '3',
+    title: 'Systemet sorterar.',
+    text: 'Fel fastighetstyp eller fel symptom filtreras bort innan något bokas.',
   },
+  {
+    number: '4',
+    title: 'Tiden bokas.',
+    text: 'Husägaren väljer en tid, och den hamnar direkt i teknikerns kalender.',
+  },
+] as const
+
+const quizCards = [
+  { screen: '', title: 'Byggår', text: 'Hus från fel årtal filtreras bort direkt.' },
+  { screen: 'q1', title: 'Symptom', text: 'Kluckande ljud, återkommande stopp, lukt.' },
+  { screen: 'q2', title: 'Ägande', text: 'Bostadsrätt utan eget mandat sorteras bort.' },
   {
     screen: 'q3',
-    label: '04',
-    title: 'Riskbild',
-    prompt: 'Så ser er situation ut.',
-    caption: 'Husägaren får en tydlig bild. Ni får ett bokat hembesök.',
+    title: 'Skick',
+    text: 'Husägaren får en preliminär bedömning. Exakt svar kräver en kamerainspektion.',
   },
 ] as const
 
 const comparisonRows = [
   {
-    point: 'Vem äger leaden?',
-    other: 'Samma förfrågan går till tre firmor.',
-    ours: 'Bara ni, i ert område.',
+    point: 'Vem får förfrågan',
+    other: 'Flera firmor samtidigt',
+    ours: 'Bara ni, i ert område',
   },
   {
     point: 'Kvalificering',
-    other: 'Alla klick räknas som leads.',
-    ours: 'Aktiv diskvalificering innan bokning.',
+    other: 'Ingen — alla klick räknas',
+    ours: 'Sker innan ni ser förfrågan',
   },
   {
     point: 'Varumärke',
-    other: 'Kunden landar på offertsajten.',
-    ours: 'Hela tratten körs under ert namn.',
+    other: 'Kunden landar på offertsajten',
+    ours: 'Hela flödet går under ert namn',
   },
   {
     point: 'Kostnad',
-    other: 'Per lead, per klick, budgivning.',
-    ours: 'En fast månadsavgift.',
+    other: 'Per klick eller budgivning',
+    ours: 'Fast summa per månad',
   },
   {
-    point: 'När bokas jobbet?',
-    other: 'När någon hinner ringa tillbaka.',
-    ours: 'Dygnet runt, rakt in i kalendern.',
+    point: 'Bindningstid',
+    other: 'Ofta 12 månader',
+    ours: 'Ingen',
   },
 ] as const
 
 function firstName(contactName: string) {
   return contactName.trim().split(/\s+/)[0] || contactName
-}
-
-function placeLabel(lead: LeadDemoConfig) {
-  return lead.city ? `${lead.companyName} i ${lead.city}` : lead.companyName
 }
 
 function ProspectMark({ lead }: { lead: LeadDemoConfig }) {
@@ -109,15 +108,7 @@ function ProspectMark({ lead }: { lead: LeadDemoConfig }) {
     )
   }
 
-  return <span className="outreach-company">{placeLabel(lead)}</span>
-}
-
-function DemoCta({ href }: { href: string }) {
-  return (
-    <a className="primary-button" href={href} target="_blank" rel="noreferrer">
-      Testa demot <ArrowRight size={16} />
-    </a>
-  )
+  return <span className="outreach-company">{lead.companyName}</span>
 }
 
 export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlug]'>) {
@@ -125,11 +116,11 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
   const lead = await getLeadBySlug(leadSlug)
   if (!lead) notFound()
 
-  const copy = resolveCopy(lead)
   const demoUrl = buildDemoUrl(lead)
   const accent = resolvedAccent(lead)
   const name = firstName(lead.contactName)
-  const place = placeLabel(lead)
+  const city = lead.city
+  const company = lead.companyName
 
   return (
     <main className="outreach-page" style={{ '--lead-accent': accent } as CSSProperties}>
@@ -143,269 +134,229 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </nav>
 
         <div className="wrap outreach-hero-inner">
-          <p className="kicker blue-kicker">
-            {copy.attention.kicker} · {industryLabels[lead.industry]}
-          </p>
+          <p className="kicker blue-kicker">EN SIDA BARA FÖR {company} · RELINING</p>
           <h1 className="leading-tight">
-            Hej {name}. {copy.attention.headline}
+            Hej {name}. Ni äger redan förtroendet. Vi fyller kalendern.
           </h1>
-          <p className="outreach-lede">{copy.attention.body}</p>
+          <p className="outreach-lede">
+            De flesta reliningfirmor vi pratar med har samma problem: rätt hembesök tar för lång tid
+            att hitta, och mycket tid går åt till samtal som ändå inte blir en affär. Det här är en
+            kort genomgång av hur PipeHook löser det — under ert varumärke.
+          </p>
 
           <div className="outreach-video">
             <iframe
               src={`https://www.loom.com/embed/${lead.loomVideoId}`}
-              title={`Loom-video till ${lead.companyName}`}
+              title={`Loom-video till ${company}`}
               allowFullScreen
             />
           </div>
 
-          <DemoCta href={demoUrl} />
-          <small>
-            <Play size={12} /> Två minuter · brandad demo för {lead.companyName}
-          </small>
-        </div>
-      </section>
-
-      <AdsSection copy={copy} />
-      <TrafficSection />
-      <QuizSection demoUrl={demoUrl} />
-      <SmsSection companyName={lead.companyName} contactName={name} />
-      <ProofSection copy={copy} />
-      <ComparisonSection />
-      <RegionSection city={lead.city} companyName={lead.companyName} />
-
-      <section className="outreach-final">
-        <div className="wrap">
-          <p className="kicker blue-kicker">Nästa steg</p>
-          <h2>
-            {copy.action.headline}
-            <br />
-            <em>{place}.</em>
-          </h2>
-          <p>{copy.action.body}</p>
-          <DemoCta href={demoUrl} />
-          <a className="demo-booking demo-booking-light" href={lead.contactBookingUrl} target="_blank" rel="noreferrer">
-            <CalendarCheck size={16} /> {copy.action.bookingCta}
+          <a className="primary-button" href={demoUrl} target="_blank" rel="noreferrer">
+            Testa demot <ArrowRight size={16} />
           </a>
           <small>
-            {name}, öppna demot eller boka en kort genomgång — vi kollar om regionen fortfarande är
-            ledig.
+            <Play size={12} /> Två minuter · brandad demo för {company}
           </small>
         </div>
       </section>
-    </main>
-  )
-}
 
-function AdsSection({ copy }: { copy: AidaCopy }) {
-  return (
-    <section className="outreach-section section-light">
-      <div className="wrap">
-        <p className="kicker">Så ser det ut i flödet</p>
-        <h2>{copy.interest.headline}</h2>
-        <div className="ad-grid">
-          <article className="ad-card hook">
-            <div className="ad-art">
-              <span>META · LOKALT</span>
-              <strong>Fuktskadat avlopp? Ta reda på om relining räcker.</strong>
-              <button type="button" tabIndex={-1}>
-                Starta bedömningen
-              </button>
-            </div>
-            <b>Annonserna pekar mot er tratt — inte mot en offertsajt.</b>
-          </article>
-          <article className="ad-card">
-            <div className="ad-art">
-              <span>SÖK · ERT OMRÅDE</span>
-              <strong>Husägare som redan letar efter en permanent lösning.</strong>
-              <i aria-hidden />
-            </div>
-            <b>Trafiken landar under ert varumärke, inte under vårt.</b>
-          </article>
-        </div>
-        <p className="section-copy">{copy.interest.body}</p>
-      </div>
-    </section>
-  )
-}
-
-function TrafficSection() {
-  return (
-    <section className="outreach-section traffic-section light-zone">
-      <div className="wrap">
-        <p className="kicker blue-kicker">Räckvidd</p>
-        <h2>Google och Meta, utan att ni sitter i annonskontona.</h2>
-        <div className="traffic-grid">
-          <article>
-            <span>GOOGLE</span>
-            <h3>De som redan söker.</h3>
-            <p>
-              Sökannonser fångar husägare med ett konkret problem — stopp, lukt, fukt eller ett
-              uttjänt system — och skickar dem in i den diagnostiska tratten.
-            </p>
-          </article>
-          <article>
-            <span>META</span>
-            <h3>De som ännu inte har ringt.</h3>
-            <p>
-              Lokala annonser når villor i ert upptagningsområde innan de går in på en offertsajt
-              och blir tre firmors delade lead.
-            </p>
-          </article>
-        </div>
-        <p className="section-copy">
-          Ni behöver inte lära er Media Manager. Vi sätter upp, styr och justerar trafiken mot de
-          jobb ni faktiskt vill ha.
-        </p>
-      </div>
-    </section>
-  )
-}
-
-function QuizSection({ demoUrl }: { demoUrl: string }) {
-  return (
-    <section className="outreach-section section-light" id="quiz">
-      <div className="wrap">
-        <p className="kicker">Den interaktiva kroken</p>
-        <h2>Fyra frågor. Sen är det antingen ett jobb — eller inte.</h2>
-        <div className="quiz-strip">
-          {quizSteps.map((step) => (
-            <article key={step.title}>
-              <div className={`quiz-screen ${step.screen}`.trim()}>
-                <span>{step.label}</span>
-                <strong>{step.prompt}</strong>
-                <div className="quiz-line" />
-              </div>
-              <b>{step.title}</b>
-              <p>{step.caption}</p>
-            </article>
-          ))}
-        </div>
-        <a className="back-demo" href={demoUrl} target="_blank" rel="noreferrer">
-          Testa demot och klicka igenom frågorna <ArrowRight size={14} />
-        </a>
-      </div>
-    </section>
-  )
-}
-
-function SmsSection({ companyName, contactName }: { companyName: string; contactName: string }) {
-  return (
-    <section className="outreach-section sms-section light-zone">
-      <div className="wrap sms-layout">
-        <div>
-          <p className="kicker">Uppföljning som inte släpper</p>
-          <h2>AI:n tar samtalet vidare. Era tekniker tar jobbet.</h2>
-          <p className="section-copy">
-            {contactName}, det här är vad husägaren ser efter testet. Inget CRM att lära sig — ni
-            får en tid, inte en lapp i inkorgen.
-          </p>
-        </div>
-        <div className="sms-thread" aria-label="Exempel på SMS-uppföljning">
-          <div className="sms-bubble">
-            <small>{companyName}</small>
-            <p>Hej! Vi såg att du gick igenom bedömningen. Vill du ha en tid för inspektion i veckan?</p>
-          </div>
-          <div className="sms-bubble from-customer">
-            <small>Husägare</small>
-            <p>Ja, gärna torsdag förmiddag om det går.</p>
-          </div>
-          <div className="sms-bubble">
-            <small>{companyName}</small>
-            <p>Klart. Torsdag 10:00 är bokat. Ni får en bekräftelse i kalendern.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function ProofSection({ copy }: { copy: AidaCopy }) {
-  return (
-    <section className="outreach-section section-light">
-      <div className="wrap proof-grid">
-        <div className="proof-copy">
-          <p className="kicker">Det ni faktiskt får</p>
-          <h2>{copy.desire.headline}</h2>
-          <p>{copy.desire.intro}</p>
-          <ul className="demo-bullets">
-            {copy.desire.bullets.map((bullet) => (
-              <li key={bullet}>
-                <Check size={16} />
-                <span>{bullet}</span>
-              </li>
+      <section className="outreach-section section-light">
+        <div className="wrap">
+          <p className="kicker">RESULTATET</p>
+          <h2>Bokade rörinspektioner i kalendern. Inget annat.</h2>
+          <ul className="result-points">
+            {resultPoints.map((point) => (
+              <li key={point}>{point}</li>
             ))}
           </ul>
         </div>
-        <aside className="growth-card">
-          <span className="chart-label">KALENDER, INTE KLICK</span>
-          <div className="bars" aria-hidden>
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-          </div>
-          <strong>Fler rätt jobb</strong>
-          <p>Volym utan filter fyller inte veckan. Kvalificerade bokningar gör det.</p>
-        </aside>
-      </div>
-    </section>
-  )
-}
+      </section>
 
-function ComparisonSection() {
-  return (
-    <section className="outreach-section comparison-section" id="comparison">
-      <div className="wrap">
-        <p className="kicker blue-kicker">Varför inte offertsajterna</p>
-        <h2>Samma husägare. Helt annan affär.</h2>
-        <div className="comparison-table">
-          <div className="table-head">
-            <span>Jämförelsepunkt</span>
-            <span>Offertsajter</span>
-            <span>PipeHook</span>
+      <section className="outreach-section section-light">
+        <div className="wrap">
+          <p className="kicker">HUR DET FUNGERAR</p>
+          <h2>Från annons till bokad tid, i fyra steg</h2>
+          <div className="flow-steps">
+            {flowSteps.map((step) => (
+              <article key={step.number}>
+                <span>{step.number}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </article>
+            ))}
           </div>
-          {comparisonRows.map((row) => (
-            <div className="table-row" key={row.point}>
-              <b>{row.point}</b>
-              <span data-label="Offertsajter">{row.other}</span>
-              <strong data-label="PipeHook">{row.ours}</strong>
-            </div>
-          ))}
+          <a className="back-demo" href={demoUrl} target="_blank" rel="noreferrer">
+            Klicka er igenom hela flödet ovanför så ser ni exakt vad husägaren ser.
+          </a>
         </div>
-        <p className="section-copy">
-          Offertsajter säljer samma förfrågan flera gånger. PipeHook licensierar tratten till ett
-          företag per geografi — så att samtalet ni får faktiskt är ert.
-        </p>
-      </div>
-    </section>
-  )
-}
+      </section>
 
-function RegionSection({ city, companyName }: { city: string; companyName: string }) {
-  return (
-    <section className="outreach-section region-section">
-      <div className="wrap region-layout">
-        <div>
-          <p className="kicker">Regionexklusivitet</p>
-          <h2>
-            Ett område.
-            <br />
-            <em>En partner.</em>
-          </h2>
+      <section className="outreach-section traffic-section light-zone">
+        <div className="wrap">
+          <p className="kicker blue-kicker">VAR HUSÄGAREN HITTAR ER</p>
+          <h2>Vi sköter annonserna i Google och Meta åt er</h2>
+          <div className="traffic-grid">
+            <article>
+              <h3>Google — de som redan söker</h3>
+              <p>
+                Husägare som söker på relining eller stambyte i ert område ser er annons, inte en
+                offertsajt.
+              </p>
+            </article>
+            <article>
+              <h3>Meta — de som inte sökt än</h3>
+              <p>
+                Villaägare i rätt ålderssegment ser en annons om rörtestet, innan de hunnit fram till
+                en offertsajt.
+              </p>
+            </article>
+          </div>
           <p className="section-copy">
-            För att leadkvaliteten ska hålla släpper vi inte in en konkurrent i samma geografi. När{' '}
-            {companyName} tar regionen är den låst.
+            Ni loggar aldrig in i ett annonskonto. Vi bygger annonserna, betalar för dem, och
+            justerar dem löpande.
           </p>
         </div>
-        <div className="territory-card" aria-label="Område">
-          <div className="map-grid" />
-          <MapPin size={28} />
-          <span>TERRITORIUM</span>
-          <b>{city || companyName}</b>
+      </section>
+
+      <section className="outreach-section section-light" id="quiz">
+        <div className="wrap">
+          <p className="kicker">KVALIFICERINGEN</p>
+          <h2>Fyra frågor. Sen är det antingen ett jobb — eller inte.</h2>
+          <div className="quiz-strip">
+            {quizCards.map((card) => (
+              <article key={card.title}>
+                <div className={`quiz-screen ${card.screen}`.trim()}>
+                  <strong>{card.title}</strong>
+                </div>
+                <b>{card.title}</b>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="outreach-section sms-section light-zone">
+        <div className="wrap sms-layout">
+          <div>
+            <p className="kicker">UPPFÖLJNINGEN</p>
+            <h2>Systemet bokar tiden. Er tekniker gör jobbet.</h2>
+            <p className="section-copy">
+              {name}, det här är vad husägaren ser efter testet. Inget nytt system att lära sig — ni
+              får en tid i kalendern, inte ett meddelande att besvara.
+            </p>
+          </div>
+          <div className="sms-thread" aria-label="Exempel på SMS-uppföljning">
+            <div className="sms-bubble">
+              <small>19:42 — {company}</small>
+              <p>
+                Hej Anders! Du gjorde rörtestet för huset på Bergsvägen. Utifrån byggår och det du
+                beskrev om stoppen ser vi anledning att titta närmare med kamera. Kostnadsfritt, tar
+                ca 45 min.
+              </p>
+            </div>
+            <div className="sms-bubble from-customer">
+              <small>19:44 — Anders</small>
+              <p>Ja det låter bra. När kan ni?</p>
+            </div>
+            <div className="sms-bubble">
+              <small>19:44 — {company}</small>
+              <p>Vi har tisdag 14:00 eller torsdag 09:00 den här veckan. Vilket passar bäst?</p>
+            </div>
+            <div className="sms-bubble from-customer">
+              <small>19:51 — Anders</small>
+              <p>Tisdag funkar</p>
+            </div>
+            <div className="sms-bubble">
+              <small>19:51 — {company}</small>
+              <p>Klart. Tisdag 14:00, Bergsvägen 12. {company} hör av sig om något ändras.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="outreach-section section-light">
+        <div className="wrap proof-grid">
+          <div className="proof-copy">
+            <p className="kicker">DET HÄR ÄR INGEN TEORI</p>
+            <h2>Det här är samma arbetssätt som branschens snabbast växande firmor</h2>
+            <p>
+              VVStrygg startade 2017 och omsatte 81 miljoner kronor 2025. De säljer aldrig relining
+              i sin marknadsföring — de säljer den kostnadsfria rörinspektionen, och stänger affären
+              på plats.
+            </p>
+          </div>
+          <div className="proof-copy">
+            <p>
+              Samma arbetssätt har jag byggt i andra branscher med höga ordervärden: Ageras (ett av
+              Danmarks snabbast växande techbolag), 80+ tandvårdskliniker hos Leadcom, och
+              implantatfunnlar med samma testbaserade princip. PipeHook är samma metod, byggd enbart
+              för rör och relining.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="outreach-section comparison-section" id="comparison">
+        <div className="wrap">
+          <p className="kicker blue-kicker">SKILLNADEN MOT OFFERTSAJTER</p>
+          <h2>Så skiljer sig PipeHook från offertsajter</h2>
+          <div className="comparison-table">
+            <div className="table-head">
+              <span />
+              <span>Offertsajter</span>
+              <span>PipeHook</span>
+            </div>
+            {comparisonRows.map((row) => (
+              <div className="table-row" key={row.point}>
+                <b>{row.point}</b>
+                <span data-label="Offertsajter">{row.other}</span>
+                <strong data-label="PipeHook">{row.ours}</strong>
+              </div>
+            ))}
+          </div>
+          <p className="section-copy">
+            Offertsajter säljer samma förfrågan till flera firmor samtidigt. Vi arbetar med ett
+            företag per område, så förfrågan ni får är faktiskt bara er.
+          </p>
+        </div>
+      </section>
+
+      <section className="outreach-section region-section">
+        <div className="wrap region-layout">
+          <div>
+            <p className="kicker">EN REGION, ETT FÖRETAG</p>
+            <h2>Vi arbetar bara med ett företag i {city}</h2>
+            <p className="section-copy">
+              Om vi tog in flera firmor i samma område skulle vi konkurrera med oss själva om samma
+              husägare — och då vore vi lika värdelösa som en offertsajt. När {company} tar {city} är
+              platsen låst för konkurrenterna där.
+            </p>
+          </div>
+          <div className="territory-card" aria-label={city}>
+            <div className="map-grid" />
+            <MapPin size={28} />
+            <span>TERRITORIUM</span>
+            <b>{city}</b>
+          </div>
+        </div>
+      </section>
+
+      <section className="outreach-final">
+        <div className="wrap">
+          <p className="kicker blue-kicker">NÄSTA STEG</p>
+          <h2>15 minuter. Ingen pitch. Bara siffrorna för {city}.</h2>
+          <p>
+            Vi går igenom hur många hushåll i rätt ålderssegment som finns i ert område, vad ett
+            bokat hembesök skulle kosta er, och vad det behöver ge i stängd affär för att gå ihop.
+            Håller inte matematiken säger vi det på samtalet.
+          </p>
+          <a className="primary-button" href={lead.contactBookingUrl} target="_blank" rel="noreferrer">
+            Lås platsen för {city} <ArrowRight size={16} />
+          </a>
+        </div>
+      </section>
+    </main>
   )
 }
