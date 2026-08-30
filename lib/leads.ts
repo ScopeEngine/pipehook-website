@@ -6,6 +6,7 @@ export type LeadRow = {
   id: string
   lead_slug: string
   company_name: string
+  city: string
   logo_url: string | null
   accent_color: string | null
   industry: Industry
@@ -35,6 +36,7 @@ export function leadFromRow(row: LeadRow): LeadDemoConfig {
   return {
     leadSlug: row.lead_slug,
     companyName: row.company_name,
+    city: row.city,
     logoUrl: row.logo_url,
     accentColor: row.accent_color,
     industry: row.industry,
@@ -50,7 +52,7 @@ export async function getLeadBySlug(leadSlug: string): Promise<LeadDemoConfig | 
   const { data, error } = await supabase
     .from('leads')
     .select(
-      'id, lead_slug, company_name, logo_url, accent_color, industry, loom_video_id, contact_name, contact_booking_url, copy_override, created_at, og_image_url, viewed_at, demo_clicked_at',
+      'id, lead_slug, company_name, city, logo_url, accent_color, industry, loom_video_id, contact_name, contact_booking_url, copy_override, created_at, og_image_url, viewed_at, demo_clicked_at',
     )
     .eq('lead_slug', leadSlug)
     .maybeSingle()
@@ -73,6 +75,7 @@ export async function listLeadSlugs() {
 export async function insertLead(input: {
   leadSlug: string
   companyName: string
+  city: string
   logoUrl: string | null
   accentColor: string | null
   industry: Industry
@@ -87,6 +90,7 @@ export async function insertLead(input: {
     .insert({
       lead_slug: input.leadSlug,
       company_name: input.companyName,
+      city: input.city,
       logo_url: input.logoUrl,
       accent_color: input.accentColor,
       industry: input.industry,
