@@ -23,25 +23,25 @@
     "trust": "POWERED BY INDUSTRY-LEADING TECH"
   },
   "preview": {
-    "label": "Placeholder preview for your branded funnel screenshots",
+    "label": "Preview of the branded funnel on desktop and mobile",
     "url": "yourbrand.com / your-funnel",
-    "desktop": "Insert desktop funnel screenshot",
-    "mobile": "Insert mobile funnel screenshot"
+    "desktop": "Desktop funnel: first question about when the house was built",
+    "mobile": "Mobile funnel: first question about when the house was built"
   },
   "difference": {
     "kicker": "THE PIPEHOOK DIFFERENCE",
     "title": "More control. Better conversations.",
     "titleMuted": "Fewer dead ends.",
-    "body": "Most lead programs optimize for volume. We optimize for the one thing that matters: a full schedule of jobs your team actually wants."
+    "body": "Most growth programs optimize for volume. We optimize for the one thing that matters: a full schedule of jobs your team actually wants."
   },
   "benefits": [
     {
-      "title": "Exclusive leads",
+      "title": "Exclusive bookings",
       "text": "Every inquiry belongs to your team. Never shared with a competitor down the road."
     },
     {
       "title": "One flat monthly fee",
-      "text": "A predictable growth engine without admin, bidding wars, or pay-per-lead stress."
+      "text": "A predictable growth engine without admin, bidding wars, or paying per inquiry."
     },
     {
       "title": "Active disqualification",
@@ -75,7 +75,7 @@
     "kicker": "REGION EXCLUSIVITY",
     "title": "One region.",
     "titleMuted": "One partner.",
-    "body": "To guarantee lead quality and completely eliminate shared leads, we only license our system to a single contractor per geographical area. Once a territory is claimed, it’s locked out for your competitors.",
+    "body": "To guarantee quality and completely eliminate shared inquiries, we only license our system to a single contractor per geographical area. Once a territory is claimed, it’s locked out for your competitors.",
     "checkAvailability": "Check availability",
     "mapLabel": "Territory exclusivity map illustration",
     "claimed": "CLAIMED TERRITORY",

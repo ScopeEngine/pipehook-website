@@ -23,25 +23,25 @@
     "trust": "DRIVS AV BRANSCHLEDANDE TEKNIK"
   },
   "preview": {
-    "label": "Platshållare för skärmdumpar av er branded funnel",
+    "label": "Förhandsvisning av den brandade tratten på dator och mobil",
     "url": "ertvarumarke.se / er-tratt",
-    "desktop": "Infoga skärmdump av tratten på dator",
-    "mobile": "Infoga skärmdump av tratten på mobil"
+    "desktop": "Tratten på dator: första frågan om när huset byggdes",
+    "mobile": "Tratten på mobil: första frågan om när huset byggdes"
   },
   "difference": {
     "kicker": "SKILLNADEN MED PIPEHOOK",
     "title": "Mer kontroll. Bättre samtal.",
     "titleMuted": "Färre återvändsgränder.",
-    "body": "De flesta leadprogram optimerar för volym. Vi optimerar för det enda som räknas: ett fullbokat schema med jobb som ert team faktiskt vill ha."
+    "body": "De flesta tillväxtprogram optimerar för volym. Vi optimerar för det enda som räknas: ett fullbokat schema med jobb som ert team faktiskt vill ha."
   },
   "benefits": [
     {
-      "title": "Exklusiva leads",
-      "text": "Varje förfrågan går direkt till er. Vi säljer aldrig samma lead till flera företag eller konkurrenter i ert område."
+      "title": "Exklusiva bokningar",
+      "text": "Varje förfrågan går direkt till er. Vi säljer aldrig samma förfrågan till flera företag eller konkurrenter i ert område."
     },
     {
       "title": "En fast månadsavgift",
-      "text": "En förutsägbar tillväxtmotor utan administration, klickpriser eller stress över att betala per lead."
+      "text": "En förutsägbar tillväxtmotor utan administration, klickpriser eller stress över rörlig kostnad per förfrågan."
     },
     {
       "title": "Aktiv diskvalificering",
@@ -75,7 +75,7 @@
     "kicker": "REGIONS-EXKLUSIVITET",
     "title": "En region.",
     "titleMuted": "En partner.",
-    "body": "För att garantera högsta kvalitet och helt eliminera delade leads, licensierar vi endast ut systemet till ett företag per geografiskt område. När en region är tagen, är den låst för era konkurrenter.",
+    "body": "För att garantera högsta kvalitet och helt eliminera delade förfrågningar, licensierar vi endast ut systemet till ett företag per geografiskt område. När en region är tagen, är den låst för era konkurrenter.",
     "checkAvailability": "Se om er region är ledig",
     "mapLabel": "Illustration av territoriell exklusivitet",
     "claimed": "RESERVERAT OMRÅDE",

@@ -15,6 +15,7 @@ import {
   Target,
   X,
 } from 'lucide-react'
+import Image from 'next/image'
 import type { Dictionary } from '@/lib/get-dictionary'
 import type { Locale } from '@/lib/i18n'
 import { BrandLogo } from '@/components/brand-logo'
@@ -41,14 +42,20 @@ function FunnelPreview({
           <span>{url}</span>
           <span className="browser-menu">•••</span>
         </div>
-        <div className="browser-placeholder">
-          <span>{desktop}</span>
+        <div className="browser-shot">
+          <Image
+            src="/funnel-desktop.png"
+            alt={desktop}
+            fill
+            sizes="(max-width: 700px) 92vw, 720px"
+            priority
+          />
         </div>
       </div>
       <div className="phone-frame">
         <div className="phone-notch" />
-        <div className="phone-placeholder">
-          <span>{mobile}</span>
+        <div className="phone-shot">
+          <Image src="/funnel-mobile.png" alt={mobile} fill sizes="180px" />
         </div>
       </div>
     </div>

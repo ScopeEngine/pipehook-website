@@ -349,6 +349,31 @@ h1 em,
   font: 11px var(--font-inter), sans-serif;
 }
 
+.browser-shot {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  background: #eef3f1;
+}
+
+.browser-shot img {
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.phone-shot {
+  position: relative;
+  height: calc(100% - 13px);
+  overflow: hidden;
+  border-radius: 0 0 18px 18px;
+  background: #eef3f1;
+}
+
+.phone-shot img {
+  object-fit: cover;
+  object-position: top center;
+}
+
 .phone-frame {
   position: absolute;
   z-index: 2;
@@ -1100,6 +1125,10 @@ h1 em,
 
   .browser-content {
     min-height: 210px;
+  }
+
+  .browser-shot {
+    height: 210px;
   }
 
   .mock-brand {
