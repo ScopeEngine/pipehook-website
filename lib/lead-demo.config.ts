@@ -194,6 +194,51 @@ export function resolveCopy(lead: LeadDemoConfig): AidaCopy {
   }
 }
 
+export const FUNNEL_DEMO_PATH = '/demo'
+
+const ACCENT_HEX = /^#[0-9A-Fa-f]{6}$/
+const COMPANY_MAX_LENGTH = 120
+const SLUG_MAX_LENGTH = 128
+
+function encodeBase64Url(utf8: string) {
+  return Buffer.from(utf8, 'utf8').toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '')
+}
+
+function isHttpsUrl(value: string) {
+  try {
+    return new URL(value).protocol === 'https:'
+  } catch {
+    return false
+  }
+}
+
+/** Same `?b=` contract as kitchen-tool `encodeBrandingPayload`. */
+export function encodeFunnelBrandingParam(
+  lead: Pick<LeadDemoConfig, 'companyName' | 'logoUrl' | 'accentColor' | 'leadSlug' | 'industry'>,
+) {
+  const payload: {
+    company: string
+    slug: string
+    industry: Industry
+    preview: true
+    accent?: string
+    logo?: string
+  } = {
+    company: lead.companyName.trim().slice(0, COMPANY_MAX_LENGTH),
+    slug: lead.leadSlug.trim().slice(0, SLUG_MAX_LENGTH),
+    industry: lead.industry,
+    preview: true,
+  }
+
+  const accent = resolvedAccent(lead)
+  if (ACCENT_HEX.test(accent)) payload.accent = accent
+
+  const logo = lead.logoUrl?.trim()
+  if (logo && isHttpsUrl(logo)) payload.logo = logo
+
+  return encodeBase64Url(JSON.stringify(payload))
+}
+
 export function resolvedAccent(lead: Pick<LeadDemoConfig, 'accentColor' | 'industry'>) {
   return lead.accentColor || industryAccents[lead.industry]
 }
@@ -202,12 +247,8 @@ export function buildDemoUrl(
   lead: Pick<LeadDemoConfig, 'companyName' | 'logoUrl' | 'accentColor' | 'leadSlug' | 'industry'>,
 ) {
   const origin = process.env.NEXT_PUBLIC_FUNNEL_ORIGIN ?? 'https://funnels.pipehook.co'
-  const url = new URL(origin.endsWith('/') ? origin : `${origin}/`)
-  url.searchParams.set('company', lead.companyName)
-  url.searchParams.set('industry', lead.industry)
-  url.searchParams.set('ref', lead.leadSlug)
-  url.searchParams.set('accent', resolvedAccent(lead))
-  if (lead.logoUrl) url.searchParams.set('logo', lead.logoUrl)
+  const url = new URL(FUNNEL_DEMO_PATH, origin.endsWith('/') ? origin : `${origin}/`)
+  url.searchParams.set('b', encodeFunnelBrandingParam(lead))
   return url.toString()
 }
 
