@@ -89,8 +89,9 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             deras vardagsrum.
           </h1>
           <p className="outreach-lede">
-            Två minuter. Sen vet ni exakt varför vissa reliningfirmor aldrig behöver jaga en enda
-            kund, medan andra tvingas sänka sina priser för att få in jobb.
+            Två minuter. Sen vet ni exakt varför vissa reliningfirmor{' '}
+            <strong>aldrig behöver jaga en enda kund</strong>, medan andra tvingas sänka sina
+            priser för att få in jobb.
           </p>
 
           <div className="outreach-video">
@@ -134,7 +135,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               </li>
             </ul>
             <p className="section-copy">
-              Ni gör allt rätt, men förlorar ändå affären.
+              <strong>Ni gör allt rätt, men förlorar ändå affären.</strong>
             </p>
             <p className="bridge-line">
               Många inser detta och försöker ta in egna kunder via sociala medier – bara för att gå
@@ -152,11 +153,16 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             <h2>Varför vanliga VVS-annonser på Facebook sällan fungerar</h2>
             <p className="section-copy section-copy-flush">
               Att köra egna kampanjer slutar ofta med klick som kostar pengar men inte ger några
-              riktiga jobb. Problemet är att man behandlar Facebook på samma sätt som Google. På
-              Google letar kunden aktivt efter en lösning. När de öppnar Facebook eller Instagram
-              vill de bara koppla av och se vad som händer. En annons som bryter av och säger
-              &quot;Vi utför relining – begär offert idag!&quot; försöker sälja ett ingrepp för 150
-              000 kr till någon som inte ens visste att de hade ett rörproblem.
+              riktiga jobb. Problemet är att man behandlar Facebook på samma sätt som Google.
+            </p>
+            <p className="section-copy">
+              På Google <strong>letar kunden aktivt efter en lösning</strong>. När de öppnar
+              Facebook eller Instagram vill de bara koppla av och se vad som händer.
+            </p>
+            <p className="section-copy">
+              En annons som bryter av och säger &quot;Vi utför relining – begär offert idag!&quot;
+              försöker sälja ett ingrepp för 150 000 kr till{' '}
+              <strong>någon som inte ens visste att de hade ett rörproblem</strong>.
             </p>
             <p className="bridge-line">
               För att plattformar som Facebook och Instagram ska fungera krävs en helt annan
@@ -174,16 +180,19 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             <h2>Fånga intresset istället för att kräva ett köp</h2>
             <p className="section-copy section-copy-flush">
               Eftersom husägaren som är inne på Facebook befinner sig i ett läge där de vill koppla
-              av, bli underhållen eller upptäcka saker, måste vi trigga deras nyfikenhet istället
-              för att trycka upp en tjänst i ansiktet på dem.
+              av, bli underhållen eller upptäcka saker, måste vi{' '}
+              <strong>
+                trigga deras nyfikenhet istället för att trycka upp en tjänst i ansiktet på dem
+              </strong>
+              .
             </p>
             <p className="section-copy">
               Vi marknadsför en insikt genom ett snabbt test: &quot;Har dina gjutjärnsrör passerat
               sina bäst-före-datum? Gör testet och får svar direkt! (tar 2 minuter)”
             </p>
             <p className="section-copy">
-              Plötsligt har vi fångat uppmärksamheten på plattformens egna villkor. Ett dolt problem
-              har blivit en konkret tanke hos husägaren.
+              Plötsligt har vi fångat uppmärksamheten på plattformens egna villkor.{' '}
+              <strong>Ett dolt problem har blivit en konkret tanke hos husägaren.</strong>
             </p>
             <p className="bridge-line">
               Men ett klick betalar inga löner. Frågan är hur man förvandlar det till ett vunnet
@@ -201,10 +210,17 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             <h2>Sälj hembesöket, inte rörbytet</h2>
             <p className="section-copy section-copy-flush">
               När husägaren gjort testet ber vi dem inte att köpa en renovering. Vi erbjuder en
-              kostnadsfri kamerainspektion. Det är så här aktörer som VVStrygg har vuxit till 81
-              miljoner kronor i omsättning på nio år. De marknadsför den fysiska diagnosen. När er
-              tekniker står i kundens vardagsrum med kameran är ni den enda experten på plats, och
-              priskonkurrensen ser helt annorlunda ut.
+              kostnadsfri kamerainspektion.
+            </p>
+            <p className="section-copy">
+              Det är så här aktörer som VVStrygg har vuxit till{' '}
+              <strong>81 miljoner kronor i omsättning på nio år</strong>. De marknadsför den
+              fysiska diagnosen.
+            </p>
+            <p className="section-copy">
+              När er tekniker står i kundens vardagsrum med kameran är{' '}
+              <strong>ni den enda experten på plats</strong>, och priskonkurrensen ser helt
+              annorlunda ut.
             </p>
             <p className="bridge-line">
               Det är denna process PipeHook bygger på. Men gratis hembesök väcker en uppenbar
@@ -220,10 +236,16 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
           <p className="kicker">KVALIFICERINGEN</p>
           <h2>&quot;Att åka på gratis hembesök bränner ju onödig tid?&quot;</h2>
           <p className="section-copy section-copy-flush">
-            Helt rätt. Att skicka ut en tekniker till fel hus kostar lön och bensin. Om kunden bara
-            vill ha en prisjämförelse är ni tillbaka vid köksbordet med miniräknaren. Därför
-            fungerar modellen enbart om man har en strikt, automatisk kvalificering. Vårt rörtest
-            fungerar som ett filter i bakgrunden:
+            Helt rätt. Att skicka ut en tekniker till fel hus kostar lön och bensin.
+          </p>
+          <p className="section-copy">
+            Om kunden bara vill ha en prisjämförelse är ni tillbaka vid köksbordet med
+            miniräknaren.
+          </p>
+          <p className="section-copy">
+            Därför fungerar modellen enbart om man har{' '}
+            <strong>en strikt, automatisk kvalificering</strong>. Vårt rörtest fungerar som ett
+            filter i bakgrunden:
           </p>
           <div className="quiz-strip">
             {quizCards.map((card) => (
@@ -291,9 +313,15 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             <h2>Samma psykologi driver miljonaffärer i andra branscher</h2>
             <p className="section-copy section-copy-flush">
               Denna modell är inte ett experiment. Den används konsekvent i branscher med höga
-              ordervärden. För tandimplantat används exakt samma logik: &quot;Gör testet och se om
-              du är kandidat för fasta tänder.&quot; Psykologin är identisk. Fånga intresset tidigt,
-              erbjuda en professionell diagnos och få in avtalet utan mellanhänder.
+              ordervärden.
+            </p>
+            <p className="section-copy">
+              För tandimplantat används exakt samma logik: &quot;Gör testet och se om du är
+              kandidat för fasta tänder.&quot;
+            </p>
+            <p className="section-copy">
+              Psykologin är identisk. Fånga intresset tidigt, erbjuda en professionell diagnos och{' '}
+              <strong>få in avtalet utan mellanhänder</strong>.
             </p>
             <p className="bridge-line">
               Och det är exakt detta system jag har byggt för er bransch.
@@ -310,9 +338,14 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             <h2>Jag har byggt det här förut — bara inte för rör</h2>
             <p className="section-copy section-copy-flush">
               Jag var med och byggde ett av Danmarks snabbast växande techbolag, där inkommande
-              partnerförfrågningar växte från ett dussin till över 800 i månaden. Sedan dess har jag
-              skött marknadsföringen åt över 80 kliniker i Nordeuropa. Nu har jag tagit den
-              arkitekturen och byggt PipeHook — helt skräddarsytt för relining och VVS.
+              partnerförfrågningar växte <strong>från ett dussin till över 800 i månaden</strong>.
+            </p>
+            <p className="section-copy">
+              Sedan dess har jag skött marknadsföringen åt över 80 kliniker i Nordeuropa.
+            </p>
+            <p className="section-copy">
+              Nu har jag tagit den arkitekturen och byggt PipeHook — helt skräddarsytt för relining
+              och VVS.
             </p>
             <p className="bridge-line">Så vad betyder allt det här konkret för {city}?</p>
           </div>
@@ -355,13 +388,16 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
           <p className="kicker blue-kicker">NÄSTA STEG</p>
           <h2>Redo att ta över {city}?</h2>
           <p>
-            Vi tar 15 minuter, utan säljpitch. Vi kikar på söktrafiken i ert område och räknar på
-            matematiken. Är det inte lönsamt för er, så säger vi det direkt.
+            Vi tar <strong>15 minuter, utan säljpitch</strong>. Vi kikar på söktrafiken i ert
+            område och räknar på matematiken.
+          </p>
+          <p>Är det inte lönsamt för er, så säger vi det direkt.</p>
+          <p>
+            <strong>Ingen mer torsdagkväll vid köksbordet för ett jobb ni ändå inte får.</strong>
           </p>
           <p>
-            Ingen mer torsdagkväll vid köksbordet för ett jobb ni ändå inte får. Bara en fylld
-            kalender med jobb där ni kan hålla era riktiga marginaler, och tid att göra det ni är
-            bra på.
+            Bara <strong>en fylld kalender</strong> med jobb där ni kan hålla era riktiga
+            marginaler, och tid att göra det ni är bra på.
           </p>
           <ImageSlot label="Mockup av en digital kalender fylld med bokade hembesök." />
           <a

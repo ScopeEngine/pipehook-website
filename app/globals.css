@@ -1800,6 +1800,10 @@ h1 em,
   margin-top: 0;
 }
 
+.section-copy + .section-copy {
+  margin-top: 16px;
+}
+
 .story-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -2291,6 +2295,7 @@ h1 em,
 
 .outreach-final p {
   max-width: 660px;
+  margin: 0 0 16px;
   color: #a8b7ca;
   line-height: 1.65;
 }
