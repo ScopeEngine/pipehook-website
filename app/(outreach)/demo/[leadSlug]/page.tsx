@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { ArrowRight, MapPin, Play } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { BrandLogo } from '@/components/brand-logo'
 import { buildDemoUrl, resolvedAccent, type LeadDemoConfig } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
@@ -26,72 +26,13 @@ export async function generateMetadata({
   }
 }
 
-const resultPoints = [
-  'Varje förfrågan går bara till er. Vi arbetar inte med flera firmor i samma område.',
-  'Husägaren har redan svarat på fyra frågor om huset innan ni ser förfrågan.',
-  'Ni betalar en fast summa per månad — inte per klick, inte per förfrågan.',
-  'Tiden bokas automatiskt i teknikerns kalender. Ingen ringer, ingen mejlar fram och tillbaka.',
-] as const
-
-const flowSteps = [
-  {
-    number: '1',
-    title: 'Annonsen visas.',
-    text: 'En husägare i ert område ser en annons om gamla rörsystem, antingen för att de sökt efter det eller för att huset matchar rätt ålder.',
-  },
-  {
-    number: '2',
-    title: 'Husägaren gör testet.',
-    text: 'Fyra frågor om huset — byggår, symptom, ägande, nuvarande skick.',
-  },
-  {
-    number: '3',
-    title: 'Systemet sorterar.',
-    text: 'Fel fastighetstyp eller fel symptom filtreras bort innan något bokas.',
-  },
-  {
-    number: '4',
-    title: 'Tiden bokas.',
-    text: 'Husägaren väljer en tid, och den hamnar direkt i teknikerns kalender.',
-  },
-] as const
-
 const quizCards = [
-  { screen: '', title: 'Byggår', text: 'Hus från fel årtal filtreras bort direkt.' },
-  { screen: 'q1', title: 'Symptom', text: 'Kluckande ljud, återkommande stopp, lukt.' },
-  { screen: 'q2', title: 'Ägande', text: 'Bostadsrätt utan eget mandat sorteras bort.' },
+  { screen: '', title: 'Byggår', text: 'Filtrerar bort fel årtionde' },
+  { screen: 'q1', title: 'Ägande', text: 'Kräver mandat' },
   {
-    screen: 'q3',
-    title: 'Skick',
-    text: 'Husägaren får en preliminär bedömning. Exakt svar kräver en kamerainspektion.',
-  },
-] as const
-
-const comparisonRows = [
-  {
-    point: 'Vem får förfrågan',
-    other: 'Flera firmor samtidigt',
-    ours: 'Bara ni, i ert område',
-  },
-  {
-    point: 'Kvalificering',
-    other: 'Ingen — alla klick räknas',
-    ours: 'Sker innan ni ser förfrågan',
-  },
-  {
-    point: 'Varumärke',
-    other: 'Kunden landar på offertsajten',
-    ours: 'Hela flödet går under ert namn',
-  },
-  {
-    point: 'Kostnad',
-    other: 'Per klick eller budgivning',
-    ours: 'Fast summa per månad',
-  },
-  {
-    point: 'Bindningstid',
-    other: 'Ofta 12 månader',
-    ours: 'Ingen',
+    screen: 'q2',
+    title: 'Symptom eller ålder som motiverar en inspektion',
+    text: '',
   },
 ] as const
 
@@ -109,6 +50,14 @@ function ProspectMark({ lead }: { lead: LeadDemoConfig }) {
   }
 
   return <span className="outreach-company">{lead.companyName}</span>
+}
+
+function ImageSlot({ label }: { label: string }) {
+  return (
+    <div className="image-slot">
+      <p>{label}</p>
+    </div>
+  )
 }
 
 export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlug]'>) {
@@ -134,14 +83,14 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </nav>
 
         <div className="wrap outreach-hero-inner">
-          <p className="kicker blue-kicker">EN SIDA BARA FÖR {company} · RELINING</p>
+          <p className="kicker blue-kicker">EN PERSONLIG GENOMGÅNG FÖR {company} · RELINING</p>
           <h1 className="leading-tight">
-            Hej {name}. Ni äger redan förtroendet. Vi fyller kalendern.
+            Hej {name}. Ni står för yrkeskunnandet. Vi ser till att ni sitter ensamma med kunden i
+            deras vardagsrum.
           </h1>
           <p className="outreach-lede">
-            De flesta reliningfirmor vi pratar med har samma problem: rätt hembesök tar för lång tid
-            att hitta, och mycket tid går åt till samtal som ändå inte blir en affär. Det här är en
-            kort genomgång av hur PipeHook löser det — under ert varumärke.
+            Två minuter. Sen vet ni exakt varför vissa reliningfirmor aldrig behöver jaga en enda
+            kund, medan andra tvingas sänka sina priser för att få in jobb.
           </p>
 
           <div className="outreach-video">
@@ -155,74 +104,127 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
           <a className="primary-button" href={demoUrl} target="_blank" rel="noreferrer">
             Testa demot <ArrowRight size={16} />
           </a>
-          <small>
-            <Play size={12} /> Två minuter · brandad demo för {company}
-          </small>
-        </div>
-      </section>
-
-      <section className="outreach-section section-light">
-        <div className="wrap">
-          <p className="kicker">RESULTATET</p>
-          <h2>Bokade rörinspektioner i kalendern. Inget annat.</h2>
-          <ul className="result-points">
-            {resultPoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="outreach-section section-light">
-        <div className="wrap">
-          <p className="kicker">HUR DET FUNGERAR</p>
-          <h2>Från annons till bokad tid, i fyra steg</h2>
-          <div className="flow-steps">
-            {flowSteps.map((step) => (
-              <article key={step.number}>
-                <span>{step.number}</span>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
-              </article>
-            ))}
-          </div>
-          <a className="back-demo" href={demoUrl} target="_blank" rel="noreferrer">
-            Klicka er igenom hela flödet ovanför så ser ni exakt vad husägaren ser.
-          </a>
-        </div>
-      </section>
-
-      <section className="outreach-section traffic-section light-zone">
-        <div className="wrap">
-          <p className="kicker blue-kicker">VAR HUSÄGAREN HITTAR ER</p>
-          <h2>Vi sköter annonserna i Google och Meta åt er</h2>
-          <div className="traffic-grid">
-            <article>
-              <h3>Google — de som redan söker</h3>
-              <p>
-                Husägare som söker på relining eller stambyte i ert område ser er annons, inte en
-                offertsajt.
-              </p>
-            </article>
-            <article>
-              <h3>Meta — de som inte sökt än</h3>
-              <p>
-                Villaägare i rätt ålderssegment ser en annons om rörtestet, innan de hunnit fram till
-                en offertsajt.
-              </p>
-            </article>
-          </div>
-          <p className="section-copy">
-            Ni loggar aldrig in i ett annonskonto. Vi bygger annonserna, betalar för dem, och
-            justerar dem löpande.
+          <p className="bridge-line">
+            Men för att förstå hur de stora aktörerna gör, måste vi först titta på hur systemet är
+            uppbyggt idag.
           </p>
+        </div>
+      </section>
+
+      <section className="outreach-section section-light">
+        <div className="wrap story-layout">
+          <div>
+            <p className="kicker">KONTROLLFÖRLUSTEN</p>
+            <h2>Varför kalendern ekar tom – eller fylls med helt fel kunder</h2>
+            <p className="section-copy section-copy-flush">
+              De flesta VVS- och reliningfirmor känner igen sig i minst en av dessa tre situationer:
+            </p>
+            <ul className="trap-list">
+              <li>
+                <b>Hoppet som strategi:</b> Ni lever på rekommendationer. Det är bra när det
+                fungerar, men när telefonen är tyst står dyra tekniker stilla.
+              </li>
+              <li>
+                <b>Auktionen:</b> Ni köper förfrågningar från offertsajter. Samma kund säljs till
+                flera firmor, och ni tvingas prispressa mot oseriösa aktörer.
+              </li>
+              <li>
+                <b>Kontrollofferterna:</b> Husägare ber om gratis offerter enbart för att ha en
+                prisjämförelse. Ni lägger kvällarna på att räkna på jobb ni ändå inte får.
+              </li>
+            </ul>
+            <p className="section-copy">
+              Ni gör allt rätt, men förlorar ändå affären.
+            </p>
+            <p className="bridge-line">
+              Många inser detta och försöker ta in egna kunder via sociala medier – bara för att gå
+              rakt in i nästa fälla.
+            </p>
+          </div>
+          <ImageSlot label="Fotografi i mörk belysning. Ett köksbord på kvällen med miniräknare och papper." />
+        </div>
+      </section>
+
+      <section className="outreach-section section-light">
+        <div className="wrap story-layout">
+          <div>
+            <p className="kicker">MISSFÖRSTÅNDET SOM KOSTAR PENGAR</p>
+            <h2>Varför vanliga VVS-annonser på Facebook sällan fungerar</h2>
+            <p className="section-copy section-copy-flush">
+              Att köra egna kampanjer slutar ofta med klick som kostar pengar men inte ger några
+              riktiga jobb. Problemet är att man behandlar Facebook på samma sätt som Google. På
+              Google letar kunden aktivt efter en lösning. När de öppnar Facebook eller Instagram
+              vill de bara koppla av och se vad som händer. En annons som bryter av och säger
+              &quot;Vi utför relining – begär offert idag!&quot; försöker sälja ett ingrepp för 150
+              000 kr till någon som inte ens visste att de hade ett rörproblem.
+            </p>
+            <p className="bridge-line">
+              För att plattformar som Facebook och Instagram ska fungera krävs en helt annan
+              ingång.
+            </p>
+          </div>
+          <ImageSlot label="Tvådelad illustration. Google-sökfält (akut rörläcka) vs Facebook-scrollande." />
+        </div>
+      </section>
+
+      <section className="outreach-section section-light">
+        <div className="wrap story-layout">
+          <div>
+            <p className="kicker">RÄTT INGÅNG</p>
+            <h2>Fånga intresset istället för att kräva ett köp</h2>
+            <p className="section-copy section-copy-flush">
+              Eftersom husägaren som är inne på Facebook befinner sig i ett läge där de vill koppla
+              av, bli underhållen eller upptäcka saker, måste vi trigga deras nyfikenhet istället
+              för att trycka upp en tjänst i ansiktet på dem.
+            </p>
+            <p className="section-copy">
+              Vi marknadsför en insikt genom ett snabbt test: &quot;Har dina gjutjärnsrör passerat
+              sina bäst-före-datum? Gör testet och får svar direkt! (tar 2 minuter)”
+            </p>
+            <p className="section-copy">
+              Plötsligt har vi fångat uppmärksamheten på plattformens egna villkor. Ett dolt problem
+              har blivit en konkret tanke hos husägaren.
+            </p>
+            <p className="bridge-line">
+              Men ett klick betalar inga löner. Frågan är hur man förvandlar det till ett vunnet
+              jobb.
+            </p>
+          </div>
+          <ImageSlot label={'Skärmdump av en Facebook-annons för "Rörtestet".'} />
+        </div>
+      </section>
+
+      <section className="outreach-section section-light">
+        <div className="wrap story-layout">
+          <div>
+            <p className="kicker">DIAGNOSTISK FÖRSÄLJNING</p>
+            <h2>Sälj hembesöket, inte rörbytet</h2>
+            <p className="section-copy section-copy-flush">
+              När husägaren gjort testet ber vi dem inte att köpa en renovering. Vi erbjuder en
+              kostnadsfri kamerainspektion. Det är så här aktörer som VVStrygg har vuxit till 81
+              miljoner kronor i omsättning på nio år. De marknadsför den fysiska diagnosen. När er
+              tekniker står i kundens vardagsrum med kameran är ni den enda experten på plats, och
+              priskonkurrensen ser helt annorlunda ut.
+            </p>
+            <p className="bridge-line">
+              Det är denna process PipeHook bygger på. Men gratis hembesök väcker en uppenbar
+              fråga.
+            </p>
+          </div>
+          <ImageSlot label="Allabolag-graf som pekar kraftigt uppåt till 81 miljoner." />
         </div>
       </section>
 
       <section className="outreach-section section-light" id="quiz">
         <div className="wrap">
           <p className="kicker">KVALIFICERINGEN</p>
-          <h2>Fyra frågor. Sen är det antingen ett jobb — eller inte.</h2>
+          <h2>&quot;Att åka på gratis hembesök bränner ju onödig tid?&quot;</h2>
+          <p className="section-copy section-copy-flush">
+            Helt rätt. Att skicka ut en tekniker till fel hus kostar lön och bensin. Om kunden bara
+            vill ha en prisjämförelse är ni tillbaka vid köksbordet med miniräknaren. Därför
+            fungerar modellen enbart om man har en strikt, automatisk kvalificering. Vårt rörtest
+            fungerar som ett filter i bakgrunden:
+          </p>
           <div className="quiz-strip">
             {quizCards.map((card) => (
               <article key={card.title}>
@@ -230,131 +232,150 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                   <strong>{card.title}</strong>
                 </div>
                 <b>{card.title}</b>
-                <p>{card.text}</p>
+                {card.text ? <p>{card.text}</p> : null}
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="outreach-section sms-section light-zone">
-        <div className="wrap sms-layout">
-          <div>
-            <p className="kicker">UPPFÖLJNINGEN</p>
-            <h2>Systemet bokar tiden. Er tekniker gör jobbet.</h2>
-            <p className="section-copy">
-              {name}, det här är vad husägaren ser efter testet. Inget nytt system att lära sig — ni
-              får en tid i kalendern, inte ett meddelande att besvara.
-            </p>
-          </div>
-          <div className="sms-thread" aria-label="Exempel på SMS-uppföljning">
-            <div className="sms-bubble">
-              <small>19:42 — {company}</small>
-              <p>
-                Hej Anders! Du gjorde rörtestet för huset på Bergsvägen. Utifrån byggår och det du
-                beskrev om stoppen ser vi anledning att titta närmare med kamera. Kostnadsfritt, tar
-                ca 45 min.
-              </p>
-            </div>
-            <div className="sms-bubble from-customer">
-              <small>19:44 — Anders</small>
-              <p>Ja det låter bra. När kan ni?</p>
-            </div>
-            <div className="sms-bubble">
-              <small>19:44 — {company}</small>
-              <p>Vi har tisdag 14:00 eller torsdag 09:00 den här veckan. Vilket passar bäst?</p>
-            </div>
-            <div className="sms-bubble from-customer">
-              <small>19:51 — Anders</small>
-              <p>Tisdag funkar</p>
-            </div>
-            <div className="sms-bubble">
-              <small>19:51 — {company}</small>
-              <p>Klart. Tisdag 14:00, Bergsvägen 12. {company} hör av sig om något ändras.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="outreach-section section-light">
-        <div className="wrap proof-grid">
-          <div className="proof-copy">
-            <p className="kicker">DET HÄR ÄR INGEN TEORI</p>
-            <h2>Det här är samma arbetssätt som branschens snabbast växande firmor</h2>
-            <p>
-              VVStrygg startade 2017 och omsatte 81 miljoner kronor 2025. De säljer aldrig relining
-              i sin marknadsföring — de säljer den kostnadsfria rörinspektionen, och stänger affären
-              på plats.
-            </p>
-          </div>
-          <div className="proof-copy">
-            <p>
-              Samma arbetssätt har jag byggt i andra branscher med höga ordervärden: Ageras (ett av
-              Danmarks snabbast växande techbolag), 80+ tandvårdskliniker hos Leadcom, och
-              implantatfunnlar med samma testbaserade princip. PipeHook är samma metod, byggd enbart
-              för rör och relining.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="outreach-section comparison-section" id="comparison">
-        <div className="wrap">
-          <p className="kicker blue-kicker">SKILLNADEN MOT OFFERTSAJTER</p>
-          <h2>Så skiljer sig PipeHook från offertsajter</h2>
-          <div className="comparison-table">
-            <div className="table-head">
-              <span />
-              <span>Offertsajter</span>
-              <span>PipeHook</span>
-            </div>
-            {comparisonRows.map((row) => (
-              <div className="table-row" key={row.point}>
-                <b>{row.point}</b>
-                <span data-label="Offertsajter">{row.other}</span>
-                <strong data-label="PipeHook">{row.ours}</strong>
-              </div>
-            ))}
-          </div>
-          <p className="section-copy">
-            Offertsajter säljer samma förfrågan till flera firmor samtidigt. Vi arbetar med ett
-            företag per område, så förfrågan ni får är faktiskt bara er.
+          <p className="bridge-line">
+            Husägaren kvalificerar sig alltså själv. Men hur ser det ut när mötet faktiskt hamnar i
+            er kalender?
           </p>
         </div>
       </section>
 
-      <section className="outreach-section region-section">
-        <div className="wrap region-layout">
+      <section className="outreach-section sms-section light-zone">
+        <div className="wrap">
+          <div className="sms-layout">
+            <div>
+              <p className="kicker">SISTA PUSSELBITEN</p>
+              <h2>Systemet bokar tiden. Er tekniker gör jobbet.</h2>
+            </div>
+            <div className="sms-thread" aria-label="Exempel på SMS-uppföljning">
+              <div className="sms-bubble">
+                <small>{company}</small>
+                <p>
+                  Hej Anders! Du gjorde rörtestet för huset på Bergsvägen. Utifrån byggår och det du
+                  beskrev ser vi anledning att titta närmare med kamera. Kostnadsfritt, tar ca 45
+                  min.
+                </p>
+              </div>
+              <div className="sms-bubble from-customer">
+                <small>Anders</small>
+                <p>Ja det låter bra. När kan ni?</p>
+              </div>
+              <div className="sms-bubble">
+                <small>{company}</small>
+                <p>Vi har tisdag 14:00 eller torsdag 09:00 den här veckan. Vilket passar bäst?</p>
+              </div>
+              <div className="sms-bubble from-customer">
+                <small>Anders</small>
+                <p>Tisdag funkar</p>
+              </div>
+              <div className="sms-bubble">
+                <small>{company}</small>
+                <p>Klart. Tisdag 14:00, Bergsvägen 12. {company} hör av sig om något ändras.</p>
+              </div>
+            </div>
+          </div>
+          <p className="bridge-line">
+            Detta maskineri hanterar det tunga lyftet helt automatiskt. Och logiken bakom är faktiskt
+            hämtad från en helt annan bransch.
+          </p>
+        </div>
+      </section>
+
+      <section className="outreach-section section-light">
+        <div className="wrap story-layout">
           <div>
-            <p className="kicker">EN REGION, ETT FÖRETAG</p>
-            <h2>Vi arbetar bara med ett företag i {city}</h2>
-            <p className="section-copy">
-              Om vi tog in flera firmor i samma område skulle vi konkurrera med oss själva om samma
-              husägare — och då vore vi lika värdelösa som en offertsajt. När {company} tar {city} är
-              platsen låst för konkurrenterna där.
+            <p className="kicker">SAMMA METOD, ANDRA BRANSCHER</p>
+            <h2>Samma psykologi driver miljonaffärer i andra branscher</h2>
+            <p className="section-copy section-copy-flush">
+              Denna modell är inte ett experiment. Den används konsekvent i branscher med höga
+              ordervärden. För tandimplantat används exakt samma logik: &quot;Gör testet och se om
+              du är kandidat för fasta tänder.&quot; Psykologin är identisk. Fånga intresset tidigt,
+              erbjuda en professionell diagnos och få in avtalet utan mellanhänder.
+            </p>
+            <p className="bridge-line">
+              Och det är exakt detta system jag har byggt för er bransch.
             </p>
           </div>
-          <div className="territory-card" aria-label={city}>
-            <div className="map-grid" />
-            <MapPin size={28} />
-            <span>TERRITORIUM</span>
-            <b>{city}</b>
+          <ImageSlot label="Skärmdumpar från en tandimplantats-funnel (t.ex. Happident)." />
+        </div>
+      </section>
+
+      <section className="outreach-section section-light">
+        <div className="wrap story-layout">
+          <div>
+            <p className="kicker">20 ÅRS DIGITAL MARKNADSFÖRING</p>
+            <h2>Jag har byggt det här förut — bara inte för rör</h2>
+            <p className="section-copy section-copy-flush">
+              Jag var med och byggde ett av Danmarks snabbast växande techbolag, där inkommande
+              partnerförfrågningar växte från ett dussin till över 800 i månaden. Sedan dess har jag
+              skött marknadsföringen åt över 80 kliniker i Nordeuropa. Nu har jag tagit den
+              arkitekturen och byggt PipeHook — helt skräddarsytt för relining och VVS.
+            </p>
+            <p className="bridge-line">Så vad betyder allt det här konkret för {city}?</p>
           </div>
+          <ImageSlot label="Skärmdump av LinkedIn-rekommendation / Bolagsloggor." />
+        </div>
+      </section>
+
+      <section className="outreach-section section-light region-section">
+        <div className="wrap story-layout">
+          <div>
+            <p className="kicker">EN REGION. EN PARTNER.</p>
+            <h2>Ni delar aldrig förfrågan med någon annan</h2>
+            <p className="section-copy section-copy-flush">
+              Vi arbetar strikt med ett företag per geografiskt område. Ingen auktion och ingen
+              budgivning mellan er och grannfirman.
+            </p>
+            <ul className="trap-list">
+              <li>
+                <b>Bara era bokningar:</b> Varje bokat hembesök går direkt in i er kalender. Vi
+                säljer aldrig samma kund till konkurrenter.
+              </li>
+              <li>
+                <b>Ett företag per område:</b> När {company} tar {city} är platsen låst.
+              </li>
+              <li>
+                <b>Inga bindningstider:</b> Inga tolvmånadersavtal. Ni testar, utvärderar resultatet,
+                och stannar så länge det är lönsamt.
+              </li>
+            </ul>
+            <p className="bridge-line">
+              {city} har en plats kvar. Vi pratar just nu med ett fåtal firmor där.
+            </p>
+          </div>
+          <ImageSlot label={`Mörk, snygg grafisk karta över ${city} med en lås-ikon.`} />
         </div>
       </section>
 
       <section className="outreach-final">
         <div className="wrap">
           <p className="kicker blue-kicker">NÄSTA STEG</p>
-          <h2>15 minuter. Ingen pitch. Bara siffrorna för {city}.</h2>
+          <h2>Redo att ta över {city}?</h2>
           <p>
-            Vi går igenom hur många hushåll i rätt ålderssegment som finns i ert område, vad ett
-            bokat hembesök skulle kosta er, och vad det behöver ge i stängd affär för att gå ihop.
-            Håller inte matematiken säger vi det på samtalet.
+            Vi tar 15 minuter, utan säljpitch. Vi kikar på söktrafiken i ert område och räknar på
+            matematiken. Är det inte lönsamt för er, så säger vi det direkt.
           </p>
-          <a className="primary-button" href={lead.contactBookingUrl} target="_blank" rel="noreferrer">
-            Lås platsen för {city} <ArrowRight size={16} />
+          <p>
+            Ingen mer torsdagkväll vid köksbordet för ett jobb ni ändå inte får. Bara en fylld
+            kalender med jobb där ni kan hålla era riktiga marginaler, och tid att göra det ni är
+            bra på.
+          </p>
+          <ImageSlot label="Mockup av en digital kalender fylld med bokade hembesök." />
+          <a
+            className="primary-button"
+            href={lead.contactBookingUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Lås {city} — boka en teknisk genomgång <ArrowRight size={16} />
           </a>
+          <small>
+            Observera: Eftersom vi endast arbetar med en partner per region, kontaktar vi för
+            närvarande ett fåtal utvalda firmor i {city}.
+          </small>
         </div>
       </section>
     </main>
