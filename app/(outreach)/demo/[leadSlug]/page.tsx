@@ -96,8 +96,9 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
 
           <div className="outreach-video">
             <iframe
-              src={`https://www.loom.com/embed/${lead.loomVideoId}`}
+              src={`https://www.loom.com/embed/${lead.loomVideoId}?autoplay=1`}
               title={`Loom-video till ${company}`}
+              allow="autoplay; fullscreen"
               allowFullScreen
             />
           </div>
