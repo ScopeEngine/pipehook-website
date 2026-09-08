@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { BrandLogo } from '@/components/brand-logo'
-import { buildDemoUrl, resolvedAccent, type LeadDemoConfig } from '@/lib/lead-demo.config'
+import { buildDemoUrl, resolvedAccent } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
 import { CallbackForm } from './callback-form'
 
@@ -37,27 +37,11 @@ const quizCards = [
   },
 ] as const
 
-function firstName(contactName: string) {
-  return contactName.trim().split(/\s+/)[0] || contactName
-}
-
 function whatsappHref(raw: string | undefined) {
   if (!raw) return null
   const digits = raw.replace(/\D/g, '')
   if (!digits) return null
   return `https://wa.me/${digits}`
-}
-
-function ProspectMark({ lead }: { lead: LeadDemoConfig }) {
-  if (lead.logoUrl) {
-    return (
-      // External prospect logos are not in next/image remotePatterns.
-      // eslint-disable-next-line @next/next/no-img-element
-      <img className="demo-company-logo" src={lead.logoUrl} alt={lead.companyName} />
-    )
-  }
-
-  return <span className="outreach-company">{lead.companyName}</span>
 }
 
 function ImageSlot({ label }: { label: string }) {
@@ -100,7 +84,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
 
   const demoUrl = buildDemoUrl(lead)
   const accent = resolvedAccent(lead)
-  const name = firstName(lead.contactName)
   const region = lead.region
   const company = lead.companyName
   const whatsappUrl = whatsappHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER)
@@ -110,24 +93,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
       <section className="outreach-hero">
         <nav className="outreach-nav wrap">
           <BrandLogo href="/se" priority />
-          <ProspectMark lead={lead} />
           <a className="nav-cta" href={demoUrl} target="_blank" rel="noreferrer">
             Testa demot <ArrowRight size={15} />
           </a>
         </nav>
 
         <div className="wrap outreach-hero-inner">
-          <p className="kicker blue-kicker">EN PERSONLIG GENOMGÅNG FÖR {company} · RELINING</p>
-          <h1 className="leading-tight">
-            Hej {name}. Ni står för yrkeskunnandet. Vi ser till att ni sitter ensamma med kunden i
-            deras vardagsrum.
-          </h1>
-          <p className="outreach-lede">
-            Två minuter. Sen vet ni exakt varför vissa reliningfirmor{' '}
-            <strong>aldrig behöver jaga en enda kund</strong>, medan andra tvingas sänka sina
-            priser för att få in jobb.
-          </p>
-
           <div className="outreach-video">
             <iframe
               src={`https://www.loom.com/embed/${lead.loomVideoId}?autoplay=1`}
