@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import { BrandLogo } from '@/components/brand-logo'
 import { buildDemoUrl, resolvedAccent, type LeadDemoConfig } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
+import { CallbackForm } from './callback-form'
 
 export const dynamic = 'force-dynamic'
 
@@ -38,6 +39,13 @@ const quizCards = [
 
 function firstName(contactName: string) {
   return contactName.trim().split(/\s+/)[0] || contactName
+}
+
+function whatsappHref(raw: string | undefined) {
+  if (!raw) return null
+  const digits = raw.replace(/\D/g, '')
+  if (!digits) return null
+  return `https://wa.me/${digits}`
 }
 
 function ProspectMark({ lead }: { lead: LeadDemoConfig }) {
@@ -93,8 +101,9 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
   const demoUrl = buildDemoUrl(lead)
   const accent = resolvedAccent(lead)
   const name = firstName(lead.contactName)
-  const city = lead.city
+  const region = lead.region
   const company = lead.companyName
+  const whatsappUrl = whatsappHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER)
 
   return (
     <main className="outreach-page" style={{ '--lead-accent': accent } as CSSProperties}>
@@ -237,20 +246,20 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         <div className="wrap story-layout">
           <div>
             <p className="kicker">VOLYMTAKET FÖRSVINNER</p>
-            <h2>Söktrafiken har ett tak. Discovery har inget.</h2>
+            <h2>Söktrafiken har ett tak ni inte rår över. Discovery bestäms av er budget.</h2>
             <p className="section-copy section-copy-flush">
               De flesta rörfirmor konkurrerar om samma smala ström av sökande kunder på Google — och
-              den strömmen är begränsad till hur många som råkar söka relining i er stad just den
+              den strömmen är begränsad till hur många som råkar söka relining i er region just den
               här månaden. Den siffran är vad den är.
             </p>
             <p className="section-copy">
-              Den stora massan av husägare som ännu inte vet att de har ett problem finns någon helt
-              annanstans, och den gruppen har inget sånt tak — ju mer ni är villiga att investera,
-              desto fler hushåll kan testet nå.
+              Den stora massan av husägare som ännu inte vet att de har ett problem är många gånger
+              fler, och den gränsen sätts av hur mycket ni själva vill investera — inte av hur många
+              som råkar söka just nu.
             </p>
             <p className="bridge-line">
-              Det är den här skillnaden som gör att aktörer som VVStrygg kunnat växa år efter år,
-              utan att slå i något marknadstak.
+              Det är den här skillnaden som gör att aktörer som VVStrygg kunnat fortsätta växa år
+              efter år, utan att slå i samma tak som sökannonser gör.
             </p>
           </div>
           <ReachCompare />
@@ -288,11 +297,11 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
       <section className="outreach-section section-light" id="quiz">
         <div className="wrap">
           <p className="kicker">KVALIFICERINGEN</p>
-          <h2>Ni vet redan att hembesök vinner affärer. Frågan är hur ni skalar det.</h2>
+          <h2>Kvalificeringen är nyckeln till lönsamma hembesök. Systemet sköter den åt er.</h2>
           <p className="section-copy section-copy-flush">
             Ni vinner redan era bästa affärer i någons vardagsrum — det är inte nytt för er. Det som
-            stoppar de flesta är inte hembesöket i sig, utan att skala det utan att bränna
-            teknikertid på fel hus.
+            avgör om hembesöken går ihop ekonomiskt är kvalificeringen: rätt hus, rätt läge i
+            beslutet.
           </p>
           <p className="section-copy">
             Skickar ni ut en tekniker till en bostadsrätt utan mandat, eller ett hus som redan bytt
@@ -380,47 +389,46 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
       <section className="outreach-section section-light">
         <div className="wrap story-layout">
           <div>
-            <p className="kicker">SAMMA METOD, ANDRA BRANSCHER</p>
-            <h2>Samma psykologi driver miljonaffärer i andra branscher</h2>
-            <p className="section-copy section-copy-flush">
-              Denna modell är inte ett experiment. Den används konsekvent i branscher med höga
-              ordervärden.
-            </p>
-            <p className="section-copy">
-              För tandimplantat används exakt samma logik: &quot;Gör testet och se om du är
-              kandidat för fasta tänder.&quot;
-            </p>
-            <p className="section-copy">
-              Psykologin är identisk. Fånga intresset tidigt, erbjuda en professionell diagnos och{' '}
-              <strong>få in avtalet utan mellanhänder</strong>.
-            </p>
-            <p className="bridge-line">
-              Och det är exakt detta system jag har byggt för er bransch.
-            </p>
-          </div>
-          <ImageSlot label="Skärmdumpar från en tandimplantats-funnel (t.ex. Happident)." />
-        </div>
-      </section>
-
-      <section className="outreach-section section-light">
-        <div className="wrap story-layout">
-          <div>
             <p className="kicker">20 ÅRS DIGITAL MARKNADSFÖRING</p>
-            <h2>Jag har byggt det här förut — bara inte för rör</h2>
+            <h2>
+              Jag har gjort exakt det här förut — för redovisningsbyråer och tandvårdskliniker
+            </h2>
             <p className="section-copy section-copy-flush">
-              Jag var med och byggde ett av Danmarks snabbast växande techbolag, där inkommande
-              partnerförfrågningar växte <strong>från ett dussin till över 800 i månaden</strong>.
+              På Ageras hjälpte jag redovisningsbyråer få fler kunder — inkommande förfrågningar
+              växte från ett dussin till över 800 i månaden, på ett år.
             </p>
             <p className="section-copy">
-              Sedan dess har jag skött marknadsföringen åt över 80 kliniker i Nordeuropa.
+              Sedan dess har jag gjort samma sak för tandvårdskliniker hos Leadcom — över 70
+              kliniker i Sverige, Norge och England.
             </p>
             <p className="section-copy">
               Nu har jag tagit den arkitekturen och byggt PipeHook — helt skräddarsytt för relining
               och VVS.
             </p>
-            <p className="bridge-line">Så vad betyder allt det här konkret för {city}?</p>
+            <p className="bridge-line">Och det är inte bara jag som sett mönstret fungera.</p>
           </div>
           <ImageSlot label="Skärmdump av LinkedIn-rekommendation / Bolagsloggor." />
+        </div>
+      </section>
+
+      <section className="outreach-section section-light">
+        <div className="wrap">
+          <p className="kicker">SAMMA METOD, ANDRA BRANSCHER</p>
+          <h2>Konceptet är redan beprövat — bara inte för rör</h2>
+          <p className="section-copy section-copy-flush">
+            Samma test-först-princip driver redan annonser i flera branscher: solceller (&quot;Se
+            hur mycket du kan spara&quot;), hudvård (&quot;Gör hudtestet, få din rutin&quot;) och
+            värmepumpar (&quot;Se om ditt hus passar&quot;).
+          </p>
+          <ImageSlot label="Tre små, generiska ikoner sida vid sida — egen illustration, INTE riktiga företagslogotyper eller skärmdumpar — en per bransch (sol, hud, värmepump), var och en med sin korta citat-fras under." />
+          <p className="section-copy">
+            Ett tydligare exempel: för tandimplantat använde jag själv exakt samma princip —
+            &quot;Gör testet och se om du är kandidat för fasta tänder.&quot; Ingen vaknar och
+            bestämmer sig för att köpa implantat, precis som ingen vaknar och bestämmer sig för
+            relining.
+          </p>
+          <ImageSlot label="Skärmdump av Happidents implantat-quiz — riktigt exempel, riktig skärmdump, medvetet större och mer detaljerad än de tre generiska ikonerna ovan." />
+          <p className="bridge-line">Så vad betyder allt det här konkret för {region}?</p>
         </div>
       </section>
 
@@ -439,7 +447,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 tekniker — aldrig till en konkurrent i området.
               </li>
               <li>
-                <b>Ett företag per område:</b> När {company} tar {city} är platsen låst.
+                <b>Ett företag per område:</b> När {company} tar {region} är platsen låst.
               </li>
               <li>
                 <b>Inga bindningstider:</b> Inga tolvmånadersavtal. Ni testar, utvärderar resultatet,
@@ -447,42 +455,80 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               </li>
             </ul>
             <p className="bridge-line">
-              {city} har en plats kvar. Vi pratar just nu med ett fåtal firmor där.
+              {region} har en plats kvar. Vi pratar just nu med ett fåtal firmor där.
             </p>
           </div>
-          <ImageSlot label={`Mörk, snygg grafisk karta över ${city} med en lås-ikon.`} />
+          <ImageSlot label={`Mörk, snygg grafisk karta över ${region} med en lås-ikon.`} />
         </div>
       </section>
 
       <section className="outreach-final">
         <div className="wrap">
           <p className="kicker blue-kicker">NÄSTA STEG</p>
-          <h2>Redo att ta över {city}?</h2>
-          <p>
-            Vi tar <strong>15 minuter, utan säljpitch</strong>. Vi kikar på söktrafiken i ert
-            område och räknar på matematiken.
-          </p>
-          <p>Är det inte lönsamt för er, så säger vi det direkt.</p>
-          <p>
-            <strong>Ingen mer torsdagkväll vid köksbordet för ett jobb ni ändå inte får.</strong>
-          </p>
-          <p>
-            Bara <strong>en fylld kalender</strong> med jobb där ni kan hålla era riktiga
-            marginaler, och tid att göra det ni är bra på.
-          </p>
-          <ImageSlot label="Mockup av en digital kalender fylld med bokade hembesök." />
-          <a
-            className="primary-button"
-            href={lead.contactBookingUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Lås {city} — boka en teknisk genomgång <ArrowRight size={16} />
-          </a>
-          <small>
-            Observera: Eftersom vi endast arbetar med en partner per region, kontaktar vi för
-            närvarande ett fåtal utvalda firmor i {city}.
-          </small>
+          <h2>Redo att ta över {region}?</h2>
+          <p>Inget möte att boka i en kalender. Lämna ditt nummer, så ringer vi upp.</p>
+          <CallbackForm
+            companyName={company}
+            region={region}
+            leadSlug={lead.leadSlug}
+            whatsappUrl={whatsappUrl}
+          />
+        </div>
+      </section>
+
+      <section className="outreach-section section-light faq-section">
+        <div className="wrap">
+          <p className="kicker">VANLIGA FRÅGOR</p>
+          <h2>Innan ni bestämmer er</h2>
+          <div className="faq-list">
+            <details className="faq-item">
+              <summary>Vad kostar det?</summary>
+              <p className="faq-pending">[FYLL I — väntar på prissättning]</p>
+            </details>
+            <details className="faq-item">
+              <summary>Hur kommunicerar vi under samarbetet?</summary>
+              <p>Via WhatsApp — inget nytt system att logga in i eller lära sig.</p>
+            </details>
+            <details className="faq-item">
+              <summary>Kan vi avsluta när vi vill?</summary>
+              <p>Ja. Inga tolvmånadersavtal, ingen uppsägningstid att ta sig igenom.</p>
+            </details>
+            <details className="faq-item">
+              <summary>Måste vi lära oss ett nytt system?</summary>
+              <p>
+                Nej. Ni svarar på SMS och samtal precis som vanligt — vi sköter testet,
+                kvalificeringen och kontakten med husägaren.
+              </p>
+            </details>
+            <details className="faq-item">
+              <summary>
+                Är det verkligen exklusivt, eller kan ni sälja till någon annan i {region} senare?
+              </summary>
+              <p>
+                Vi arbetar med ett företag per geografiskt område. När {company} tar {region} är
+                platsen låst — vi kontaktar ingen konkurrent i samma område så länge samarbetet
+                pågår.
+              </p>
+            </details>
+            <details className="faq-item">
+              <summary>Hur snabbt kan vi komma igång?</summary>
+              <p className="faq-pending">[FYLL I — väntar på onboarding-tid]</p>
+            </details>
+            <details className="faq-item">
+              <summary>Vad räknas som en kontakt vi betalar för?</summary>
+              <p className="faq-pending">
+                [FYLL I — väntar på definition: räcker det att klara kvalificeringsfiltren i testet,
+                eller finns ytterligare villkor?]
+              </p>
+            </details>
+            <details className="faq-item">
+              <summary>Vad händer om vi inte hinnen ta emot fler just nu?</summary>
+              <p className="faq-pending">
+                [FYLL I — väntar på svar: går volymen att pausa eller justera, eller är det
+                allt-eller-inget?]
+              </p>
+            </details>
+          </div>
         </div>
       </section>
     </main>

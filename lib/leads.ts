@@ -6,7 +6,7 @@ export type LeadRow = {
   id: string
   lead_slug: string
   company_name: string
-  city: string
+  region: string
   logo_url: string | null
   accent_color: string | null
   industry: Industry
@@ -29,12 +29,14 @@ function requireEnv(name: string) {
 function throwQueryError(error: { message: string; details?: string; hint?: string; code?: string } | null) {
   if (!error) return
 
-  const cityMissing =
-    error.code === 'PGRST204' || /['"]city['"].*(does not exist|schema cache)/i.test(error.message)
+  const regionMissing =
+    error.code === 'PGRST204' ||
+    /['"]region['"].*(does not exist|schema cache)/i.test(error.message) ||
+    /['"]city['"].*(does not exist|schema cache)/i.test(error.message)
 
-  if (cityMissing) {
+  if (regionMissing) {
     throw new Error(
-      'Kolumnen city saknas i databasen. Kör supabase/migrations/20260830140000_leads_city.sql i Supabase SQL Editor och försök igen.',
+      'Kolumnen region saknas (eller heter fortfarande city). Kör supabase/migrations/20260908120000_leads_rename_city_to_region.sql i Supabase SQL Editor och försök igen.',
     )
   }
 
@@ -52,7 +54,7 @@ export function leadFromRow(row: LeadRow): LeadDemoConfig {
   return {
     leadSlug: row.lead_slug,
     companyName: row.company_name,
-    city: row.city,
+    region: row.region,
     logoUrl: row.logo_url,
     accentColor: row.accent_color,
     industry: row.industry,
@@ -68,7 +70,7 @@ export async function getLeadBySlug(leadSlug: string): Promise<LeadDemoConfig | 
   const { data, error } = await supabase
     .from('leads')
     .select(
-      'id, lead_slug, company_name, city, logo_url, accent_color, industry, loom_video_id, contact_name, contact_booking_url, copy_override, created_at, og_image_url, viewed_at, demo_clicked_at',
+      'id, lead_slug, company_name, region, logo_url, accent_color, industry, loom_video_id, contact_name, contact_booking_url, copy_override, created_at, og_image_url, viewed_at, demo_clicked_at',
     )
     .eq('lead_slug', leadSlug)
     .maybeSingle()
@@ -91,7 +93,7 @@ export async function listLeadSlugs() {
 export async function insertLead(input: {
   leadSlug: string
   companyName: string
-  city: string
+  region: string
   logoUrl: string | null
   accentColor: string | null
   industry: Industry
@@ -104,7 +106,7 @@ export async function insertLead(input: {
   const { error } = await supabase.from('leads').insert({
     lead_slug: input.leadSlug,
     company_name: input.companyName,
-    city: input.city,
+    region: input.region,
     logo_url: input.logoUrl,
     accent_color: input.accentColor,
     industry: input.industry,

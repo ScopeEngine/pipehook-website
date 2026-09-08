@@ -51,7 +51,7 @@ export async function createLead(
   }
 
   const companyName = String(formData.get('companyName') ?? '').trim()
-  const city = String(formData.get('city') ?? '').trim()
+  const region = String(formData.get('region') ?? '').trim()
   const logoUrl = String(formData.get('logoUrl') ?? '').trim()
   const industry = String(formData.get('industry') ?? '').trim()
   const loomVideoIdRaw = String(formData.get('loomVideoId') ?? '').trim()
@@ -60,7 +60,7 @@ export async function createLead(
   const accentColorRaw = String(formData.get('accentColor') ?? '').trim()
 
   if (!companyName) return { status: 'error', message: 'Företagsnamn krävs.' }
-  if (!city) return { status: 'error', message: 'Ort krävs.' }
+  if (!region) return { status: 'error', message: 'Region krävs.' }
   if (!isIndustry(industry)) return { status: 'error', message: 'Välj en giltig bransch.' }
   if (!contactName) return { status: 'error', message: 'Kontaktperson krävs.' }
 
@@ -96,7 +96,7 @@ export async function createLead(
     await insertLead({
       leadSlug: slug,
       companyName,
-      city,
+      region,
       logoUrl: logoUrl || null,
       accentColor: accent.color,
       industry,

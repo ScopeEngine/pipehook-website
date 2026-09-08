@@ -25,7 +25,7 @@ export type AidaCopy = {
 export type LeadDemoConfig = {
   leadSlug: string
   companyName: string
-  city: string
+  region: string
   logoUrl?: string | null
   accentColor?: string | null
   industry: Industry

@@ -35,8 +35,8 @@ export function NewLeadForm() {
         <p className="kicker">Ny outreach-sida</p>
         <h1>Skapa en lead-sida</h1>
         <p className="lead-admin-intro">
-          Fyll i företaget, ort, Loom-ID och bokningslänk. Sluggen skapas automatiskt. Efter submit
-          får du länken att klistra in i mejlet.
+          Fyll i företaget, region, Loom-ID och bokningslänk. Sluggen skapas automatiskt. Efter
+          submit får du länken att klistra in i mejlet.
         </p>
 
         {state.status === 'success' && (
@@ -60,8 +60,8 @@ export function NewLeadForm() {
           <label htmlFor="companyName">Företagsnamn</label>
           <input id="companyName" name="companyName" required placeholder="t.ex. Svealands Relining" />
 
-          <label htmlFor="city">Ort</label>
-          <input id="city" name="city" required placeholder="t.ex. Västerås" />
+          <label htmlFor="region">Region</label>
+          <input id="region" name="region" required placeholder="t.ex. Skåne, Mellansverige" />
 
           <label htmlFor="logoUrl">Logotyp-URL</label>
           <input id="logoUrl" name="logoUrl" type="url" placeholder="https://…" />
