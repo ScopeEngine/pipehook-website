@@ -399,7 +399,8 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             </p>
             <p className="section-copy">
               Sedan dess har jag gjort samma sak för tandvårdskliniker hos Leadcom — över 70
-              kliniker i Sverige, Norge och England.
+              kliniker i Sverige, Norge och England, med runt 1,5–2 miljoner euro i årlig
+              annonsbudget under förvaltning.
             </p>
             <p className="section-copy">
               Nu har jag tagit den arkitekturen och byggt PipeHook — helt skräddarsytt för relining
@@ -407,7 +408,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             </p>
             <p className="bridge-line">Och det är inte bara jag som sett mönstret fungera.</p>
           </div>
-          <ImageSlot label="Skärmdump av LinkedIn-rekommendation / Bolagsloggor." />
+          <ImageSlot label='Citat-ruta med Martin Hegelunds faktiska rekommendation — "...lät våra säljteam i 6 marknader gå från kallringning till nästan uteslutande varma inbound-kontakter" — med namn och titel synligt (Martin Hegelund, Co-Founder & CMO, Ageras Group/Shine). Antingen en skärmdump av det riktiga rekommendationsbrevet eller en snyggt formgiven citat-komponent med samma text, namn och titel — inte en generisk "LinkedIn-rekommendation"-platshållare.' />
         </div>
       </section>
 
