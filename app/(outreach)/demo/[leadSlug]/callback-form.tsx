@@ -63,14 +63,12 @@ export function CallbackForm({ companyName, region, leadSlug, whatsappUrl }: Cal
         ledigt.
       </small>
 
-      {whatsappUrl ? (
-        <p className="callback-whatsapp">
-          Har du en fråga innan dess, eller vill du hellre inte vänta på ett samtal?{' '}
-          <a href={whatsappUrl} target="_blank" rel="noreferrer">
-            Skicka WhatsApp →
-          </a>
-        </p>
-      ) : null}
+      <p className="callback-whatsapp">
+        Har du en fråga innan dess, eller vill du hellre inte vänta på ett samtal?{' '}
+        <a href={whatsappUrl ?? '#'} target={whatsappUrl ? '_blank' : undefined} rel="noreferrer">
+          Skicka WhatsApp →
+        </a>
+      </p>
     </div>
   )
 }
