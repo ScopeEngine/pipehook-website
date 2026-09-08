@@ -60,6 +60,31 @@ function ImageSlot({ label }: { label: string }) {
   )
 }
 
+function ReachCompare() {
+  return (
+    <div
+      className="reach-compare"
+      aria-label="Visuell storleksjämförelse. Discovery (Meta) är betydligt större än Sök (Google), som har ett tak."
+    >
+      <div className="reach-col reach-col-search">
+        <div className="reach-ceiling">
+          <span>Tak</span>
+        </div>
+        <div className="reach-circle reach-circle-search">
+          <strong>Sök</strong>
+          <span>(Google)</span>
+        </div>
+      </div>
+      <div className="reach-col reach-col-discovery">
+        <div className="reach-circle reach-circle-discovery">
+          <strong>Discovery</strong>
+          <span>(Meta)</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlug]'>) {
   const { leadSlug } = await params
   const lead = await getLeadBySlug(leadSlug)
@@ -117,7 +142,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         <div className="wrap story-layout">
           <div>
             <p className="kicker">KONTROLLFÖRLUSTEN</p>
-            <h2>Varför kalendern ekar tom – eller fylls med helt fel kunder</h2>
+            <h2>Problemet är inte att kalendern är tom. Det är vilka jobb som fyller den.</h2>
             <p className="section-copy section-copy-flush">
               De flesta VVS- och reliningfirmor känner igen sig i minst en av dessa tre situationer:
             </p>
@@ -165,6 +190,11 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               försöker sälja ett ingrepp för 150 000 kr till{' '}
               <strong>någon som inte ens visste att de hade ett rörproblem</strong>.
             </p>
+            <p className="section-copy">
+              Många kör redan &quot;Boka kostnadsfri inspektion idag!&quot; istället — bättre, men
+              fortfarande en direkt ask mitt i någons flöde. Skillnaden är inte priset på besöket.
+              Det är att vi frågar om huset innan vi frågar om ett möte.
+            </p>
             <p className="bridge-line">
               För att plattformar som Facebook och Instagram ska fungera krävs en helt annan
               ingång.
@@ -196,11 +226,34 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               <strong>Ett dolt problem har blivit en konkret tanke hos husägaren.</strong>
             </p>
             <p className="bridge-line">
-              Men ett klick betalar inga löner. Frågan är hur man förvandlar det till ett vunnet
-              jobb.
+              Men hur stor är egentligen den här gruppen, jämfört med de som redan aktivt söker?
             </p>
           </div>
           <ImageSlot label={'Skärmdump av en Facebook-annons för "Rörtestet".'} />
+        </div>
+      </section>
+
+      <section className="outreach-section section-light" id="reach">
+        <div className="wrap story-layout">
+          <div>
+            <p className="kicker">VOLYMTAKET FÖRSVINNER</p>
+            <h2>Söktrafiken har ett tak. Discovery har inget.</h2>
+            <p className="section-copy section-copy-flush">
+              De flesta rörfirmor konkurrerar om samma smala ström av sökande kunder på Google — och
+              den strömmen är begränsad till hur många som råkar söka relining i er stad just den
+              här månaden. Den siffran är vad den är.
+            </p>
+            <p className="section-copy">
+              Den stora massan av husägare som ännu inte vet att de har ett problem finns någon helt
+              annanstans, och den gruppen har inget sånt tak — ju mer ni är villiga att investera,
+              desto fler hushåll kan testet nå.
+            </p>
+            <p className="bridge-line">
+              Det är den här skillnaden som gör att aktörer som VVStrygg kunnat växa år efter år,
+              utan att slå i något marknadstak.
+            </p>
+          </div>
+          <ReachCompare />
         </div>
       </section>
 
@@ -235,13 +288,15 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
       <section className="outreach-section section-light" id="quiz">
         <div className="wrap">
           <p className="kicker">KVALIFICERINGEN</p>
-          <h2>&quot;Att åka på gratis hembesök bränner ju onödig tid?&quot;</h2>
+          <h2>Ni vet redan att hembesök vinner affärer. Frågan är hur ni skalar det.</h2>
           <p className="section-copy section-copy-flush">
-            Helt rätt. Att skicka ut en tekniker till fel hus kostar lön och bensin.
+            Ni vinner redan era bästa affärer i någons vardagsrum — det är inte nytt för er. Det som
+            stoppar de flesta är inte hembesöket i sig, utan att skala det utan att bränna
+            teknikertid på fel hus.
           </p>
           <p className="section-copy">
-            Om kunden bara vill ha en prisjämförelse är ni tillbaka vid köksbordet med
-            miniräknaren.
+            Skickar ni ut en tekniker till en bostadsrätt utan mandat, eller ett hus som redan bytt
+            rör, är det bortkastad tid oavsett hur bra mötet går.
           </p>
           <p className="section-copy">
             Därför fungerar modellen enbart om man har{' '}
@@ -260,8 +315,8 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             ))}
           </div>
           <p className="bridge-line">
-            Husägaren kvalificerar sig alltså själv. Men hur ser det ut när mötet faktiskt hamnar i
-            er kalender?
+            Husägaren kvalificerar sig alltså själv. Men hur ser det ut när Pelle faktiskt hör av
+            sig?
           </p>
         </div>
       </section>
@@ -271,39 +326,54 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
           <div className="sms-layout">
             <div>
               <p className="kicker">SISTA PUSSELBITEN</p>
-              <h2>Systemet bokar tiden. Er tekniker gör jobbet.</h2>
+              <h2>Pelle hör av sig direkt — inte ett anonymt system</h2>
             </div>
             <div className="sms-thread" aria-label="Exempel på SMS-uppföljning">
               <div className="sms-bubble">
                 <small>{company}</small>
                 <p>
-                  Hej Anders! Du gjorde rörtestet för huset på Bergsvägen. Utifrån byggår och det du
-                  beskrev ser vi anledning att titta närmare med kamera. Kostnadsfritt, tar ca 45
-                  min.
+                  Hej Anders! Pelle här från {company}. Du gjorde rörtestet för huset på Bergsvägen
+                  — utifrån byggår och det du beskrev ser vi anledning att titta närmare med kamera.
+                  Kostnadsfritt, tar ca 45 min. Funkar förmiddagar eller eftermiddagar bäst för dig
+                  den här veckan?
                 </p>
               </div>
               <div className="sms-bubble from-customer">
                 <small>Anders</small>
-                <p>Ja det låter bra. När kan ni?</p>
+                <p>Förmiddagar funkar bra</p>
               </div>
               <div className="sms-bubble">
                 <small>{company}</small>
-                <p>Vi har tisdag 14:00 eller torsdag 09:00 den här veckan. Vilket passar bäst?</p>
-              </div>
-              <div className="sms-bubble from-customer">
-                <small>Anders</small>
-                <p>Tisdag funkar</p>
-              </div>
-              <div className="sms-bubble">
-                <small>{company}</small>
-                <p>Klart. Tisdag 14:00, Bergsvägen 12. {company} hör av sig om något ändras.</p>
+                <p>Perfekt, då hör Pelle av sig och bokar in en tid som passar!</p>
               </div>
             </div>
           </div>
           <p className="bridge-line">
-            Detta maskineri hanterar det tunga lyftet helt automatiskt. Och logiken bakom är faktiskt
-            hämtad från en helt annan bransch.
+            Pelle vet redan vem Anders är, var han bor och vad han är orolig för — innan telefonen
+            ens ringer. Men fungerar det här bara i teorin, eller är det redan bevisat?
           </p>
+        </div>
+      </section>
+
+      <section className="outreach-section section-light">
+        <div className="wrap story-layout">
+          <div>
+            <p className="kicker">REDAN I DRIFT</p>
+            <h2>Rörrapporten.se — vårt eget test, redan i drift</h2>
+            <p className="section-copy section-copy-flush">
+              Rörrapporten är vår egen relining-funnel, och den är redan igång. Kostnaden per
+              kvalificerad kontakt har sjunkit stadigt för varje vecka vi finjusterat annonserna.
+            </p>
+            <p className="section-copy">
+              Kontakterna är inte bara klick — det är husägare som redan angett rätt åldersspann på
+              huset och gjutjärnsrör i sitt svar, samma kvalificering ni sett i testet ovan.
+            </p>
+            <p className="bridge-line">
+              Och det är inte första gången den här typen av system bevisat sig — bara första gången
+              för rörbranschen.
+            </p>
+          </div>
+          <ImageSlot label="Skärmdump av annonskontot, beskuren till enbart den relevanta kampanjens statistik — inga andra kunders eller kampanjers data synliga." />
         </div>
       </section>
 
@@ -365,8 +435,8 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             </p>
             <ul className="trap-list">
               <li>
-                <b>Bara era bokningar:</b> Varje bokat hembesök går direkt in i er kalender. Vi
-                säljer aldrig samma kund till konkurrenter.
+                <b>Bara era kontakter:</b> Varje varm, kvalificerad kontakt går direkt till er
+                tekniker — aldrig till en konkurrent i området.
               </li>
               <li>
                 <b>Ett företag per område:</b> När {company} tar {city} är platsen låst.
