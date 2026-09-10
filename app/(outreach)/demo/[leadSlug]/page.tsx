@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, User } from 'lucide-react'
 import { buildDemoUrl, resolvedAccent } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
 import { CallbackForm } from './callback-form'
@@ -26,11 +26,15 @@ export async function generateMetadata({
   }
 }
 
-const quizCards = [
-  { screen: '', title: 'Byggår', text: 'Filtrerar bort fel årtionde' },
-  { screen: 'q1', title: 'Ägande', text: 'Kräver mandat' },
-  { screen: 'q2', title: 'Symptom eller ålder', text: 'motiverar en inspektion' },
+const funnelLayers = [
+  { title: 'Byggår', text: 'fel årtionde bort' },
+  { title: 'Bostadstyp', text: 'inte BRF/hyresrätt' },
+  { title: 'Symptom', text: 'kluckande, stopp' },
+  { title: 'Ålder', text: 'gammalt hus' },
 ] as const
+
+const FUNNEL_PEOPLE_COUNT = 10
+const FUNNEL_OUTCOME_COUNT = 2
 
 const comparisonRows = [
   {
@@ -75,26 +79,71 @@ function ImageSlot({ label }: { label: string }) {
   )
 }
 
+function PersonGrid({
+  count,
+  tone,
+}: {
+  count: number
+  tone: 'search' | 'discovery'
+}) {
+  return (
+    <div className={`reach-people reach-people-${tone}`} aria-hidden="true">
+      {Array.from({ length: count }, (_, index) => (
+        <User key={index} className="reach-person-icon" strokeWidth={1.75} />
+      ))}
+    </div>
+  )
+}
+
 function ReachCompare() {
   return (
     <div
       className="reach-compare"
-      aria-label="Visuell storleksjämförelse. Discovery (Meta) är betydligt större än Sök (Google)."
+      aria-label="Illustrativ jämförelse: Discovery (Facebook/Instagram) är betydligt större än Sök (Google)."
     >
-      <div className="reach-col reach-col-search">
-        <div className="reach-ceiling">
-          <span>Tak</span>
+      <div className="reach-side reach-side-search">
+        <div className="reach-side-copy">
+          <strong>Sök (Google)</strong>
+          <p>Vet redan om problemet — söker aktivt efter en lösning</p>
         </div>
-        <div className="reach-circle reach-circle-search">
-          <strong>Sök</strong>
-          <span>(Google)</span>
-        </div>
+        <PersonGrid count={2} tone="search" />
       </div>
-      <div className="reach-col reach-col-discovery">
-        <div className="reach-circle reach-circle-discovery">
-          <strong>Discovery</strong>
-          <span>(Meta)</span>
+
+      <div className="reach-donut-wrap" aria-hidden="true">
+        <svg className="reach-donut" viewBox="0 0 120 120" role="presentation">
+          {/* Discovery ~88% */}
+          <circle
+            className="reach-donut-discovery"
+            cx="60"
+            cy="60"
+            r="42"
+            fill="none"
+            strokeWidth="22"
+            strokeDasharray="232 264"
+            strokeDashoffset="0"
+            transform="rotate(-90 60 60)"
+          />
+          {/* Search ~12% */}
+          <circle
+            className="reach-donut-search"
+            cx="60"
+            cy="60"
+            r="42"
+            fill="none"
+            strokeWidth="22"
+            strokeDasharray="32 264"
+            strokeDashoffset="-232"
+            transform="rotate(-90 60 60)"
+          />
+        </svg>
+      </div>
+
+      <div className="reach-side reach-side-discovery">
+        <div className="reach-side-copy">
+          <strong>Discovery (Facebook/Instagram)</strong>
+          <p>Vet inte om eller skjuter upp problemet</p>
         </div>
+        <PersonGrid count={20} tone="discovery" />
       </div>
     </div>
   )
@@ -321,16 +370,53 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             <strong>en strikt, automatisk kvalificering</strong>. Vårt rörtest fungerar som ett
             filter i bakgrunden:
           </p>
-          <div className="quiz-strip">
-            {quizCards.map((card) => (
-              <article key={card.title}>
-                <div className={`quiz-screen ${card.screen}`.trim()}>
-                  <strong>{card.title}</strong>
+          <div className="qualify-funnel" aria-label="Kvalificeringstratt">
+            <p className="qualify-funnel-ingress">Alla som gör rörtestet</p>
+            <div className="qualify-funnel-people" aria-hidden="true">
+              {Array.from({ length: FUNNEL_PEOPLE_COUNT }, (_, index) => (
+                <User key={index} className="qualify-person-icon" strokeWidth={1.75} />
+              ))}
+            </div>
+            <div className="qualify-funnel-arrow" aria-hidden="true" />
+
+            <div className="qualify-funnel-body">
+              <div className="qualify-funnel-visual">
+                <div className="qualify-funnel-shape" role="list">
+                  {funnelLayers.map((layer, index) => (
+                    <div
+                      key={layer.title}
+                      className={`qualify-layer qualify-layer-${index + 1}`}
+                      role="listitem"
+                      aria-label={`${layer.title}: ${layer.text}`}
+                    />
+                  ))}
                 </div>
-                <b>{card.title}</b>
-                {card.text ? <p>{card.text}</p> : null}
-              </article>
-            ))}
+                <div className="qualify-funnel-spout" aria-hidden="true">
+                  {Array.from({ length: FUNNEL_OUTCOME_COUNT }, (_, index) => (
+                    <User key={index} className="qualify-person-icon spout" strokeWidth={1.75} />
+                  ))}
+                </div>
+              </div>
+
+              <ol className="qualify-funnel-labels">
+                {funnelLayers.map((layer) => (
+                  <li key={layer.title}>
+                    <strong>{layer.title}</strong>
+                    <span>{layer.text}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="qualify-funnel-arrow" aria-hidden="true" />
+            <div className="qualify-funnel-outcome">
+              <strong>Bokat hembesök</strong>
+              <span>redo att köpa</span>
+            </div>
+            <p className="qualify-funnel-note">
+              Uppfyller huset inte kriterierna erbjuds inget kostnadsfritt hembesök — det sorteras
+              bort innan det blir en kontakt ni betalar för.
+            </p>
           </div>
           <p className="section-copy">
             <strong>En stadig ström av nya hembesök = förutsägbar tillväxt.</strong>

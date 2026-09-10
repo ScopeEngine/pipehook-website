@@ -1686,6 +1686,191 @@ h1 em,
   line-height: 1.5;
 }
 
+/* Qualification funnel (section 7) */
+.qualify-funnel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 42px 0 36px;
+  padding: 28px 24px 24px;
+  border: 1px solid #dce5ed;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 12px 35px rgba(33, 61, 90, 0.05);
+}
+
+.qualify-funnel-ingress {
+  margin: 0;
+  color: #2c4560;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.qualify-funnel-people {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  max-width: 280px;
+}
+
+.qualify-person-icon {
+  width: 18px;
+  height: 18px;
+  color: #4a6a88;
+}
+
+.qualify-person-icon.spout {
+  width: 14px;
+  height: 14px;
+  color: #1785f8;
+}
+
+.qualify-funnel-arrow {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 9px solid #8ca0b3;
+}
+
+.qualify-funnel-body {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) minmax(140px, 1fr);
+  align-items: stretch;
+  gap: 28px 36px;
+  width: min(560px, 100%);
+}
+
+.qualify-funnel-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qualify-funnel-shape {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.qualify-layer {
+  height: 52px;
+}
+
+/* Four distinct PipeHook blues — solid fills, no blend between layers */
+.qualify-layer-1 {
+  background: #0a2744;
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 12% 100%);
+}
+
+.qualify-layer-2 {
+  background: #126dcc;
+  clip-path: polygon(12% 0, 88% 0, 74% 100%, 26% 100%);
+  margin-top: -1px;
+}
+
+.qualify-layer-3 {
+  background: #1785f8;
+  clip-path: polygon(26% 0, 74% 0, 62% 100%, 38% 100%);
+  margin-top: -1px;
+}
+
+.qualify-layer-4 {
+  background: #5fafff;
+  clip-path: polygon(38% 0, 62% 0, 54% 100%, 46% 100%);
+  margin-top: -1px;
+}
+
+.qualify-funnel-spout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 28%;
+  min-height: 40px;
+  margin-top: -1px;
+  padding: 8px 6px;
+  background: #e8f1f9;
+  border: 1px solid #c5d7e8;
+  border-radius: 0 0 6px 6px;
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 12% 100%);
+}
+
+.qualify-funnel-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 4px 0 44px;
+  list-style: none;
+}
+
+.qualify-funnel-labels li {
+  position: relative;
+  padding-left: 18px;
+  color: #617286;
+}
+
+.qualify-funnel-labels li::before {
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 10px;
+  border-top: 1px dashed #9eb6cb;
+  content: '';
+}
+
+.qualify-funnel-labels strong {
+  display: block;
+  color: #112235;
+  font-size: 14px;
+  letter-spacing: -0.03em;
+}
+
+.qualify-funnel-labels span {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.qualify-funnel-outcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 180px;
+  padding: 14px 22px;
+  border: 1.5px solid #147c58;
+  border-radius: 10px;
+  background: #e8f8f1;
+  text-align: center;
+}
+
+.qualify-funnel-outcome strong {
+  color: #0f6a4a;
+  font-size: 15px;
+  letter-spacing: -0.03em;
+}
+
+.qualify-funnel-outcome span {
+  color: #2a7a5c;
+  font-size: 12px;
+}
+
+.qualify-funnel-note {
+  max-width: 480px;
+  margin: 8px 0 0;
+  color: #617286;
+  font-size: 13px;
+  line-height: 1.55;
+  text-align: center;
+}
+
 .outreach-video iframe {
   display: block;
   width: 100%;
@@ -1855,77 +2040,101 @@ h1 em,
 }
 
 .reach-compare {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 28px;
-  min-height: 340px;
-  padding: 36px 20px 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.15fr);
+  align-items: center;
+  gap: 22px 28px;
+  min-height: 0;
+  padding: 28px 24px;
   border: 1px solid #dce5ed;
   border-radius: 14px;
-  background: #eef5fb;
+  background: #fff;
+  box-shadow: 0 12px 35px rgba(33, 61, 90, 0.05);
 }
 
-.reach-col {
+.reach-side {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 14px;
+  min-width: 0;
 }
 
-.reach-ceiling {
-  width: 104px;
-  margin-bottom: 12px;
-  border-top: 2px dashed #5f7083;
-  text-align: center;
+.reach-side-search {
+  align-items: flex-end;
+  text-align: right;
 }
 
-.reach-ceiling span {
-  display: inline-block;
-  margin-top: -0.75em;
-  padding: 0 7px;
-  color: #5f7083;
-  background: #eef5fb;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.reach-side-discovery {
+  align-items: flex-start;
+  text-align: left;
 }
 
-.reach-circle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  color: #fff;
-  text-align: center;
-  line-height: 1.15;
+.reach-side-copy {
+  max-width: 220px;
 }
 
-.reach-circle strong {
-  font-size: inherit;
-  letter-spacing: -0.04em;
+.reach-side-search .reach-side-copy {
+  margin-left: auto;
 }
 
-.reach-circle span {
-  margin-top: 4px;
-  font-size: 0.72em;
-  opacity: 0.86;
+.reach-side-copy strong {
+  display: block;
+  color: #112235;
+  font-size: 15px;
+  letter-spacing: -0.03em;
 }
 
-.reach-circle-search {
-  width: 88px;
-  height: 88px;
-  background: #647589;
-  font-size: 13px;
+.reach-side-copy p {
+  margin: 6px 0 0;
+  color: #617286;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
-.reach-circle-discovery {
-  width: 248px;
-  height: 248px;
-  background: #1785f8;
-  box-shadow: 0 18px 42px rgba(23, 133, 248, 0.28);
-  font-size: 22px;
+.reach-people {
+  display: grid;
+  gap: 5px;
+}
+
+.reach-people-search {
+  grid-template-columns: repeat(2, 18px);
+  justify-content: end;
+}
+
+.reach-people-discovery {
+  grid-template-columns: repeat(5, 18px);
+}
+
+.reach-person-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.reach-people-search .reach-person-icon {
+  color: #647589;
+}
+
+.reach-people-discovery .reach-person-icon {
+  color: #1785f8;
+}
+
+.reach-donut-wrap {
+  width: min(168px, 34vw);
+  aspect-ratio: 1;
+}
+
+.reach-donut {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.reach-donut-discovery {
+  stroke: #1785f8;
+}
+
+.reach-donut-search {
+  stroke: #647589;
 }
 
 .trap-list {
@@ -2719,21 +2928,33 @@ h1 em,
   }
 
   .reach-compare {
-    min-height: 0;
-    padding: 28px 16px 22px;
+    grid-template-columns: 1fr;
+    justify-items: center;
     gap: 22px;
+    padding: 22px 16px;
   }
 
-  .reach-circle-search {
-    width: 76px;
-    height: 76px;
-    font-size: 12px;
+  .reach-side-search,
+  .reach-side-discovery {
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
 
-  .reach-circle-discovery {
-    width: 200px;
-    height: 200px;
-    font-size: 18px;
+  .reach-side-search .reach-side-copy,
+  .reach-side-discovery .reach-side-copy {
+    margin-inline: auto;
+    max-width: 280px;
+  }
+
+  .reach-people-search,
+  .reach-people-discovery {
+    justify-content: center;
+    margin-inline: auto;
+  }
+
+  .reach-donut-wrap {
+    width: min(150px, 52vw);
   }
 
   .quiz-strip {
@@ -2749,6 +2970,44 @@ h1 em,
 
   .quiz-screen {
     min-height: 180px;
+  }
+
+  .qualify-funnel {
+    margin: 32px 0 28px;
+    padding: 22px 16px 18px;
+  }
+
+  .qualify-funnel-body {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    width: 100%;
+  }
+
+  .qualify-funnel-visual {
+    max-width: 260px;
+    margin-inline: auto;
+  }
+
+  .qualify-funnel-labels {
+    gap: 12px;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .qualify-funnel-labels li {
+    padding: 10px 12px 10px 14px;
+    border: 1px solid #dce5ed;
+    border-radius: 8px;
+    background: #f8fafc;
+  }
+
+  .qualify-funnel-labels li::before {
+    display: none;
+  }
+
+  .qualify-funnel-note {
+    font-size: 12px;
+    text-align: left;
   }
 
   .sms-layout {
