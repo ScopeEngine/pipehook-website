@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { ArrowRight, User } from 'lucide-react'
+import { ArrowRight, ChevronDown, ImageIcon, UserRound } from 'lucide-react'
 import { buildDemoUrl, resolvedAccent } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
 import { CallbackForm } from './callback-form'
@@ -74,6 +74,7 @@ function whatsappHref(raw: string | undefined) {
 function ImageSlot({ label }: { label: string }) {
   return (
     <div className="image-slot">
+      <ImageIcon className="image-slot-icon" strokeWidth={1.5} aria-hidden="true" />
       <p>{label}</p>
     </div>
   )
@@ -89,7 +90,9 @@ function PersonGrid({
   return (
     <div className={`reach-people reach-people-${tone}`} aria-hidden="true">
       {Array.from({ length: count }, (_, index) => (
-        <User key={index} className="reach-person-icon" strokeWidth={1.75} />
+        <span key={index} className="person-chip">
+          <UserRound className="reach-person-icon" strokeWidth={1.6} />
+        </span>
       ))}
     </div>
   )
@@ -111,6 +114,7 @@ function ReachCompare() {
 
       <div className="reach-donut-wrap" aria-hidden="true">
         <svg className="reach-donut" viewBox="0 0 120 120" role="presentation">
+          <circle className="reach-donut-track" cx="60" cy="60" r="42" fill="none" strokeWidth="22" />
           {/* Discovery ~88% */}
           <circle
             className="reach-donut-discovery"
@@ -119,7 +123,7 @@ function ReachCompare() {
             r="42"
             fill="none"
             strokeWidth="22"
-            strokeDasharray="232 264"
+            strokeDasharray="230 264"
             strokeDashoffset="0"
             transform="rotate(-90 60 60)"
           />
@@ -131,7 +135,7 @@ function ReachCompare() {
             r="42"
             fill="none"
             strokeWidth="22"
-            strokeDasharray="32 264"
+            strokeDasharray="30 264"
             strokeDashoffset="-232"
             transform="rotate(-90 60 60)"
           />
@@ -374,10 +378,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             <p className="qualify-funnel-ingress">Alla som gör rörtestet</p>
             <div className="qualify-funnel-people" aria-hidden="true">
               {Array.from({ length: FUNNEL_PEOPLE_COUNT }, (_, index) => (
-                <User key={index} className="qualify-person-icon" strokeWidth={1.75} />
+                <span key={index} className="person-chip person-chip-muted">
+                  <UserRound className="qualify-person-icon" strokeWidth={1.6} />
+                </span>
               ))}
             </div>
-            <div className="qualify-funnel-arrow" aria-hidden="true" />
+            <ChevronDown className="qualify-funnel-arrow" strokeWidth={2} aria-hidden="true" />
 
             <div className="qualify-funnel-body">
               <div className="qualify-funnel-visual">
@@ -393,7 +399,9 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 </div>
                 <div className="qualify-funnel-spout" aria-hidden="true">
                   {Array.from({ length: FUNNEL_OUTCOME_COUNT }, (_, index) => (
-                    <User key={index} className="qualify-person-icon spout" strokeWidth={1.75} />
+                    <span key={index} className="person-chip person-chip-accent">
+                      <UserRound className="qualify-person-icon spout" strokeWidth={1.6} />
+                    </span>
                   ))}
                 </div>
               </div>
@@ -408,7 +416,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               </ol>
             </div>
 
-            <div className="qualify-funnel-arrow" aria-hidden="true" />
+            <ChevronDown className="qualify-funnel-arrow" strokeWidth={2} aria-hidden="true" />
             <div className="qualify-funnel-outcome">
               <strong>Bokat hembesök</strong>
               <span>redo att köpa</span>
