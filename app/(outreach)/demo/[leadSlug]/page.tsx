@@ -217,7 +217,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </div>
       </section>
 
-      {/* 3. Den falska utvägen */}
+      {/* 3. Missförståndet + rätt ingång (sammanslagen) */}
       <section className="outreach-section section-light">
         <div className="wrap story-layout">
           <div>
@@ -234,8 +234,8 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               nytt.
             </p>
             <p className="section-copy">
-              En annons som bryter av och säger &quot;Vi utför relining – begär offert idag!&quot;
-              försöker sälja ett ingrepp för 150 000 kr till någon som:
+              En annons som säger &quot;Vi utför relining – begär offert idag!&quot; försöker sälja
+              ett ingrepp för 150 000 kr till någon som:
             </p>
             <ul className="trap-list">
               <li>Inte är i rätt sinnesstämning</li>
@@ -246,78 +246,46 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               fortfarande inte optimalt. Skillnaden är inte priset på besöket. Det är att vi frågar
               om huset innan vi frågar om ett möte.
             </p>
-            <p className="bridge-line">
-              För att plattformar som Facebook och Instagram ska fungera krävs en helt annan
-              ingång.
-            </p>
-          </div>
-          <ImageSlot label='En illustration av en typisk VVS-annons ("Vi utför relining — begär offert idag!") med ett tydligt kryss över — visuellt markerar "detta fungerar inte", inte bara beskriver det i text.' />
-        </div>
-      </section>
-
-      {/* 4. Rätt ingång */}
-      <section className="outreach-section section-light">
-        <div className="wrap story-layout">
-          <div>
-            <p className="kicker">RÄTT INGÅNG</p>
-            <h2>Fånga intresset istället för att kräva ett köp</h2>
-            <p className="section-copy section-copy-flush">
-              Eftersom husägaren som är inne på Facebook rent psykologiskt bara letar efter
-              underhållning måste vi{' '}
+            <p className="section-copy">
+              Eftersom husägaren rent psykologiskt bara letar efter underhållning måste vi{' '}
               <strong>
                 trigga deras nyfikenhet istället för att trycka upp en tjänst i ansiktet på dem
               </strong>
-              .
-            </p>
-            <p className="section-copy">
-              Vi marknadsför en insikt genom ett snabbt test: &quot;Har dina gjutjärnsrör passerat
+              . Vi marknadsför en insikt genom ett snabbt test: &quot;Har dina gjutjärnsrör passerat
               sina bäst-före-datum? Gör testet och får svar direkt! (tar 2 minuter)&quot;
             </p>
             <p className="section-copy">
-              Plötsligt har vi fångat uppmärksamheten på plattformens egna villkor.{' '}
               <strong>Ett dolt problem har blivit en konkret tanke hos husägaren.</strong>
             </p>
             <p className="bridge-line">
               Men hur stor är egentligen den här gruppen, jämfört med de som redan aktivt söker?
             </p>
           </div>
-          <ImageSlot label="En sekvens av 3–4 skärmar som visar övergången i realtid: scrollar i flödet → ser annonsen → nyfikenheten väcks → klickar in på rörtestet." />
+          <ImageSlot label='En illustration av en typisk VVS-annons ("Vi utför relining — begär offert idag!") med ett tydligt kryss över, bredvid en illustration av rätt typ av annons (rörtestet).' />
         </div>
       </section>
 
-      {/* 5. Volymtaket försvinner */}
+      {/* 4. Volymtaket försvinner (kortad) */}
       <section className="outreach-section section-light" id="reach">
         <div className="wrap story-layout">
           <div>
             <p className="kicker">VOLYMTAKET FÖRSVINNER</p>
-            <h2>
-              På Google når ni de som redan aktivt söker. På Facebook &amp; Instagram når man alla
-              andra.
-            </h2>
+            <h2>Söktrafiken är bara en bråkdel av den totala målgruppen</h2>
             <p className="section-copy section-copy-flush">
-              De flesta rörfirmor konkurrerar om samma smala ström av sökande kunder på Google — och
-              den strömmen är begränsad till hur många som råkar söka relining i er region just den
-              här månaden. Den siffran är vad den är. Och klicken är väldigt dyra.
-            </p>
-            <p className="section-copy">
-              Den stora massan av husägare som ännu inte vet att de har ett problem (eller skjuter
-              upp det) är många gånger fler, och den gränsen sätts av hur mycket ni själva vill
-              investera — inte av hur många som råkar söka just nu.
-            </p>
-            <p className="section-copy">
-              När man ger dessa människor en &quot;aha&quot;-upplevelse, kombinerat med ett
-              erbjudande om en gratis inspektion, blir marknadsföringen väldigt effektiv.
+              De flesta rörfirmor konkurrerar om samma smala ström av sökande kunder på Google — den
+              stora massan som ännu inte vet att de har ett problem är många gånger fler, och det är
+              dem vi når.
             </p>
             <p className="bridge-line">
-              En aha-upplevelse i sig ger ingen affär. Nästa steg är det som förvandlar den till ett
-              bokat hembesök.
+              Det är den här skillnaden som gör att aktörer som VVStrygg kunnat fortsätta växa år
+              efter år.
             </p>
           </div>
           <ReachCompare />
         </div>
       </section>
 
-      {/* 6. Sälj hembesöket */}
+      {/* 5. Sälj hembesöket */}
       <section className="outreach-section section-light">
         <div className="wrap story-layout">
           <div>
@@ -353,7 +321,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </div>
       </section>
 
-      {/* 7. Kvalificeringen + demo-knapp */}
+      {/* 6. Kvalificeringen + demo-knapp */}
       <section className="outreach-section section-light" id="quiz">
         <div className="wrap">
           <p className="kicker">KVALIFICERINGEN</p>
@@ -454,7 +422,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </div>
       </section>
 
-      {/* 8. Personlig Auktoritet */}
+      {/* 7. Personlig Auktoritet */}
       <section className="outreach-section section-light">
         <div className="wrap story-layout">
           <div>
@@ -481,7 +449,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </div>
       </section>
 
-      {/* 9. Metodbeviset */}
+      {/* 8. Metodbeviset */}
       <section className="outreach-section section-light">
         <div className="wrap">
           <p className="kicker">SAMMA METOD, ANDRA BRANSCHER</p>
@@ -506,7 +474,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </div>
       </section>
 
-      {/* 10. Rörrapporten */}
+      {/* 9. Rörrapporten */}
       <section className="outreach-section section-light">
         <div className="wrap story-layout">
           <div>
@@ -526,7 +494,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </div>
       </section>
 
-      {/* 11. Erbjudandet + jämförelsetabell */}
+      {/* 10. Erbjudandet + jämförelsetabell */}
       <section className="outreach-section section-light region-section">
         <div className="wrap story-layout">
           <div>
@@ -578,7 +546,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </div>
       </section>
 
-      {/* 12. Avslut */}
+      {/* 11. Avslut */}
       <section className="outreach-final">
         <div className="wrap">
           <p className="kicker blue-kicker">NÄSTA STEG</p>
@@ -593,7 +561,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </div>
       </section>
 
-      {/* 13. FAQ */}
+      {/* 12. FAQ */}
       <section className="outreach-section section-light faq-section">
         <div className="wrap">
           <p className="kicker">VANLIGA FRÅGOR</p>
