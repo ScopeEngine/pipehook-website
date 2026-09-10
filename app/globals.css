@@ -2053,6 +2053,21 @@ h1 em,
   align-items: start;
 }
 
+.section-image {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #e2ebf3;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 12px 35px rgba(33, 61, 90, 0.06);
+}
+
+.section-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .image-slot {
   display: flex;
   flex-direction: column;

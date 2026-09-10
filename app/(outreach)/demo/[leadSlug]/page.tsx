@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { ArrowRight, ChevronDown, ImageIcon, UserRound } from 'lucide-react'
 import { buildDemoUrl, resolvedAccent } from '@/lib/lead-demo.config'
@@ -80,76 +81,21 @@ function ImageSlot({ label }: { label: string }) {
   )
 }
 
-function PersonGrid({
-  count,
-  tone,
+function SectionImage({
+  src,
+  alt,
+  width,
+  height,
 }: {
-  count: number
-  tone: 'search' | 'discovery'
+  src: string
+  alt: string
+  width: number
+  height: number
 }) {
   return (
-    <div className={`reach-people reach-people-${tone}`} aria-hidden="true">
-      {Array.from({ length: count }, (_, index) => (
-        <span key={index} className="person-chip">
-          <UserRound className="reach-person-icon" strokeWidth={1.6} />
-        </span>
-      ))}
-    </div>
-  )
-}
-
-function ReachCompare() {
-  return (
-    <div
-      className="reach-compare"
-      aria-label="Illustrativ jämförelse: Discovery (Facebook/Instagram) är betydligt större än Sök (Google)."
-    >
-      <div className="reach-side reach-side-search">
-        <div className="reach-side-copy">
-          <strong>Sök (Google)</strong>
-          <p>Vet redan om problemet — söker aktivt efter en lösning</p>
-        </div>
-        <PersonGrid count={2} tone="search" />
-      </div>
-
-      <div className="reach-donut-wrap" aria-hidden="true">
-        <svg className="reach-donut" viewBox="0 0 120 120" role="presentation">
-          <circle className="reach-donut-track" cx="60" cy="60" r="42" fill="none" strokeWidth="22" />
-          {/* Discovery ~88% */}
-          <circle
-            className="reach-donut-discovery"
-            cx="60"
-            cy="60"
-            r="42"
-            fill="none"
-            strokeWidth="22"
-            strokeDasharray="230 264"
-            strokeDashoffset="0"
-            transform="rotate(-90 60 60)"
-          />
-          {/* Search ~12% */}
-          <circle
-            className="reach-donut-search"
-            cx="60"
-            cy="60"
-            r="42"
-            fill="none"
-            strokeWidth="22"
-            strokeDasharray="30 264"
-            strokeDashoffset="-232"
-            transform="rotate(-90 60 60)"
-          />
-        </svg>
-      </div>
-
-      <div className="reach-side reach-side-discovery">
-        <div className="reach-side-copy">
-          <strong>Discovery (Facebook/Instagram)</strong>
-          <p>Vet inte om eller skjuter upp problemet</p>
-        </div>
-        <PersonGrid count={20} tone="discovery" />
-      </div>
-    </div>
+    <figure className="section-image">
+      <Image src={src} alt={alt} width={width} height={height} sizes="(max-width: 700px) 100vw, 520px" />
+    </figure>
   )
 }
 
@@ -261,7 +207,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               Men hur stor är egentligen den här gruppen, jämfört med de som redan aktivt söker?
             </p>
           </div>
-          <ImageSlot label='En illustration av en typisk VVS-annons ("Vi utför relining — begär offert idag!") med ett tydligt kryss över, bredvid en illustration av rätt typ av annons (rörtestet).' />
+          <SectionImage
+            src="/demo/ad-compare.png"
+            alt="Jämförelse av två Facebook-annonser: rördiagnos med grön bock kontra begär-offert-annons med rött kryss."
+            width={1024}
+            height={688}
+          />
         </div>
       </section>
 
@@ -281,7 +232,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               efter år.
             </p>
           </div>
-          <ReachCompare />
+          <SectionImage
+            src="/demo/reach-discovery.png"
+            alt="Cirkeldiagram: liten grå Sök (Google)-del kontra stor blå Discovery (Facebook/Instagram)-del."
+            width={1024}
+            height={688}
+          />
         </div>
       </section>
 
@@ -445,7 +401,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             </p>
             <p className="bridge-line">Och det är inte bara jag som sett mönstret fungera.</p>
           </div>
-          <ImageSlot label='Citat-ruta med Martin Hegelunds faktiska rekommendation — "...lät våra säljteam i 6 marknader gå från kallringning till nästan uteslutande varma inbound-kontakter" — med namn och titel synligt (Martin Hegelund, Co-Founder & CMO, Ageras Group/Shine).' />
+          <SectionImage
+            src="/demo/authority-ageras-leadcom.png"
+            alt="Ageras rekommendationsbrev från Martin Hegelund och Leadcom-resultat med klinikfoton och resultatgraf."
+            width={1024}
+            height={688}
+          />
         </div>
       </section>
 
