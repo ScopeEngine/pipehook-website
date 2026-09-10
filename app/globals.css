@@ -3063,44 +3063,94 @@ h1 em,
   }
 
   .qualify-funnel {
-    margin: 32px 0 28px;
-    padding: 22px 16px 18px;
+    margin: 28px 0 24px;
+    padding: 18px 12px 16px;
+    gap: 10px;
   }
 
+  .qualify-funnel-people {
+    flex-wrap: nowrap;
+    max-width: none;
+    gap: 4px;
+  }
+
+  .qualify-funnel-people .person-chip {
+    width: 22px;
+    height: 22px;
+  }
+
+  .qualify-funnel-people .qualify-person-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Keep mockup layout: funnel + labels side by side, never stacked cards */
   .qualify-funnel-body {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 8px;
     width: 100%;
+    align-items: stretch;
   }
 
   .qualify-funnel-visual {
     grid-column: 1;
-    width: min(220px, 100%);
-    max-width: 260px;
-    margin-inline: auto;
+    width: 148px;
+    max-width: 42vw;
+    margin-inline: 0;
+  }
+
+  .qualify-layer {
+    height: 40px;
+  }
+
+  .qualify-funnel-spout {
+    min-height: 38px;
+    padding: 6px 4px 8px;
+    gap: 4px;
+  }
+
+  .qualify-funnel-spout .person-chip {
+    width: 22px;
+    height: 22px;
   }
 
   .qualify-funnel-labels {
-    grid-column: 1;
-    gap: 12px;
-    padding: 0;
-    justify-content: flex-start;
+    grid-column: 2;
+    gap: 0;
+    padding: 2px 0 34px;
+    justify-content: space-between;
   }
 
   .qualify-funnel-labels li {
-    padding: 10px 12px 10px 14px;
-    border: 1px solid #dce5ed;
-    border-radius: 8px;
-    background: #f8fafc;
+    padding: 0 0 0 12px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
   }
 
   .qualify-funnel-labels li::before {
-    display: none;
+    display: block;
+    top: 0.7em;
+    width: 7px;
+  }
+
+  .qualify-funnel-labels strong {
+    font-size: 13px;
+  }
+
+  .qualify-funnel-labels span {
+    font-size: 11px;
+  }
+
+  .qualify-funnel-outcome {
+    min-width: 0;
+    width: min(220px, 100%);
+    padding: 12px 16px;
   }
 
   .qualify-funnel-note {
     font-size: 12px;
-    text-align: left;
+    text-align: center;
   }
 
   .sms-layout {
