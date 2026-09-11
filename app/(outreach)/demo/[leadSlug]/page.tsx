@@ -159,7 +159,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               stöta på andra problem…
             </p>
           </div>
-          <ImageSlot label="Fotografi i mörk belysning. Ett köksbord på kvällen med miniräknare och papper." />
+          <SectionImage
+            src="/demo/kitchen-table-quotes.jpg"
+            alt="VVS-tekniker vid köksbordet på kvällen med miniräknare och offerter."
+            width={1024}
+            height={1024}
+          />
         </div>
       </section>
 
