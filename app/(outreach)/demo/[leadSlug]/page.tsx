@@ -451,7 +451,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             </p>
             <p className="bridge-line">Så vad betyder allt det här konkret för {region}?</p>
           </div>
-          <ImageSlot label="Skärmdump av annonskontot, beskuren till enbart den relevanta kampanjens statistik — inga andra kunders eller kampanjers data synliga — plus en skärmbild på Rörrapporten-sidan." />
+          <SectionImage
+            src="/demo/rorrapporten-collage.jpg"
+            alt="Rörrapporten i drift: frågeformulär, resultatsida, prospektkort och annonsstatistik."
+            width={1024}
+            height={1024}
+          />
         </div>
       </section>
 
