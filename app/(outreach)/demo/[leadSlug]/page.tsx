@@ -278,7 +278,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               fråga.
             </p>
           </div>
-          <ImageSlot label="Allabolag-graf över VVStryggs omsättningstillväxt. Plus, sparsamt: en enskild, kommenterad skärmdump av ett av VVStryggs formulär eller en av deras Google-annonser, med synlig källa. Inte en hel bildserie av deras kreativ." />
+          <SectionImage
+            src="/demo/vvstrygg-diagnostic-sales.jpg"
+            alt="VVStrygg marknadsför kostnadsfri rörinspektion: sajt, omsättningsgraf och Google-annons."
+            width={1024}
+            height={1024}
+          />
         </div>
       </section>
 

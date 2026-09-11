@@ -3167,11 +3167,11 @@ h1 em,
   }
 
   .table-row {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     min-width: 0;
-    gap: 10px;
-    margin-bottom: 14px;
+    gap: 12px 14px;
+    margin-bottom: 12px;
     border: 1px solid #29425d;
     border-radius: 10px;
     padding: 16px;
@@ -3182,11 +3182,22 @@ h1 em,
   .table-row > * {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
+    min-width: 0;
     padding: 0;
   }
 
-  .table-row > *::before {
+  .table-row > b {
+    grid-column: 1 / -1;
+    color: #f8fafc;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #29425d;
+  }
+
+  .table-row > span::before,
+  .table-row > strong::before {
     color: #8ea4bc;
     font-size: 9px;
     font-weight: 600;
@@ -3195,17 +3206,10 @@ h1 em,
     content: attr(data-label);
   }
 
-  .table-row > b::before {
-    content: 'Jämförelsepunkt';
-  }
-
-  .table-row > b {
-    color: #f8fafc;
-    font-size: 13px;
-  }
-
   .table-row > span {
     color: #a8b7ca;
+    padding-right: 8px;
+    border-right: 1px solid #29425d;
   }
 
   .table-row > strong {
