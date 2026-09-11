@@ -427,7 +427,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             bestämmer sig för att köpa implantat, precis som ingen vaknar och bestämmer sig för
             relining.
           </p>
-          <ImageSlot label="Skärmdump av Happidents implantat-quiz — riktigt exempel, medvetet större och mer detaljerad än de tre generiska ikonerna ovan." />
+          <SectionImage
+            src="/demo/happident-implant-quiz.png"
+            alt="Happidents implantat-quiz: frågesteg till vänster och personlig analys med bokningsknapp till höger."
+            width={1024}
+            height={688}
+          />
           <p className="bridge-line">
             Och det är inte första gången den här typen av system bevisat sig fungera — bara första
             gången för rörbranschen.
