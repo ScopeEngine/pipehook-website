@@ -487,7 +487,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               {region} har en plats kvar. Vi pratar just nu med några utvalda firmor där.
             </p>
           </div>
-          <ImageSlot label={`Mörk, snygg grafisk karta över ${region} med en lås-ikon.`} />
+          <SectionImage
+            src="/demo/region-exclusivity-map.jpg"
+            alt="Karta över Sverige indelad i regioner, varje region markerad med ett lås."
+            width={1024}
+            height={1024}
+          />
         </div>
       </section>
 
