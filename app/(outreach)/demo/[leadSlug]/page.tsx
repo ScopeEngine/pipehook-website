@@ -297,8 +297,8 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
           <SectionImage
             src="/demo/qualification-funnel.png"
             alt="Kvalificeringstratt: från alla som gör rörtestet ner till bokat hembesök via byggår, bostadstyp, symptom och ålder."
-            width={1024}
-            height={688}
+            width={800}
+            height={680}
           />
           <p className="section-copy">
             Uppfyller huset inte kriterierna erbjuds inget kostnadsfritt hembesök — det sorteras bort
@@ -389,8 +389,8 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
           <SectionImage
             src="/demo/happident-implant-quiz.png"
             alt="Happidents implantat-quiz: frågesteg till vänster och personlig analys med bokningsknapp till höger."
-            width={1024}
-            height={688}
+            width={800}
+            height={680}
           />
           <p className="bridge-line">
             Och det är inte första gången den här typen av system bevisat sig fungera — bara första
