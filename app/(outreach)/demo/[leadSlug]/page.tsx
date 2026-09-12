@@ -159,31 +159,36 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
       {/* 3. Missförståndet + rätt ingång (sammanslagen) */}
       <section className="outreach-section section-light">
         <div className="wrap">
-          <p className="kicker">MISSFÖRSTÅNDET SOM KOSTAR PENGAR</p>
-          <h2>Vad de allra flesta VVS-firmor gör fel när de annonserar på sociala medier</h2>
-          <p className="section-copy section-copy-flush">
-            Att köra egna kampanjer slutar ofta med klick som kostar pengar men inte ger några
-            riktiga jobb. Problemet är att man behandlar Facebook på samma sätt som Google.
-          </p>
-          <p className="section-copy">
-            På Google <strong>letar kunden aktivt efter en lösning</strong>. När de öppnar Facebook
-            eller Instagram vill de bara koppla av och se vad som händer i deras vänkrets, möjligtvis
-            bli underhållna av en rolig video, eller upptäcka/lära sig något nytt.
-          </p>
-          <p className="section-copy">
-            En annons som säger &quot;Vi utför relining – begär offert idag!&quot; försöker sälja ett
-            ingrepp för 150 000 kr till någon som:
-          </p>
-          <ul className="negative-list">
-            <li>Inte är i rätt sinnesstämning</li>
-            <li>Troligen inte ens vet om att de har ett rörproblem</li>
-          </ul>
-          <SectionImage
-            src="/demo/ad-compare.png"
-            alt="Jämförelse av två Facebook-annonser: rördiagnos med grön bock kontra begär-offert-annons med rött kryss."
-            width={1024}
-            height={688}
-          />
+          <div className="story-layout">
+            <div>
+              <p className="kicker">MISSFÖRSTÅNDET SOM KOSTAR PENGAR</p>
+              <h2>Vad de allra flesta VVS-firmor gör fel när de annonserar på sociala medier</h2>
+              <p className="section-copy section-copy-flush">
+                Att köra egna kampanjer slutar ofta med klick som kostar pengar men inte ger några
+                riktiga jobb. Problemet är att man behandlar Facebook på samma sätt som Google.
+              </p>
+              <p className="section-copy">
+                På Google <strong>letar kunden aktivt efter en lösning</strong>. När de öppnar
+                Facebook eller Instagram vill de bara koppla av och se vad som händer i deras
+                vänkrets, möjligtvis bli underhållna av en rolig video, eller upptäcka/lära sig något
+                nytt.
+              </p>
+              <p className="section-copy">
+                En annons som säger &quot;Vi utför relining – begär offert idag!&quot; försöker sälja
+                ett ingrepp för 150 000 kr till någon som:
+              </p>
+              <ul className="negative-list">
+                <li>Inte är i rätt sinnesstämning</li>
+                <li>Troligen inte ens vet om att de har ett rörproblem</li>
+              </ul>
+            </div>
+            <SectionImage
+              src="/demo/ad-compare.png"
+              alt="Jämförelse av två Facebook-annonser: rördiagnos med grön bock kontra begär-offert-annons med rött kryss."
+              width={1024}
+              height={688}
+            />
+          </div>
           <p className="section-copy">
             Eftersom husägaren rent psykologiskt bara letar efter underhållning måste vi{' '}
             <strong>trigga deras nyfikenhet</strong>.
@@ -274,30 +279,34 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
       {/* 6. Kvalificeringen + demo-knapp */}
       <section className="outreach-section section-light" id="quiz">
         <div className="wrap">
-          <p className="kicker">KVALIFICERINGEN</p>
-          <h2>Kvalificeringen är nyckeln till lönsamma hembesök. Systemet sköter den åt er.</h2>
-          <p className="section-copy section-copy-flush">
-            Ni vinner redan era bästa affärer i någons vardagsrum — det är inte nytt för er.
-          </p>
-          <p className="section-copy">
-            Det som avgör om hembesöken går ihop ekonomiskt är kvalificeringen: rätt hus, rätt läge
-            i beslutet.
-          </p>
-          <p className="section-copy">
-            Skickar ni ut en tekniker till en villa med plaströr, eller där relining redan gjorts av
-            förra ägaren, blir det ingen affär.
-          </p>
-          <p className="section-copy">
-            Därför fungerar modellen enbart om man har{' '}
-            <strong>en strikt, automatisk kvalificering</strong>. Vårt rörtest fungerar som ett
-            filter i bakgrunden:
-          </p>
-          <SectionImage
-            src="/demo/qualification-funnel.png"
-            alt="Kvalificeringstratt: från alla som gör rörtestet ner till bokat hembesök via byggår, bostadstyp, symptom och ålder."
-            width={800}
-            height={680}
-          />
+          <div className="story-layout">
+            <div>
+              <p className="kicker">KVALIFICERINGEN</p>
+              <h2>Kvalificeringen är nyckeln till lönsamma hembesök. Systemet sköter den åt er.</h2>
+              <p className="section-copy section-copy-flush">
+                Ni vinner redan era bästa affärer i någons vardagsrum — det är inte nytt för er.
+              </p>
+              <p className="section-copy">
+                Det som avgör om hembesöken går ihop ekonomiskt är kvalificeringen: rätt hus, rätt
+                läge i beslutet.
+              </p>
+              <p className="section-copy">
+                Skickar ni ut en tekniker till en villa med plaströr, eller där relining redan gjorts
+                av förra ägaren, blir det ingen affär.
+              </p>
+              <p className="section-copy">
+                Därför fungerar modellen enbart om man har{' '}
+                <strong>en strikt, automatisk kvalificering</strong>. Vårt rörtest fungerar som ett
+                filter i bakgrunden:
+              </p>
+            </div>
+            <SectionImage
+              src="/demo/qualification-funnel.png"
+              alt="Kvalificeringstratt: från alla som gör rörtestet ner till bokat hembesök via byggår, bostadstyp, symptom och ålder."
+              width={800}
+              height={680}
+            />
+          </div>
           <p className="section-copy">
             Uppfyller huset inte kriterierna erbjuds inget kostnadsfritt hembesök — det sorteras bort
             innan det blir en kontakt ni betalar för.
@@ -305,18 +314,22 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
           <p className="section-copy">
             <strong>En stadig ström av nya hembesök = förutsägbar tillväxt.</strong>
           </p>
-          <h3 className="section-subhead">
-            För att sammanfatta — här är det vi gör och det du får ut av vårt system:
-          </h3>
-          <ol className="summary-steps">
-            <li>
-              Vi når en ny målgrupp genom att &quot;utbilda&quot; de som inte vet att de har ett
-              problem
-            </li>
-            <li>Vi kvalificerar dem strikt innan de når dig</li>
-            <li>Vi erbjuder de som är &quot;rätt&quot; prospekt ett gratis hembesök</li>
-          </ol>
-          <ImageSlot label='En bild som illustrerar hela flödet — från "fånga uppmärksamhet" till "erbjuda hembesök till rätt personer".' />
+          <div className="story-layout">
+            <div>
+              <h3 className="section-subhead">
+                För att sammanfatta — här är det vi gör och det du får ut av vårt system:
+              </h3>
+              <ol className="summary-steps">
+                <li>
+                  Vi når en ny målgrupp genom att &quot;utbilda&quot; de som inte vet att de har ett
+                  problem
+                </li>
+                <li>Vi kvalificerar dem strikt innan de når dig</li>
+                <li>Vi erbjuder de som är &quot;rätt&quot; prospekt ett gratis hembesök</li>
+              </ol>
+            </div>
+            <ImageSlot label='En bild som illustrerar hela flödet — från "fånga uppmärksamhet" till "erbjuda hembesök till rätt personer".' />
+          </div>
           <p className="section-copy">
             Resultatet? En jämn ström av högkvalitativa kundprospekt.
           </p>
@@ -370,26 +383,34 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
       {/* 8. Metodbeviset */}
       <section className="outreach-section section-light">
         <div className="wrap">
-          <p className="kicker">SAMMA METOD, ANDRA BRANSCHER</p>
-          <h2>Konceptet är redan beprövat i andra branscher</h2>
-          <p className="section-copy section-copy-flush">
-            Samma test-först-princip driver redan annonser i flera branscher: solceller (&quot;Se
-            hur mycket du kan spara&quot;), hudvård (&quot;Gör hudtestet, få din rutin&quot;) och
-            värmepumpar (&quot;Se om ditt hus passar&quot;).
-          </p>
-          <ImageSlot label="Tre små, generiska ikoner sida vid sida — egen illustration, INTE riktiga företagslogotyper — en per bransch, var och en med sin korta citat-fras under." />
-          <p className="section-copy">
-            Ett tydligare exempel: för tandimplantat använde jag själv exakt samma princip —
-            &quot;Gör testet och se om du är kandidat för fasta tänder.&quot; Ingen vaknar och
-            bestämmer sig för att köpa implantat, precis som ingen vaknar och bestämmer sig för
-            relining.
-          </p>
-          <SectionImage
-            src="/demo/happident-implant-quiz.png"
-            alt="Happidents implantat-quiz: frågesteg till vänster och personlig analys med bokningsknapp till höger."
-            width={800}
-            height={680}
-          />
+          <div className="story-layout">
+            <div>
+              <p className="kicker">SAMMA METOD, ANDRA BRANSCHER</p>
+              <h2>Konceptet är redan beprövat i andra branscher</h2>
+              <p className="section-copy section-copy-flush">
+                Samma test-först-princip driver redan annonser i flera branscher: solceller
+                (&quot;Se hur mycket du kan spara&quot;), hudvård (&quot;Gör hudtestet, få din
+                rutin&quot;) och värmepumpar (&quot;Se om ditt hus passar&quot;).
+              </p>
+            </div>
+            <ImageSlot label="Tre små, generiska ikoner sida vid sida — egen illustration, INTE riktiga företagslogotyper — en per bransch, var och en med sin korta citat-fras under." />
+          </div>
+          <div className="story-layout">
+            <div>
+              <p className="section-copy section-copy-flush">
+                Ett tydligare exempel: för tandimplantat använde jag själv exakt samma princip —
+                &quot;Gör testet och se om du är kandidat för fasta tänder.&quot; Ingen vaknar och
+                bestämmer sig för att köpa implantat, precis som ingen vaknar och bestämmer sig för
+                relining.
+              </p>
+            </div>
+            <SectionImage
+              src="/demo/happident-implant-quiz.png"
+              alt="Happidents implantat-quiz: frågesteg till vänster och personlig analys med bokningsknapp till höger."
+              width={800}
+              height={680}
+            />
+          </div>
           <p className="bridge-line">
             Och det är inte första gången den här typen av system bevisat sig fungera — bara första
             gången för rörbranschen.

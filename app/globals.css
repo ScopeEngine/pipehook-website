@@ -2279,9 +2279,19 @@ h1 em,
 }
 
 .story-layout + .bridge-line,
+.story-layout + .section-copy,
+.story-layout + .story-layout,
 .section-image + .section-copy,
 .section-image + .bridge-line {
   margin-top: 28px;
+}
+
+.story-layout + .story-layout {
+  margin-top: 40px;
+}
+
+.story-layout .section-subhead {
+  margin-top: 0;
 }
 
 .section-subhead {
