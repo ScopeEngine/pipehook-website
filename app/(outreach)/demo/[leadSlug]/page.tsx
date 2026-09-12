@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { ArrowRight, ChevronDown, ImageIcon, UserRound } from 'lucide-react'
+import { ArrowRight, ImageIcon } from 'lucide-react'
 import { buildDemoUrl, resolvedAccent } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
 import { CallbackForm } from './callback-form'
@@ -26,16 +26,6 @@ export async function generateMetadata({
     return { robots: { index: false, follow: false } }
   }
 }
-
-const funnelLayers = [
-  { title: 'Byggår', text: 'fel årtionde bort' },
-  { title: 'Bostadstyp', text: 'inte BRF/hyresrätt' },
-  { title: 'Symptom', text: 'kluckande, stopp' },
-  { title: 'Ålder', text: 'gammalt hus' },
-] as const
-
-const FUNNEL_PEOPLE_COUNT = 10
-const FUNNEL_OUTCOME_COUNT = 2
 
 const comparisonRows = [
   {
@@ -170,120 +160,116 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
 
       {/* 3. Missförståndet + rätt ingång (sammanslagen) */}
       <section className="outreach-section section-light">
-        <div className="wrap story-layout">
-          <div>
-            <p className="kicker">MISSFÖRSTÅNDET SOM KOSTAR PENGAR</p>
-            <h2>Vad de allra flesta VVS-firmor gör fel när de annonserar på sociala medier</h2>
-            <p className="section-copy section-copy-flush">
-              Att köra egna kampanjer slutar ofta med klick som kostar pengar men inte ger några
-              riktiga jobb. Problemet är att man behandlar Facebook på samma sätt som Google.
-            </p>
-            <p className="section-copy">
-              På Google <strong>letar kunden aktivt efter en lösning</strong>. När de öppnar
-              Facebook eller Instagram vill de bara koppla av och se vad som händer i deras
-              vänkrets, möjligtvis bli underhållna av en rolig video, eller upptäcka/lära sig något
-              nytt.
-            </p>
-            <p className="section-copy">
-              En annons som säger &quot;Vi utför relining – begär offert idag!&quot; försöker sälja
-              ett ingrepp för 150 000 kr till någon som:
-            </p>
-            <ul className="trap-list">
-              <li>Inte är i rätt sinnesstämning</li>
-              <li>Troligen inte ens vet om att de har ett rörproblem</li>
-            </ul>
-            <p className="section-copy">
-              Många kör redan &quot;Boka kostnadsfri inspektion idag!&quot; istället — bättre, men
-              fortfarande inte optimalt. Skillnaden är inte priset på besöket. Det är att vi frågar
-              om huset innan vi frågar om ett möte.
-            </p>
-            <p className="section-copy">
-              Eftersom husägaren rent psykologiskt bara letar efter underhållning måste vi{' '}
-              <strong>
-                trigga deras nyfikenhet istället för att trycka upp en tjänst i ansiktet på dem
-              </strong>
-              . Vi marknadsför en insikt genom ett snabbt test: &quot;Har dina gjutjärnsrör passerat
-              sina bäst-före-datum? Gör testet och får svar direkt! (tar 2 minuter)&quot;
-            </p>
-            <p className="section-copy">
-              <strong>Ett dolt problem har blivit en konkret tanke hos husägaren.</strong>
-            </p>
-            <p className="bridge-line">
-              Men hur stor är egentligen den här gruppen, jämfört med de som redan aktivt söker?
-            </p>
-          </div>
+        <div className="wrap">
+          <p className="kicker">MISSFÖRSTÅNDET SOM KOSTAR PENGAR</p>
+          <h2>Vad de allra flesta VVS-firmor gör fel när de annonserar på sociala medier</h2>
+          <p className="section-copy section-copy-flush">
+            Att köra egna kampanjer slutar ofta med klick som kostar pengar men inte ger några
+            riktiga jobb. Problemet är att man behandlar Facebook på samma sätt som Google.
+          </p>
+          <p className="section-copy">
+            På Google <strong>letar kunden aktivt efter en lösning</strong>. När de öppnar Facebook
+            eller Instagram vill de bara koppla av och se vad som händer i deras vänkrets, möjligtvis
+            bli underhållna av en rolig video, eller upptäcka/lära sig något nytt.
+          </p>
+          <p className="section-copy">
+            En annons som säger &quot;Vi utför relining – begär offert idag!&quot; försöker sälja ett
+            ingrepp för 150 000 kr till någon som:
+          </p>
+          <ul className="trap-list">
+            <li>Inte är i rätt sinnesstämning</li>
+            <li>Troligen inte ens vet om att de har ett rörproblem</li>
+          </ul>
           <SectionImage
             src="/demo/ad-compare.png"
             alt="Jämförelse av två Facebook-annonser: rördiagnos med grön bock kontra begär-offert-annons med rött kryss."
             width={1024}
             height={688}
           />
+          <p className="section-copy">
+            Eftersom husägaren rent psykologiskt bara letar efter underhållning måste vi{' '}
+            <strong>trigga deras nyfikenhet</strong>.
+          </p>
+          <p className="section-copy">
+            Istället för att trycka upp en tjänst i ansiktet på dem. Vi marknadsför en insikt genom
+            ett snabbt test: &quot;Har dina gjutjärnsrör passerat sina bäst-före-datum? Gör testet och
+            får svar direkt! (tar 2 minuter)&quot;
+          </p>
+          <p className="section-copy">
+            <strong>Ett dolt problem har blivit en konkret tanke hos husägaren.</strong>
+          </p>
+          <p className="bridge-line">
+            Men hur stor är egentligen den här gruppen, jämfört med de som redan aktivt söker?
+          </p>
         </div>
       </section>
 
       {/* 4. Volymtaket försvinner (kortad) */}
       <section className="outreach-section section-light" id="reach">
-        <div className="wrap story-layout">
-          <div>
-            <p className="kicker">VOLYMTAKET FÖRSVINNER</p>
-            <h2>Söktrafiken är bara en bråkdel av den totala målgruppen</h2>
-            <p className="section-copy section-copy-flush">
-              De flesta rörfirmor konkurrerar om samma smala ström av sökande kunder på Google — den
-              stora massan som ännu inte vet att de har ett problem är många gånger fler, och det är
-              dem vi når.
-            </p>
-            <p className="bridge-line">
-              Det är den här skillnaden som gör att aktörer som VVStrygg kunnat fortsätta växa år
-              efter år.
-            </p>
+        <div className="wrap">
+          <div className="story-layout">
+            <div>
+              <p className="kicker">VOLYMTAKET FÖRSVINNER</p>
+              <h2>Söktrafiken är bara en bråkdel av den totala målgruppen</h2>
+              <p className="section-copy section-copy-flush">
+                De flesta rörfirmor konkurrerar om samma smala ström av sökande kunder på Google —
+                den stora massan som ännu inte vet att de har ett problem är många gånger fler, och
+                det är dem vi når.
+              </p>
+            </div>
+            <SectionImage
+              src="/demo/reach-discovery.png"
+              alt="Cirkeldiagram: liten grå Sök (Google)-del kontra stor blå Discovery (Facebook/Instagram)-del."
+              width={1024}
+              height={688}
+            />
           </div>
-          <SectionImage
-            src="/demo/reach-discovery.png"
-            alt="Cirkeldiagram: liten grå Sök (Google)-del kontra stor blå Discovery (Facebook/Instagram)-del."
-            width={1024}
-            height={688}
-          />
+          <p className="bridge-line">
+            Det är den här skillnaden som gör att aktörer som VVStrygg kunnat fortsätta växa år efter
+            år.
+          </p>
         </div>
       </section>
 
       {/* 5. Sälj hembesöket */}
       <section className="outreach-section section-light">
-        <div className="wrap story-layout">
-          <div>
-            <p className="kicker">DIAGNOSTISK FÖRSÄLJNING</p>
-            <h2>Sälj hembesöket, inte rörbytet</h2>
-            <p className="section-copy section-copy-flush">
-              När husägaren gjort testet ber vi dem inte att köpa en renovering. Vi erbjuder en
-              kostnadsfri kamerainspektion.
-            </p>
-            <p className="section-copy">
-              Det är genom hembesök aktörer som VVStrygg har vuxit till{' '}
-              <strong>81 miljoner kronor i omsättning på nio år</strong>.
-            </p>
-            <p className="section-copy">
-              Mönstret syns tydligt i hur de marknadsför sig: fokus ligger konsekvent på den
-              kostnadsfria inspektionen, aldrig på själva reliningen.
-            </p>
-            <p className="section-copy">
-              När er tekniker står i kundens vardagsrum med kameran är{' '}
-              <strong>ni den enda experten på plats</strong>, och priskonkurrensen ser helt
-              annorlunda ut.
-            </p>
-            <p className="section-copy">
-              Enda problemet? Hembesök kostar pengar, och det gäller att åka hem till rätt
-              kundprospekt.
-            </p>
-            <p className="bridge-line">
-              Det är denna process PipeHook bygger på. Men gratis hembesök väcker en uppenbar
-              fråga.
-            </p>
+        <div className="wrap">
+          <div className="story-layout">
+            <div>
+              <p className="kicker">DIAGNOSTISK FÖRSÄLJNING</p>
+              <h2>Sälj hembesöket, inte rörbytet</h2>
+              <p className="section-copy section-copy-flush">
+                När husägaren gjort testet ber vi dem inte att köpa en renovering. Vi erbjuder en
+                kostnadsfri kamerainspektion.
+              </p>
+              <p className="section-copy">
+                Det är genom hembesök aktörer som VVStrygg har vuxit till{' '}
+                <strong>81 miljoner kronor i omsättning på nio år</strong>.
+              </p>
+              <p className="section-copy">
+                Mönstret syns tydligt i hur de marknadsför sig: fokus ligger konsekvent på den
+                kostnadsfria inspektionen, aldrig på själva reliningen.
+              </p>
+              <p className="section-copy">
+                När er tekniker står i kundens vardagsrum med kameran är{' '}
+                <strong>ni den enda experten på plats</strong>, och priskonkurrensen ser helt
+                annorlunda ut.
+              </p>
+              <p className="section-copy">
+                Enda problemet? Hembesök kostar pengar, och det gäller att åka hem till rätt
+                kundprospekt.
+              </p>
+            </div>
+            <SectionImage
+              src="/demo/vvstrygg-diagnostic-sales.jpg"
+              alt="VVStrygg marknadsför kostnadsfri rörinspektion: sajt, omsättningsgraf och Google-annons."
+              width={1024}
+              height={1024}
+            />
           </div>
-          <SectionImage
-            src="/demo/vvstrygg-diagnostic-sales.jpg"
-            alt="VVStrygg marknadsför kostnadsfri rörinspektion: sajt, omsättningsgraf och Google-annons."
-            width={1024}
-            height={1024}
-          />
+          <p className="bridge-line">
+            Det är denna process PipeHook bygger på. Men gratis hembesök väcker en uppenbar fråga.
+          </p>
         </div>
       </section>
 
@@ -308,73 +294,34 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             <strong>en strikt, automatisk kvalificering</strong>. Vårt rörtest fungerar som ett
             filter i bakgrunden:
           </p>
-          <div className="qualify-funnel" aria-label="Kvalificeringstratt">
-            <p className="qualify-funnel-ingress">Alla som gör rörtestet</p>
-            <div className="qualify-funnel-people" aria-hidden="true">
-              {Array.from({ length: FUNNEL_PEOPLE_COUNT }, (_, index) => (
-                <span key={index} className="person-chip person-chip-muted">
-                  <UserRound className="qualify-person-icon" strokeWidth={1.6} />
-                </span>
-              ))}
-            </div>
-            <ChevronDown className="qualify-funnel-arrow" strokeWidth={2} aria-hidden="true" />
-
-            <div className="qualify-funnel-body">
-              <div className="qualify-funnel-visual">
-                <div className="qualify-funnel-shape" role="list">
-                  {funnelLayers.map((layer, index) => (
-                    <div
-                      key={layer.title}
-                      className={`qualify-layer qualify-layer-${index + 1}`}
-                      role="listitem"
-                      aria-label={`${layer.title}: ${layer.text}`}
-                    />
-                  ))}
-                </div>
-                <div className="qualify-funnel-spout" aria-hidden="true">
-                  {Array.from({ length: FUNNEL_OUTCOME_COUNT }, (_, index) => (
-                    <span key={index} className="person-chip person-chip-accent">
-                      <UserRound className="qualify-person-icon spout" strokeWidth={1.6} />
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <ol className="qualify-funnel-labels">
-                {funnelLayers.map((layer) => (
-                  <li key={layer.title}>
-                    <strong>{layer.title}</strong>
-                    <span>{layer.text}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            <ChevronDown className="qualify-funnel-arrow" strokeWidth={2} aria-hidden="true" />
-            <div className="qualify-funnel-outcome">
-              <strong>Bokat hembesök</strong>
-              <span>redo att köpa</span>
-            </div>
-            <p className="qualify-funnel-note">
-              Uppfyller huset inte kriterierna erbjuds inget kostnadsfritt hembesök — det sorteras
-              bort innan det blir en kontakt ni betalar för.
-            </p>
-          </div>
+          <SectionImage
+            src="/demo/qualification-funnel.png"
+            alt="Kvalificeringstratt: från alla som gör rörtestet ner till bokat hembesök via byggår, bostadstyp, symptom och ålder."
+            width={1024}
+            height={688}
+          />
+          <p className="section-copy">
+            Uppfyller huset inte kriterierna erbjuds inget kostnadsfritt hembesök — det sorteras bort
+            innan det blir en kontakt ni betalar för.
+          </p>
           <p className="section-copy">
             <strong>En stadig ström av nya hembesök = förutsägbar tillväxt.</strong>
           </p>
-          <p className="section-copy">
+          <h3 className="section-subhead">
             För att sammanfatta — här är det vi gör och det du får ut av vårt system:
-          </p>
-          <ul className="trap-list">
-            <li>Vi når en ny målgrupp genom att &quot;utbilda&quot; de som inte vet att de har ett problem</li>
+          </h3>
+          <ol className="summary-steps">
+            <li>
+              Vi når en ny målgrupp genom att &quot;utbilda&quot; de som inte vet att de har ett
+              problem
+            </li>
             <li>Vi kvalificerar dem strikt innan de når dig</li>
             <li>Vi erbjuder de som är &quot;rätt&quot; prospekt ett gratis hembesök</li>
-          </ul>
+          </ol>
+          <ImageSlot label='En bild som illustrerar hela flödet — från "fånga uppmärksamhet" till "erbjuda hembesök till rätt personer".' />
           <p className="section-copy">
             Resultatet? En jämn ström av högkvalitativa kundprospekt.
           </p>
-          <ImageSlot label='En bild som illustrerar hela flödet — från "fånga uppmärksamhet" till "erbjuda hembesök till rätt personer".' />
           <div className="section-demo-cta">
             <a className="primary-button" href={demoUrl} target="_blank" rel="noreferrer">
               Testa demot <ArrowRight size={16} />
@@ -390,33 +337,35 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
 
       {/* 7. Personlig Auktoritet */}
       <section className="outreach-section section-light">
-        <div className="wrap story-layout">
-          <div>
-            <p className="kicker">20 ÅRS DIGITAL MARKNADSFÖRING</p>
-            <h2>
-              Jag har gjort exakt det här förut — för redovisningsbyråer och tandvårdskliniker
-            </h2>
-            <p className="section-copy section-copy-flush">
-              På Ageras hjälpte jag redovisningsbyråer få fler kunder — inkommande förfrågningar
-              växte från ett dussin till över 800 i månaden, på ett år.
-            </p>
-            <p className="section-copy">
-              Sedan dess har jag gjort samma sak för tandvårdskliniker hos Leadcom — över 70
-              kliniker i Sverige, Norge och England, med runt 1,5–2 miljoner euro i årlig
-              annonsbudget under förvaltning.
-            </p>
-            <p className="section-copy">
-              Nu har jag tagit den arkitekturen och byggt PipeHook — helt skräddarsytt för relining
-              och VVS.
-            </p>
-            <p className="bridge-line">Och det är inte bara jag som sett mönstret fungera.</p>
+        <div className="wrap">
+          <div className="story-layout">
+            <div>
+              <p className="kicker">20 ÅRS DIGITAL MARKNADSFÖRING</p>
+              <h2>
+                Jag har gjort exakt det här förut — för redovisningsbyråer och tandvårdskliniker
+              </h2>
+              <p className="section-copy section-copy-flush">
+                På Ageras hjälpte jag redovisningsbyråer få fler kunder — inkommande förfrågningar
+                växte från ett dussin till över 800 i månaden, på ett år.
+              </p>
+              <p className="section-copy">
+                Sedan dess har jag gjort samma sak för tandvårdskliniker hos Leadcom — över 70
+                kliniker i Sverige, Norge och England, med runt 1,5–2 miljoner euro i årlig
+                annonsbudget under förvaltning.
+              </p>
+              <p className="section-copy">
+                Nu har jag tagit den arkitekturen och byggt PipeHook — helt skräddarsytt för
+                relining och VVS.
+              </p>
+            </div>
+            <SectionImage
+              src="/demo/authority-ageras-leadcom.png"
+              alt="Ageras rekommendationsbrev från Martin Hegelund och Leadcom-resultat med klinikfoton och resultatgraf."
+              width={1024}
+              height={688}
+            />
           </div>
-          <SectionImage
-            src="/demo/authority-ageras-leadcom.png"
-            alt="Ageras rekommendationsbrev från Martin Hegelund och Leadcom-resultat med klinikfoton och resultatgraf."
-            width={1024}
-            height={688}
-          />
+          <p className="bridge-line">Och det är inte bara jag som sett mönstret fungera.</p>
         </div>
       </section>
 
@@ -452,26 +401,28 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
 
       {/* 9. Rörrapporten */}
       <section className="outreach-section section-light">
-        <div className="wrap story-layout">
-          <div>
-            <p className="kicker">REDAN I DRIFT</p>
-            <h2>Rörrapporten.se — vårt eget test, redan i drift</h2>
-            <p className="section-copy section-copy-flush">
-              Rörrapporten är vår egen sida, och den är redan igång. Kostnaden per kvalificerad
-              kontakt har sjunkit stadigt för varje vecka vi finjusterat annonserna.
-            </p>
-            <p className="section-copy">
-              Kontakterna är inte bara klick — det är husägare som redan angett rätt åldersspann på
-              huset och gjutjärnsrör i sitt svar, samma kvalificering ni sett i testet ovan.
-            </p>
-            <p className="bridge-line">Så vad betyder allt det här konkret för {region}?</p>
+        <div className="wrap">
+          <div className="story-layout">
+            <div>
+              <p className="kicker">REDAN I DRIFT</p>
+              <h2>Rörrapporten.se — vårt eget test, redan i drift</h2>
+              <p className="section-copy section-copy-flush">
+                Rörrapporten är vår egen sida, och den är redan igång. Kostnaden per kvalificerad
+                kontakt har sjunkit stadigt för varje vecka vi finjusterat annonserna.
+              </p>
+              <p className="section-copy">
+                Kontakterna är inte bara klick — det är husägare som redan angett rätt åldersspann på
+                huset och gjutjärnsrör i sitt svar, samma kvalificering ni sett i testet ovan.
+              </p>
+            </div>
+            <SectionImage
+              src="/demo/rorrapporten-collage.jpg"
+              alt="Rörrapporten i drift: frågeformulär, resultatsida, prospektkort och annonsstatistik."
+              width={1024}
+              height={1024}
+            />
           </div>
-          <SectionImage
-            src="/demo/rorrapporten-collage.jpg"
-            alt="Rörrapporten i drift: frågeformulär, resultatsida, prospektkort och annonsstatistik."
-            width={1024}
-            height={1024}
-          />
+          <p className="bridge-line">Så vad betyder allt det här konkret för {region}?</p>
         </div>
       </section>
 
