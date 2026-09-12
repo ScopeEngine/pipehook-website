@@ -1620,7 +1620,7 @@ h1 em,
 }
 
 .outreach-hero {
-  padding: 36px 0 72px;
+  padding: 28px 0 0;
   color: #f8fafc;
   background: #08111f;
   text-align: center;
@@ -1636,8 +1636,9 @@ h1 em,
 }
 
 .outreach-hero-eyebrow {
-  margin: 0;
+  margin: 0 auto 18px;
   max-width: 520px;
+  padding-inline: 24px;
   color: #8ea4bc;
   font-size: 13px;
   font-weight: 500;
@@ -1661,16 +1662,14 @@ h1 em,
 }
 
 .outreach-video {
-  width: min(820px, 100%);
+  width: 100%;
   aspect-ratio: 16 / 9;
-  margin: 8px 0 0;
+  margin: 0;
   overflow: hidden;
-  border: 1px solid #3a5470;
-  border-radius: 14px;
-  background: #122238;
-  box-shadow:
-    0 0 0 1px rgba(95, 175, 255, 0.08),
-    0 25px 65px rgba(0, 0, 0, 0.35);
+  border: 0;
+  border-radius: 0;
+  background: #000;
+  box-shadow: none;
 }
 
 .section-demo-cta {
@@ -3058,7 +3057,7 @@ h1 em,
   }
 
   .outreach-hero {
-    padding: 24px 0 56px;
+    padding: 20px 0 0;
   }
 
   .outreach-hero-inner {
@@ -3067,6 +3066,8 @@ h1 em,
 
   .outreach-hero-eyebrow {
     font-size: 12px;
+    padding-inline: 16px;
+    margin-bottom: 14px;
   }
 
   .outreach-hero h1 {

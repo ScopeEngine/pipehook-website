@@ -104,17 +104,15 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
     <main className="outreach-page" style={{ '--lead-accent': accent } as CSSProperties}>
       {/* 1. Hero — endast diskret rad + video */}
       <section className="outreach-hero">
-        <div className="wrap outreach-hero-inner">
-          <p className="outreach-hero-eyebrow">En personlig genomgång för {company}</p>
+        <p className="outreach-hero-eyebrow">En personlig genomgång för {company}</p>
 
-          <div className="outreach-video">
-            <iframe
-              src={`https://www.loom.com/embed/${lead.loomVideoId}?autoplay=1`}
-              title={`Loom-video till ${company}`}
-              allow="autoplay; fullscreen"
-              allowFullScreen
-            />
-          </div>
+        <div className="outreach-video">
+          <iframe
+            src={`https://www.loom.com/embed/${lead.loomVideoId}?autoplay=1`}
+            title={`Loom-video till ${company}`}
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          />
         </div>
       </section>
 
