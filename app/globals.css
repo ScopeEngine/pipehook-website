@@ -2235,6 +2235,42 @@ h1 em,
   color: #112235;
 }
 
+.negative-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 680px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.negative-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #2c4560;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.negative-list li::before {
+  content: '×';
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border-radius: 50%;
+  color: #fff;
+  background: #e23d3d;
+  box-shadow: 0 0 0 3px rgba(226, 61, 61, 0.14);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .bridge-line {
   max-width: 680px;
   margin: 28px 0 0;

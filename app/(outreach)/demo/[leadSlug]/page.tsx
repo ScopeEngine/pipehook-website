@@ -176,7 +176,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             En annons som säger &quot;Vi utför relining – begär offert idag!&quot; försöker sälja ett
             ingrepp för 150 000 kr till någon som:
           </p>
-          <ul className="trap-list">
+          <ul className="negative-list">
             <li>Inte är i rätt sinnesstämning</li>
             <li>Troligen inte ens vet om att de har ett rörproblem</li>
           </ul>
