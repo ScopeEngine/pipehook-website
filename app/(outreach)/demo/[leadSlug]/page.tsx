@@ -301,7 +301,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         <div className="wrap">
           <div className="story-layout">
             <div>
-              <p className="kicker">KVALIFICERING = LÖNSAMMA HEMBESÖK</p>
+              <p className="kicker">STRIKT KVALIFICERING = LÖNSAMMA HEMBESÖK</p>
               <h2>Kvalificeringen är nyckeln till lönsamma hembesök. Systemet sköter den åt er.</h2>
               <p className="section-copy section-copy-flush">
                 Ni vinner redan era bästa affärer vid kundens köksbord — det är inte nytt för er.
