@@ -159,15 +159,18 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 riktiga jobb. Problemet är att man behandlar Facebook på samma sätt som Google.
               </p>
               <p className="section-copy">
-                På Google <strong>letar kunden aktivt efter en lösning</strong>.
+                <strong>På Google letar kunden aktivt efter en lösning.</strong>
               </p>
               <p className="section-copy">
-                Men när de öppnar Facebook eller Instagram vill de bara koppla av och se vad som
-                händer i deras vänkrets, möjligtvis bli underhållna av en rolig video, eller
-                upptäcka/lära sig något nytt.
+                Men när de öppnar Facebook eller Instagram vill de bara{' '}
+                <strong>
+                  koppla av och se vad som händer i deras vänkrets, möjligtvis bli underhållna av en
+                  rolig video, eller upptäcka/lära sig något nytt.
+                </strong>
               </p>
               <p className="section-copy">
-                En annons som säger &quot;Vi utför relining – begär offert idag!&quot; försöker sälja
+                En annons som säger{' '}
+                <strong>&quot;Vi utför relining – begär offert idag!&quot;</strong> försöker sälja
                 ett ingrepp för 150 000 kr till någon som:
               </p>
               <ul className="negative-list">
@@ -202,8 +205,11 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 <strong>trigga deras nyfikenhet</strong>.
               </p>
               <p className="section-copy">
-                Istället för att trycka upp en tjänst i ansiktet på dem ger vi dem en insikt genom en
-                snabb &quot;diagnos&quot;.
+                Istället för att trycka upp en tjänst i ansiktet på dem{' '}
+                <strong>
+                  ger vi dem en insikt genom en snabb &quot;diagnos&quot;
+                </strong>
+                .
               </p>
               <p className="section-copy">
                 &quot;Har dina gjutjärnsrör passerat sina bäst-före-datum? Gör testet och får svar
@@ -237,8 +243,8 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 De flesta rörfirmor konkurrerar om samma smala ström av sökande kunder på Google.
               </p>
               <p className="section-copy">
-                Den stora massan som ännu inte vet att de har ett problem är många gånger fler, och
-                det är dem vi når.
+                Den stora massan <strong>som ännu inte vet att de har ett problem är många gånger
+                fler</strong>, och det är dem vi når.
               </p>
             </div>
             <SectionImage
@@ -316,8 +322,10 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               </p>
               <p className="section-copy">
                 Därför fungerar modellen enbart om man har{' '}
-                <strong>en strikt, automatisk kvalificering</strong>. Vårt rörtest fungerar som ett
-                filter i bakgrunden:
+                <strong>en strikt, automatisk kvalificering</strong>.
+              </p>
+              <p className="section-copy">
+                Vårt rörtest fungerar som ett filter i bakgrunden.
               </p>
             </div>
             <SectionImage
@@ -346,8 +354,11 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               <h2>En AI-ledd SMS-konversation värmer upp kontakten — innan ni ens ringer</h2>
               <p className="section-copy section-copy-flush">
                 Direkt efter testet inleder en AI-ledd SMS-konversation kontakten — presenterar er och
-                frågar vilka tider som passar. Den bokar aldrig själv. Ni ringer sen aldrig en kall
-                kontakt, utan någon som redan svarat och väntar på samtalet.
+                frågar vilka tider som passar.
+              </p>
+              <p className="section-copy">
+                <strong>Ni ringer</strong> sen aldrig en kall kontakt, utan{' '}
+                <strong>någon som redan svarat och väntar på samtalet.</strong>
               </p>
             </div>
             <SectionImage
@@ -406,7 +417,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               <p className="kicker">SAMMA METOD, ANDRA BRANSCHER</p>
               <h2>Konceptet är redan beprövat i andra branscher</h2>
               <p className="section-copy section-copy-flush">
-                Samma test-först-princip driver redan annonser i flera branscher:
+                Samma diagnos --&gt; resultat --&gt; lösning-princip driver redan annonser i flera branscher:
               </p>
               <div className="method-examples" aria-label="Exempel från andra branscher">
                 <figure>
@@ -440,15 +451,17 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                   <figcaption>Se om ditt hus passar</figcaption>
                 </figure>
               </div>
+              <p className="section-copy">Ett tydligare exempel:</p>
               <p className="section-copy">
-                Ett tydligare exempel: för tandimplantat använde jag själv exakt samma princip:
+                För tandimplantat använde jag själv samma princip — &quot;Gör testet och se om du är
+                kandidat för fasta tänder.&quot;
               </p>
               <p className="section-copy">
-                &quot;Gör testet och se om du är kandidat för fasta tänder.&quot;
+                Testet sänker tröskeln till ett stort beslut och kvalificerar samtidigt vem som
+                faktiskt passar för behandlingen, innan någon behöver prata pris.
               </p>
               <p className="section-copy">
-                Ingen vaknar och bestämmer sig för att köpa implantat, precis som ingen vaknar och
-                bestämmer sig för relining.
+                Relining fungerar på samma sätt — ett snabbt test istället för ett stort första steg.
               </p>
             </div>
             <SectionImage
@@ -457,10 +470,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               width={800}
               height={680}
             />
-            <p className="bridge-line">
-              Och det är inte första gången den här typen av system bevisat sig fungera — bara
-              första gången för rörbranschen.
-            </p>
           </div>
         </div>
       </section>

@@ -2066,7 +2066,9 @@ h1 em,
 .story-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  grid-template-rows: auto auto;
+  /* Row 1 sizes to the text; leftover image height goes into row 2 so the bridge
+     stays under the copy instead of dropping to the bottom of a tall image. */
+  grid-template-rows: auto 1fr;
   column-gap: 48px;
   row-gap: 0;
   align-items: start;
