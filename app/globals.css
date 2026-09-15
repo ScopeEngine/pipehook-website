@@ -1687,6 +1687,16 @@ h1 em,
   line-height: 1.5;
 }
 
+.section-demo-cta-centered {
+  align-items: center;
+  margin: 36px 0 8px;
+  text-align: center;
+}
+
+.comparison-section .section-demo-cta-centered p {
+  color: #9db3c9;
+}
+
 /* Qualification funnel (section 7) */
 .qualify-funnel {
   display: flex;
@@ -2292,6 +2302,37 @@ h1 em,
 
 .story-layout .section-subhead {
   margin-top: 0;
+}
+
+.method-examples {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 28px 0;
+}
+
+.method-examples figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.method-examples img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #e2ebf3;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(33, 61, 90, 0.06);
+}
+
+.method-examples figcaption {
+  margin-top: 8px;
+  color: #5f7083;
+  font-size: 11px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-align: center;
 }
 
 .section-subhead {

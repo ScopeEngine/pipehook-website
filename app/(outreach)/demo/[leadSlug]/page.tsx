@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { ArrowRight, ImageIcon } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { buildDemoUrl, resolvedAccent } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
 import { CallbackForm } from './callback-form'
@@ -60,15 +60,6 @@ function whatsappHref(raw: string | undefined) {
   const digits = raw.replace(/\D/g, '')
   if (!digits) return null
   return `https://wa.me/${digits}`
-}
-
-function ImageSlot({ label }: { label: string }) {
-  return (
-    <div className="image-slot">
-      <ImageIcon className="image-slot-icon" strokeWidth={1.5} aria-hidden="true" />
-      <p>{label}</p>
-    </div>
-  )
 }
 
 function SectionImage({
@@ -311,34 +302,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             Uppfyller huset inte kriterierna erbjuds inget kostnadsfritt hembesök — det sorteras bort
             innan det blir en kontakt ni betalar för.
           </p>
-          <p className="section-copy">
-            <strong>En stadig ström av nya hembesök = förutsägbar tillväxt.</strong>
-          </p>
-          <div className="story-layout">
-            <div>
-              <h3 className="section-subhead">
-                För att sammanfatta — här är det vi gör och det du får ut av vårt system:
-              </h3>
-              <ol className="summary-steps">
-                <li>
-                  Vi når en ny målgrupp genom att &quot;utbilda&quot; de som inte vet att de har ett
-                  problem
-                </li>
-                <li>Vi kvalificerar dem strikt innan de når dig</li>
-                <li>Vi erbjuder de som är &quot;rätt&quot; prospekt ett gratis hembesök</li>
-              </ol>
-            </div>
-            <ImageSlot label='En bild som illustrerar hela flödet — från "fånga uppmärksamhet" till "erbjuda hembesök till rätt personer".' />
-          </div>
-          <p className="section-copy">
-            Resultatet? En jämn ström av högkvalitativa kundprospekt.
-          </p>
-          <div className="section-demo-cta">
-            <a className="primary-button" href={demoUrl} target="_blank" rel="noreferrer">
-              Testa demot <ArrowRight size={16} />
-            </a>
-            <p>Klicka er igenom rörtestet precis som en av era kunder skulle göra.</p>
-          </div>
           <p className="bridge-line">
             Så vad krävs för att bygga ett sånt här system — och hur vet ni att jag faktiskt kan
             leverera det?
@@ -392,12 +355,39 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 (&quot;Se hur mycket du kan spara&quot;), hudvård (&quot;Gör hudtestet, få din
                 rutin&quot;) och värmepumpar (&quot;Se om ditt hus passar&quot;).
               </p>
-            </div>
-            <ImageSlot label="Tre små, generiska ikoner sida vid sida — egen illustration, INTE riktiga företagslogotyper — en per bransch, var och en med sin korta citat-fras under." />
-          </div>
-          <div className="story-layout">
-            <div>
-              <p className="section-copy section-copy-flush">
+              <div className="method-examples" aria-label="Exempel från andra branscher">
+                <figure>
+                  <Image
+                    src="/demo/method-hudguiden.jpg"
+                    alt="Hudtest: Gör hudtestet, få din rutin"
+                    width={448}
+                    height={752}
+                    sizes="(max-width: 700px) 30vw, 160px"
+                  />
+                  <figcaption>Gör hudtestet, få din rutin</figcaption>
+                </figure>
+                <figure>
+                  <Image
+                    src="/demo/method-solkollen.jpg"
+                    alt="Solcellstest: Se hur mycket du kan spara"
+                    width={448}
+                    height={752}
+                    sizes="(max-width: 700px) 30vw, 160px"
+                  />
+                  <figcaption>Se hur mycket du kan spara</figcaption>
+                </figure>
+                <figure>
+                  <Image
+                    src="/demo/method-varmekollen.jpg"
+                    alt="Värmepumpstest: Se om ditt hus passar"
+                    width={448}
+                    height={752}
+                    sizes="(max-width: 700px) 30vw, 160px"
+                  />
+                  <figcaption>Se om ditt hus passar</figcaption>
+                </figure>
+              </div>
+              <p className="section-copy">
                 Ett tydligare exempel: för tandimplantat använde jag själv exakt samma princip —
                 &quot;Gör testet och se om du är kandidat för fasta tänder.&quot; Ingen vaknar och
                 bestämmer sig för att köpa implantat, precis som ingen vaknar och bestämmer sig för
@@ -498,6 +488,12 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 <strong data-label="PipeHook">{row.ours}</strong>
               </div>
             ))}
+          </div>
+          <div className="section-demo-cta section-demo-cta-centered">
+            <a className="primary-button" href={demoUrl} target="_blank" rel="noreferrer">
+              Testa demot <ArrowRight size={16} />
+            </a>
+            <p>Klicka er igenom rörtestet precis som en av era kunder skulle göra.</p>
           </div>
         </div>
       </section>
