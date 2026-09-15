@@ -172,6 +172,10 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 <li>Inte är i rätt sinnesstämning</li>
                 <li>Troligen inte ens vet om att de har ett rörproblem</li>
               </ul>
+              <p className="bridge-line">
+                Det finns ett bättre sätt som smidigt tar husägaren från &quot;Hmm...&quot; →
+                &quot;Aha!&quot; → Bokat hembesök
+              </p>
             </div>
             <SectionImage
               src="/demo/ad-compare.png"
@@ -180,10 +184,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               height={688}
             />
           </div>
-          <p className="bridge-line">
-            Det finns ett bättre sätt som smidigt tar husägaren från &quot;Hmm...&quot; --&gt;
-            &quot;Aha!&quot; till -- Bokat hembesök
-          </p>
         </div>
       </section>
 
@@ -192,7 +192,8 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         <div className="wrap">
           <div className="story-layout">
             <div>
-              <h2>Det finns ett bättre sätt</h2>
+              <p className="kicker">EN NATURLIG KUNDRESA</p>
+              <h2>Rätt innehåll vid rätt tidpunkt</h2>
               <p className="section-copy section-copy-flush">
                 Eftersom husägaren rent psykologiskt bara letar efter underhållning måste vi{' '}
                 <strong>trigga deras nyfikenhet</strong>.
@@ -205,6 +206,9 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               <p className="section-copy">
                 <strong>Ett dolt problem har blivit en konkret tanke hos husägaren.</strong>
               </p>
+              <p className="bridge-line">
+                Men hur stor är egentligen den här gruppen, jämfört med de som redan aktivt söker?
+              </p>
             </div>
             <SectionImage
               src="/demo/better-way-steps.png"
@@ -213,9 +217,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               height={1024}
             />
           </div>
-          <p className="bridge-line">
-            Men hur stor är egentligen den här gruppen, jämfört med de som redan aktivt söker?
-          </p>
         </div>
       </section>
 
@@ -231,6 +232,10 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 den stora massan som ännu inte vet att de har ett problem är många gånger fler, och
                 det är dem vi når.
               </p>
+              <p className="bridge-line">
+                Det är den här skillnaden som gör att aktörer som VVStrygg kunnat fortsätta växa år
+                efter år.
+              </p>
             </div>
             <SectionImage
               src="/demo/reach-discovery.png"
@@ -239,10 +244,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               height={688}
             />
           </div>
-          <p className="bridge-line">
-            Det är den här skillnaden som gör att aktörer som VVStrygg kunnat fortsätta växa år efter
-            år.
-          </p>
         </div>
       </section>
 
@@ -258,7 +259,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 kostnadsfri kamerainspektion.
               </p>
               <p className="section-copy">
-                Det är genom hembesök aktörer som VVStrygg har vuxit till{' '}
+                Det är genom offensiv marknadsföring av hembesök aktörer som VVStrygg har vuxit till{' '}
                 <strong>81 miljoner kronor i omsättning på nio år</strong>.
               </p>
               <p className="section-copy">
@@ -274,6 +275,10 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 Enda problemet? Hembesök kostar pengar, och det gäller att åka hem till rätt
                 kundprospekt.
               </p>
+              <p className="bridge-line">
+                Det är denna process PipeHook bygger på. Men gratis hembesök väcker en uppenbar
+                fråga.
+              </p>
             </div>
             <SectionImage
               src="/demo/vvstrygg-diagnostic-sales.jpg"
@@ -282,9 +287,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               height={1024}
             />
           </div>
-          <p className="bridge-line">
-            Det är denna process PipeHook bygger på. Men gratis hembesök väcker en uppenbar fråga.
-          </p>
         </div>
       </section>
 
@@ -334,11 +336,16 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         <div className="wrap">
           <div className="story-layout">
             <div>
+              <p className="kicker">DEN SISTA PUSSELBITEN</p>
               <h2>En AI-ledd SMS-konversation värmer upp kontakten — innan ni ens ringer</h2>
               <p className="section-copy section-copy-flush">
                 Direkt efter testet inleder en AI-ledd SMS-konversation kontakten — presenterar er och
                 frågar vilka tider som passar. Den bokar aldrig själv. Ni ringer sen aldrig en kall
                 kontakt, utan någon som redan svarat och väntar på samtalet.
+              </p>
+              <p className="bridge-line">
+                Så vad krävs för att bygga ett sånt här system — och hur vet ni att jag faktiskt kan
+                leverera det?
               </p>
             </div>
             <SectionImage
@@ -348,10 +355,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               height={896}
             />
           </div>
-          <p className="bridge-line">
-            Så vad krävs för att bygga ett sånt här system — och hur vet ni att jag faktiskt kan
-            leverera det?
-          </p>
         </div>
       </section>
 
@@ -377,6 +380,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 Nu har jag tagit den arkitekturen och byggt PipeHook — helt skräddarsytt för
                 relining och VVS.
               </p>
+              <p className="bridge-line">Och det är inte bara jag som sett mönstret fungera.</p>
             </div>
             <SectionImage
               src="/demo/authority-ageras-leadcom.png"
@@ -385,7 +389,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               height={688}
             />
           </div>
-          <p className="bridge-line">Och det är inte bara jag som sett mönstret fungera.</p>
         </div>
       </section>
 
@@ -439,6 +442,10 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 bestämmer sig för att köpa implantat, precis som ingen vaknar och bestämmer sig för
                 relining.
               </p>
+              <p className="bridge-line">
+                Och det är inte första gången den här typen av system bevisat sig fungera — bara
+                första gången för rörbranschen.
+              </p>
             </div>
             <SectionImage
               src="/demo/happident-implant-quiz.png"
@@ -447,10 +454,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               height={680}
             />
           </div>
-          <p className="bridge-line">
-            Och det är inte första gången den här typen av system bevisat sig fungera — bara första
-            gången för rörbranschen.
-          </p>
         </div>
       </section>
 
@@ -469,6 +472,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 Kontakterna är inte bara klick — det är husägare som redan angett rätt åldersspann på
                 huset och gjutjärnsrör i sitt svar, samma kvalificering ni sett i testet ovan.
               </p>
+              <p className="bridge-line">Så vad betyder allt det här konkret för {region}?</p>
             </div>
             <SectionImage
               src="/demo/rorrapporten-collage.jpg"
@@ -477,7 +481,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               height={1024}
             />
           </div>
-          <p className="bridge-line">Så vad betyder allt det här konkret för {region}?</p>
         </div>
       </section>
 
