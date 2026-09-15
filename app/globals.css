@@ -460,6 +460,14 @@ h1 em,
   letter-spacing: 0.08em;
 }
 
+.outreach-page .kicker {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+}
+
 .mock-hero h3 {
   margin: 10px 0 4px;
   font-size: 23px;
