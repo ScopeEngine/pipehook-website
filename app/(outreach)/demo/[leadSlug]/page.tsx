@@ -408,11 +408,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               <p className="section-copy section-copy-flush">
                 Samma test-först-princip driver redan annonser i flera branscher:
               </p>
-              <ul className="trap-list">
-                <li>solceller (&quot;Se hur mycket du kan spara&quot;)</li>
-                <li>hudvård (&quot;Gör hudtestet, få din rutin&quot;)</li>
-                <li>värmepumpar (&quot;Se om ditt hus passar&quot;)</li>
-              </ul>
               <div className="method-examples" aria-label="Exempel från andra branscher">
                 <figure>
                   <Image
