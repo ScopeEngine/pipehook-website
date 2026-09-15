@@ -180,18 +180,39 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
               height={688}
             />
           </div>
-          <p className="section-copy">
-            Eftersom husägaren rent psykologiskt bara letar efter underhållning måste vi{' '}
-            <strong>trigga deras nyfikenhet</strong>.
+          <p className="bridge-line">
+            Det finns ett bättre sätt som smidigt tar husägaren från &quot;Hmm...&quot; --&gt;
+            &quot;Aha!&quot; till -- Bokat hembesök
           </p>
-          <p className="section-copy">
-            Istället för att trycka upp en tjänst i ansiktet på dem. Vi marknadsför en insikt genom
-            ett snabbt test: &quot;Har dina gjutjärnsrör passerat sina bäst-före-datum? Gör testet och
-            får svar direkt! (tar 2 minuter)&quot;
-          </p>
-          <p className="section-copy">
-            <strong>Ett dolt problem har blivit en konkret tanke hos husägaren.</strong>
-          </p>
+        </div>
+      </section>
+
+      {/* 3b. Det finns ett bättre sätt */}
+      <section className="outreach-section section-light">
+        <div className="wrap">
+          <div className="story-layout">
+            <div>
+              <h2>Det finns ett bättre sätt</h2>
+              <p className="section-copy section-copy-flush">
+                Eftersom husägaren rent psykologiskt bara letar efter underhållning måste vi{' '}
+                <strong>trigga deras nyfikenhet</strong>.
+              </p>
+              <p className="section-copy">
+                Istället för att trycka upp en tjänst i ansiktet på dem. Vi marknadsför en insikt
+                genom ett snabbt test: &quot;Har dina gjutjärnsrör passerat sina bäst-före-datum? Gör
+                testet och får svar direkt! (tar 2 minuter)&quot;
+              </p>
+              <p className="section-copy">
+                <strong>Ett dolt problem har blivit en konkret tanke hos husägaren.</strong>
+              </p>
+            </div>
+            <SectionImage
+              src="/demo/better-way-steps.png"
+              alt="Tre steg: fånga uppmärksamhet, filtrera rätt husägare, erbjuda gratis rörinspektion."
+              width={1024}
+              height={1024}
+            />
+          </div>
           <p className="bridge-line">
             Men hur stor är egentligen den här gruppen, jämfört med de som redan aktivt söker?
           </p>
@@ -302,6 +323,31 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             Uppfyller huset inte kriterierna erbjuds inget kostnadsfritt hembesök — det sorteras bort
             innan det blir en kontakt ni betalar för.
           </p>
+          <p className="bridge-line">
+            De som passerar igenom och anmäler sig? De triggar nästa steg i systemet:
+          </p>
+        </div>
+      </section>
+
+      {/* 6b. AI-ledd SMS-konversation */}
+      <section className="outreach-section section-light">
+        <div className="wrap">
+          <div className="story-layout">
+            <div>
+              <h2>En AI-ledd SMS-konversation värmer upp kontakten — innan ni ens ringer</h2>
+              <p className="section-copy section-copy-flush">
+                Direkt efter testet inleder en AI-ledd SMS-konversation kontakten — presenterar er och
+                frågar vilka tider som passar. Den bokar aldrig själv. Ni ringer sen aldrig en kall
+                kontakt, utan någon som redan svarat och väntar på samtalet.
+              </p>
+            </div>
+            <SectionImage
+              src="/demo/sms-conversation.jpg"
+              alt="AI-ledd SMS-konversation som värmer upp kontakten innan ni ringer."
+              width={612}
+              height={896}
+            />
+          </div>
           <p className="bridge-line">
             Så vad krävs för att bygga ett sånt här system — och hur vet ni att jag faktiskt kan
             leverera det?
