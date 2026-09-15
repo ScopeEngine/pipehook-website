@@ -2058,8 +2058,29 @@ h1 em,
 .story-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: 48px;
+  grid-template-rows: auto auto;
+  column-gap: 48px;
+  row-gap: 0;
   align-items: start;
+}
+
+/* Text | image; bridge sits under text on desktop, after image on mobile */
+.story-layout > :first-child {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.story-layout > .section-image,
+.story-layout > .image-slot {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: start;
+}
+
+.story-layout > .bridge-line {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
 }
 
 .section-image {
@@ -3149,7 +3170,20 @@ h1 em,
   .flow-steps,
   .story-layout {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
     gap: 25px;
+  }
+
+  .story-layout > :first-child,
+  .story-layout > .section-image,
+  .story-layout > .image-slot,
+  .story-layout > .bridge-line {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .story-layout > .bridge-line {
+    margin-top: 0;
   }
 
   .reach-compare {
