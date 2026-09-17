@@ -28,10 +28,10 @@ function buildEmailBody(input: {
 }
 
 async function sendViaResend(text: string) {
-  const apiKey = process.env.RESEND_API_KEY
-  if (!apiKey) return false
+  const apiKey = process.env.RESEND_API_KEY?.trim()
+  if (!apiKey) return { ok: false as const, reason: 'missing-key' }
 
-  const from = process.env.CALLBACK_EMAIL_FROM ?? 'PipeHook <onboarding@resend.dev>'
+  const from = process.env.CALLBACK_EMAIL_FROM?.trim() || 'PipeHook <onboarding@resend.dev>'
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -47,16 +47,17 @@ async function sendViaResend(text: string) {
   })
 
   if (!response.ok) {
-    console.error('Resend failed', response.status, await response.text().catch(() => ''))
-    throw new Error('resend-failed')
+    const detail = await response.text().catch(() => '')
+    console.error('Resend failed', response.status, detail)
+    return { ok: false as const, reason: 'resend-error', status: response.status, detail }
   }
 
-  return true
+  return { ok: true as const }
 }
 
 async function sendViaMakeWebhook(payload: Record<string, unknown>) {
-  const webhookUrl = process.env.MAKE_WEBHOOK_URL
-  if (!webhookUrl) return false
+  const webhookUrl = process.env.MAKE_WEBHOOK_URL?.trim()
+  if (!webhookUrl) return { ok: false as const, reason: 'missing-webhook' }
 
   const response = await fetch(webhookUrl, {
     method: 'POST',
@@ -65,11 +66,12 @@ async function sendViaMakeWebhook(payload: Record<string, unknown>) {
   })
 
   if (!response.ok) {
-    console.error('Make webhook failed', response.status, await response.text().catch(() => ''))
-    throw new Error('make-failed')
+    const detail = await response.text().catch(() => '')
+    console.error('Make webhook failed', response.status, detail)
+    return { ok: false as const, reason: 'make-error', status: response.status, detail }
   }
 
-  return true
+  return { ok: true as const }
 }
 
 export async function requestCallback(
@@ -100,20 +102,28 @@ export async function requestCallback(
   }
 
   try {
-    const sentViaResend = await sendViaResend(emailText)
-    const sentViaMake = sentViaResend ? false : await sendViaMakeWebhook(webhookPayload)
+    const resendResult = await sendViaResend(emailText)
+    if (resendResult.ok) {
+      return { status: 'success' }
+    }
 
-    if (!sentViaResend && !sentViaMake) {
+    const makeResult = await sendViaMakeWebhook(webhookPayload)
+    if (makeResult.ok) {
+      return { status: 'success' }
+    }
+
+    if (resendResult.reason === 'missing-key' && makeResult.reason === 'missing-webhook') {
       console.error('Neither RESEND_API_KEY nor MAKE_WEBHOOK_URL is set')
       return {
         status: 'error',
         message: 'Återuppringning är inte konfigurerad ännu. Försök igen senare eller skicka WhatsApp.',
       }
     }
+
+    console.error('Callback delivery failed', { resendResult, makeResult })
+    return { status: 'error', message: 'Kunde inte skicka förfrågan. Försök igen om en stund.' }
   } catch (error) {
     console.error('Callback send error', error)
     return { status: 'error', message: 'Kunde inte skicka förfrågan. Försök igen om en stund.' }
   }
-
-  return { status: 'success' }
 }
