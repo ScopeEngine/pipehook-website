@@ -89,7 +89,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
   const accent = resolvedAccent(lead)
   const region = lead.region
   const company = lead.companyName
-  const whatsappUrl = whatsappHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER)
+  const whatsappUrl = whatsappHref(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+46735161225')
 
   return (
     <main className="outreach-page" style={{ '--lead-accent': accent } as CSSProperties}>

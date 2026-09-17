@@ -2955,19 +2955,46 @@ h1 em,
 }
 
 .callback-whatsapp {
-  margin: 22px 0 0;
-  color: #8ea4bc;
-  font-size: 13px;
-  line-height: 1.55;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 28px 0 0;
+  text-align: center;
 }
 
-.callback-whatsapp a {
-  color: #5fafff;
-  font-weight: 600;
+.callback-whatsapp-text {
+  margin: 0;
+  color: #d5e2f0;
+  font-size: clamp(17px, 2.4vw, 20px);
+  font-weight: 500;
+  line-height: 1.45;
 }
 
-.callback-whatsapp a:hover {
-  color: #82c2ff;
+.callback-whatsapp-button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.callback-whatsapp-button:hover,
+.callback-whatsapp-button:focus-visible {
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.callback-whatsapp-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.28);
 }
 
 .faq-section {

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useActionState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { requestCallback, type CallbackFormState } from './request-callback'
@@ -63,12 +64,28 @@ export function CallbackForm({ companyName, region, leadSlug, whatsappUrl }: Cal
         ledigt.
       </small>
 
-      <p className="callback-whatsapp">
-        Har du en fråga innan dess, eller vill du hellre inte vänta på ett samtal?{' '}
-        <a href={whatsappUrl ?? '#'} target={whatsappUrl ? '_blank' : undefined} rel="noreferrer">
-          Skicka WhatsApp →
+      <div className="callback-whatsapp">
+        <p className="callback-whatsapp-text">
+          Har du en fråga innan dess, eller vill du hellre inte vänta på ett samtal?
+        </p>
+        <a
+          className="callback-whatsapp-button"
+          href={whatsappUrl ?? '#'}
+          target={whatsappUrl ? '_blank' : undefined}
+          rel="noreferrer"
+          aria-label="Öppna WhatsApp"
+        >
+          <Image
+            src="/demo/whatsapp-icon.png"
+            alt=""
+            width={88}
+            height={88}
+            className="callback-whatsapp-icon"
+            priority
+          />
+          <span>Skicka WhatsApp</span>
         </a>
-      </p>
+      </div>
     </div>
   )
 }
