@@ -521,7 +521,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 <Phone size={20} strokeWidth={2} />
               </div>
               <p className="requirements-label">Bokning</p>
-              <p className="requirements-value requirements-value-long">
+              <p className="requirements-value">
                 Kan ringa och boka in tid direkt med prospekt
               </p>
             </article>
@@ -530,7 +530,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
                 <Home size={20} strokeWidth={2} />
               </div>
               <p className="requirements-label">Hembesök</p>
-              <p className="requirements-value requirements-value-long">
+              <p className="requirements-value">
                 Erbjuder kostnadsfri inspektion
               </p>
             </article>

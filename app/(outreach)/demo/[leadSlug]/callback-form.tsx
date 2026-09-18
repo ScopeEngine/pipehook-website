@@ -66,7 +66,7 @@ export function CallbackForm({ companyName, region, leadSlug, whatsappUrl }: Cal
 
       <div className="callback-whatsapp">
         <p className="callback-whatsapp-text">
-          Har du en fråga innan dess, eller vill du hellre inte vänta på ett samtal?
+          Vill du inte vänta på ett samtal? Skriv till oss på WhatsApp:
         </p>
         <a
           className="callback-whatsapp-button"

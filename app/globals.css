@@ -2336,6 +2336,10 @@ h1 em,
 }
 
 .requirements-section h2 {
+  max-width: none;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
 
@@ -2378,14 +2382,8 @@ h1 em,
 .requirements-value {
   margin: 0;
   color: #112235;
-  font-size: clamp(26px, 2.6vw, 34px);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.05em;
-}
-
-.requirements-value-long {
   font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.03em;
 }
