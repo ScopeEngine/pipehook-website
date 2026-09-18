@@ -2335,6 +2335,61 @@ h1 em,
   margin-top: 0;
 }
 
+.requirements-section h2 {
+  text-align: center;
+}
+
+.requirements-intro {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.requirements-card {
+  border: 1px solid #e0e7ef;
+  border-radius: 12px;
+  padding: 26px 24px;
+  background: #fff;
+  box-shadow: 0 12px 35px rgba(33, 61, 90, 0.05);
+  text-align: left;
+}
+
+.requirements-card .icon-box {
+  margin-bottom: 18px;
+}
+
+.requirements-label {
+  margin: 0 0 10px;
+  color: #5f7083;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.requirements-value {
+  margin: 0;
+  color: #112235;
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.05em;
+}
+
+.requirements-value-long {
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
 .method-examples {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3205,10 +3260,16 @@ h1 em,
   .region-layout,
   .result-points,
   .flow-steps,
-  .story-layout {
+  .story-layout,
+  .requirements-grid {
     grid-template-columns: 1fr;
     grid-template-rows: none;
     gap: 25px;
+  }
+
+  .requirements-grid {
+    gap: 12px;
+    margin-top: 28px;
   }
 
   .story-layout > :first-child,

@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Home, Phone, Star } from 'lucide-react'
 import { buildDemoUrl, resolvedAccent } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
 import { CallbackForm } from './callback-form'
@@ -501,7 +501,44 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </div>
       </section>
 
-      {/* 10. Erbjudandet + jämförelsetabell */}
+      {/* 10. Våra krav */}
+      <section className="outreach-section section-light requirements-section">
+        <div className="wrap">
+          <h2>Våra krav</h2>
+          <p className="section-copy section-copy-flush requirements-intro">
+            För att allt ska fungera optimalt har vi följande krav på de företag vi jobbar med:
+          </p>
+          <div className="requirements-grid">
+            <article className="requirements-card">
+              <div className="icon-box" aria-hidden="true">
+                <Star size={20} strokeWidth={2} />
+              </div>
+              <p className="requirements-label">Kundbetyg</p>
+              <p className="requirements-value">4,0 eller högre</p>
+            </article>
+            <article className="requirements-card">
+              <div className="icon-box" aria-hidden="true">
+                <Phone size={20} strokeWidth={2} />
+              </div>
+              <p className="requirements-label">Bokning</p>
+              <p className="requirements-value requirements-value-long">
+                Kan ringa och boka in tid direkt med prospekt
+              </p>
+            </article>
+            <article className="requirements-card">
+              <div className="icon-box" aria-hidden="true">
+                <Home size={20} strokeWidth={2} />
+              </div>
+              <p className="requirements-label">Hembesök</p>
+              <p className="requirements-value requirements-value-long">
+                Erbjuder kostnadsfri inspektion
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* 11. Erbjudandet + jämförelsetabell */}
       <section className="outreach-section section-light region-section">
         <div className="wrap story-layout">
           <div>
