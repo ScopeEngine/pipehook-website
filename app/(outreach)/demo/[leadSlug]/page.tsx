@@ -93,10 +93,8 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
 
   return (
     <main className="outreach-page" style={{ '--lead-accent': accent } as CSSProperties}>
-      {/* 1. Hero — endast diskret rad + video */}
+      {/* 1. Hero — Loom video */}
       <section className="outreach-hero">
-        <p className="outreach-hero-eyebrow">En personlig genomgång för {company}</p>
-
         <div className="outreach-video">
           <iframe
             src={`https://www.loom.com/embed/${lead.loomVideoId}?autoplay=1`}
@@ -613,71 +611,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
             leadSlug={lead.leadSlug}
             whatsappUrl={whatsappUrl}
           />
-        </div>
-      </section>
-
-      {/* 12. FAQ */}
-      <section className="outreach-section section-light faq-section">
-        <div className="wrap">
-          <p className="kicker">VANLIGA FRÅGOR</p>
-          <h2>Innan ni bestämmer er</h2>
-          <div className="faq-list">
-            <details className="faq-item">
-              <summary>Vad kostar det?</summary>
-              <p className="faq-pending">[FYLL I — väntar på prissättning]</p>
-            </details>
-            <details className="faq-item">
-              <summary>Kör ni annonserna i vårt konto?</summary>
-              <p>
-                Nej, vi kör allt i våra egna annonskonton. Ni behöver aldrig logga in eller hantera
-                något själva.
-              </p>
-            </details>
-            <details className="faq-item">
-              <summary>Installerar ni PipeHook-verktyget på vår sida?</summary>
-              <p>
-                Nej, inget att installera. Testet och sidan ligger på en egen, brandad webbadress
-                under ert namn — er befintliga hemsida rörs inte.
-              </p>
-            </details>
-            <details className="faq-item">
-              <summary>Hur kommunicerar vi under samarbetet?</summary>
-              <p>Via WhatsApp — inget nytt system att logga in i eller lära sig.</p>
-            </details>
-            <details className="faq-item">
-              <summary>Kan vi avsluta när vi vill?</summary>
-              <p>Ja. Inga tolvmånadersavtal, ingen uppsägningstid att ta sig igenom.</p>
-            </details>
-            <details className="faq-item">
-              <summary>Måste vi lära oss ett nytt system?</summary>
-              <p>
-                Nej. Ni svarar på SMS och samtal precis som vanligt — vi sköter testet,
-                kvalificeringen och kontakten med husägaren.
-              </p>
-            </details>
-            <details className="faq-item">
-              <summary>
-                Är det verkligen exklusivt, eller kan ni sälja till någon annan i {region} senare?
-              </summary>
-              <p>
-                Vi arbetar med ett företag per geografiskt område. När {company} tar {region} är
-                platsen låst — vi kontaktar ingen konkurrent i samma område så länge samarbetet
-                pågår.
-              </p>
-            </details>
-            <details className="faq-item">
-              <summary>Hur snabbt kan vi komma igång?</summary>
-              <p className="faq-pending">[FYLL I — väntar på onboarding-tid]</p>
-            </details>
-            <details className="faq-item">
-              <summary>Vad räknas som en kontakt vi betalar för?</summary>
-              <p className="faq-pending">[FYLL I — väntar på definition]</p>
-            </details>
-            <details className="faq-item">
-              <summary>Vad händer om vi inte hinner ta emot fler just nu?</summary>
-              <p className="faq-pending">[FYLL I — väntar på svar]</p>
-            </details>
-          </div>
         </div>
       </section>
     </main>
