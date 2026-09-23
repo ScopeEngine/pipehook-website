@@ -2,8 +2,8 @@ import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { Home, Phone, Star } from 'lucide-react'
-import { resolvedAccent } from '@/lib/lead-demo.config'
+import { ArrowRight, Home, Phone, Star } from 'lucide-react'
+import { buildDemoUrl, resolvedAccent } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
 import { CallbackForm } from './callback-form'
 
@@ -57,6 +57,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
   const lead = await getLeadBySlug(leadSlug)
   if (!lead) notFound()
 
+  const demoUrl = buildDemoUrl(lead)
   const accent = resolvedAccent(lead)
   const region = lead.region
   const company = lead.companyName
@@ -540,6 +541,19 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
           <p className="bridge-line">
             {region} har en plats kvar. Vi pratar just nu med några utvalda firmor där.
           </p>
+        </div>
+      </section>
+
+      {/* Testa demot */}
+      <section className="outreach-section section-light demo-try-section">
+        <div className="wrap">
+          <div className="section-demo-cta section-demo-cta-centered">
+            <h2>Testa demot själv</h2>
+            <p>Klicka er igenom rörtestet precis som en av era kunder skulle göra.</p>
+            <a className="primary-button demo-try-button" href={demoUrl} target="_blank" rel="noreferrer">
+              Testa demot <ArrowRight size={16} />
+            </a>
+          </div>
         </div>
       </section>
 

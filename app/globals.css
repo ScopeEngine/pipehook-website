@@ -1701,6 +1701,36 @@ h1 em,
   text-align: center;
 }
 
+.demo-try-section h2 {
+  max-width: none;
+  width: 100%;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.demo-try-section .section-demo-cta {
+  gap: 16px;
+}
+
+.demo-try-section .section-demo-cta p {
+  max-width: 480px;
+  color: #5f7083;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.demo-try-button,
+.outreach-page .demo-try-button {
+  color: #06101d;
+  background: #5fafff;
+  box-shadow: 0 0 28px rgba(95, 175, 255, 0.35);
+}
+
+.demo-try-button:hover,
+.outreach-page .demo-try-button:hover {
+  background: #82c2ff;
+}
+
 .comparison-section .section-demo-cta-centered p {
   color: #9db3c9;
 }
