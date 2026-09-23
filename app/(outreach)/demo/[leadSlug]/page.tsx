@@ -2,8 +2,8 @@ import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { ArrowRight, Home, Phone, Star } from 'lucide-react'
-import { buildDemoUrl, resolvedAccent } from '@/lib/lead-demo.config'
+import { Home, Phone, Star } from 'lucide-react'
+import { resolvedAccent } from '@/lib/lead-demo.config'
 import { getLeadBySlug } from '@/lib/leads'
 import { CallbackForm } from './callback-form'
 
@@ -26,34 +26,6 @@ export async function generateMetadata({
     return { robots: { index: false, follow: false } }
   }
 }
-
-const comparisonRows = [
-  {
-    point: 'Vem får förfrågan',
-    other: 'Samma förfrågan går till flera firmor.',
-    ours: 'Bara ni, i ert område.',
-  },
-  {
-    point: 'Kvalificering',
-    other: 'Alla klick räknas.',
-    ours: 'Strikt filter innan hembesök.',
-  },
-  {
-    point: 'Varumärke',
-    other: 'Kunden landar på offertsajten.',
-    ours: 'Hela tratten körs under ert namn.',
-  },
-  {
-    point: 'Kostnad',
-    other: 'Per klick och budgivning.',
-    ours: 'En fast månadsavgift.',
-  },
-  {
-    point: 'Bindningstid',
-    other: 'Långa avtal och uppsägning.',
-    ours: 'Inga tolvmånadersavtal.',
-  },
-] as const
 
 function whatsappHref(raw: string | undefined) {
   if (!raw) return null
@@ -85,7 +57,6 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
   const lead = await getLeadBySlug(leadSlug)
   if (!lead) notFound()
 
-  const demoUrl = buildDemoUrl(lead)
   const accent = resolvedAccent(lead)
   const region = lead.region
   const company = lead.companyName
@@ -572,34 +543,7 @@ export default async function LeadDemoPage({ params }: PageProps<'/demo/[leadSlu
         </div>
       </section>
 
-      <section className="outreach-section comparison-section" id="comparison">
-        <div className="wrap">
-          <p className="kicker blue-kicker">Varför inte offertsajterna</p>
-          <h2>Samma husägare. Helt annan affär.</h2>
-          <div className="comparison-table">
-            <div className="table-head">
-              <span>Jämförelsepunkt</span>
-              <span>Offertsajter</span>
-              <span>PipeHook</span>
-            </div>
-            {comparisonRows.map((row) => (
-              <div className="table-row" key={row.point}>
-                <b>{row.point}</b>
-                <span data-label="Offertsajter">{row.other}</span>
-                <strong data-label="PipeHook">{row.ours}</strong>
-              </div>
-            ))}
-          </div>
-          <div className="section-demo-cta section-demo-cta-centered">
-            <a className="primary-button" href={demoUrl} target="_blank" rel="noreferrer">
-              Testa demot <ArrowRight size={16} />
-            </a>
-            <p>Klicka er igenom rörtestet precis som en av era kunder skulle göra.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 11. Avslut */}
+      {/* Avslut */}
       <section className="outreach-final">
         <div className="wrap">
           <p className="kicker blue-kicker">NÄSTA STEG</p>
