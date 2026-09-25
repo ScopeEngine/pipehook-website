@@ -270,8 +270,8 @@ export const demoCopyUs: DemoCopy = {
     submit: 'Request a callback',
     submitting: 'Sending…',
     success: "Thanks! We'll be in touch shortly.",
-    microcopy: (market) =>
-      `We only work with one partner per market, so we'll confirm whether ${market} is still open.`,
+    microcopy:
+      "We only work with one partner per market, so we'll confirm whether {{market}} is still open.",
     showWhatsApp: false,
     whatsappPrompt: '',
     whatsappButton: '',

@@ -67,7 +67,7 @@ export function CallbackForm({
         </button>
       </form>
 
-      <small>{copy.microcopy(region)}</small>
+      <small>{copy.microcopy}</small>
 
       {copy.showWhatsApp ? (
         <div className="callback-whatsapp">

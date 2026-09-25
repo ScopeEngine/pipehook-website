@@ -129,7 +129,8 @@ export type DemoCopy = {
     submit: string
     submitting: string
     success: string
-    microcopy: (market: string) => string
+    /** Use `{{market}}` as placeholder for the DMA/region name. */
+    microcopy: string
     showWhatsApp: boolean
     whatsappPrompt: string
     whatsappButton: string

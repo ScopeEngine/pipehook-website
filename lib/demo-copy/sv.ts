@@ -269,8 +269,8 @@ export const demoCopySv: DemoCopy = {
     submit: 'Be oss ringa upp',
     submitting: 'Skickar…',
     success: 'Tack! Vi hör av oss inom kort.',
-    microcopy: (market) =>
-      `Vi jobbar bara med en partner per område, så vi hör av oss om ${market} fortfarande är ledigt.`,
+    microcopy:
+      'Vi jobbar bara med en partner per område, så vi hör av oss om {{market}} fortfarande är ledigt.',
     showWhatsApp: true,
     whatsappPrompt: 'Vill du inte vänta på ett samtal? Skriv till oss på WhatsApp:',
     whatsappButton: 'Skicka WhatsApp',
