@@ -22,10 +22,18 @@ export type AidaCopy = {
   faq: { question: string; answer: string }[]
 }
 
+export const leadLocales = ['sv', 'us'] as const
+export type LeadLocale = (typeof leadLocales)[number]
+
+export function isLeadLocale(value: string): value is LeadLocale {
+  return (leadLocales as readonly string[]).includes(value)
+}
+
 export type LeadDemoConfig = {
   leadSlug: string
   companyName: string
   region: string
+  locale: LeadLocale
   logoUrl?: string | null
   accentColor?: string | null
   industry: Industry
@@ -214,7 +222,7 @@ function isHttpsUrl(value: string) {
 
 /** Same `?b=` contract as kitchen-tool `encodeBrandingPayload`. */
 export function encodeFunnelBrandingParam(
-  lead: Pick<LeadDemoConfig, 'companyName' | 'logoUrl' | 'accentColor' | 'leadSlug' | 'industry'>,
+  lead: Pick<LeadDemoConfig, 'companyName' | 'logoUrl' | 'accentColor' | 'leadSlug' | 'industry' | 'locale'>,
 ) {
   const payload: {
     company: string
@@ -223,6 +231,7 @@ export function encodeFunnelBrandingParam(
     preview: true
     accent?: string
     logo?: string
+    market?: 'us'
   } = {
     company: lead.companyName.trim().slice(0, COMPANY_MAX_LENGTH),
     slug: lead.leadSlug.trim().slice(0, SLUG_MAX_LENGTH),
@@ -236,6 +245,8 @@ export function encodeFunnelBrandingParam(
   const logo = lead.logoUrl?.trim()
   if (logo && isHttpsUrl(logo)) payload.logo = logo
 
+  if (lead.locale === 'us') payload.market = 'us'
+
   return encodeBase64Url(JSON.stringify(payload))
 }
 
@@ -244,7 +255,7 @@ export function resolvedAccent(lead: Pick<LeadDemoConfig, 'accentColor' | 'indus
 }
 
 export function buildDemoUrl(
-  lead: Pick<LeadDemoConfig, 'companyName' | 'logoUrl' | 'accentColor' | 'leadSlug' | 'industry'>,
+  lead: Pick<LeadDemoConfig, 'companyName' | 'logoUrl' | 'accentColor' | 'leadSlug' | 'industry' | 'locale'>,
 ) {
   const origin = process.env.NEXT_PUBLIC_FUNNEL_ORIGIN ?? 'https://funnels.pipehook.co'
   const url = new URL(FUNNEL_DEMO_PATH, origin.endsWith('/') ? origin : `${origin}/`)

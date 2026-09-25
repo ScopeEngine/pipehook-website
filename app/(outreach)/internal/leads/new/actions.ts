@@ -1,7 +1,7 @@
 'use server'
 
 import { headers } from 'next/headers'
-import { isIndustry } from '@/lib/lead-demo.config'
+import { isIndustry, isLeadLocale } from '@/lib/lead-demo.config'
 import { parseAccentColor, parseLoomVideoId, slugifyCompanyName, uniqueLeadSlug } from '@/lib/lead-slug'
 import { insertLead, listLeadSlugs } from '@/lib/leads'
 
@@ -52,6 +52,7 @@ export async function createLead(
 
   const companyName = String(formData.get('companyName') ?? '').trim()
   const region = String(formData.get('region') ?? '').trim()
+  const localeRaw = String(formData.get('locale') ?? 'sv').trim()
   const logoUrl = String(formData.get('logoUrl') ?? '').trim()
   const industry = String(formData.get('industry') ?? '').trim()
   const loomVideoIdRaw = String(formData.get('loomVideoId') ?? '').trim()
@@ -60,7 +61,13 @@ export async function createLead(
   const accentColorRaw = String(formData.get('accentColor') ?? '').trim()
 
   if (!companyName) return { status: 'error', message: 'Företagsnamn krävs.' }
-  if (!region) return { status: 'error', message: 'Region krävs.' }
+  if (!region) {
+    return {
+      status: 'error',
+      message: localeRaw === 'us' ? 'Market (DMA) krävs.' : 'Region krävs.',
+    }
+  }
+  if (!isLeadLocale(localeRaw)) return { status: 'error', message: 'Välj Sverige eller USA.' }
   if (!isIndustry(industry)) return { status: 'error', message: 'Välj en giltig bransch.' }
   if (!contactName) return { status: 'error', message: 'Kontaktperson krävs.' }
 
@@ -97,6 +104,7 @@ export async function createLead(
       leadSlug: slug,
       companyName,
       region,
+      locale: localeRaw,
       logoUrl: logoUrl || null,
       accentColor: accent.color,
       industry,

@@ -2,7 +2,13 @@
 
 import { useActionState, useState } from 'react'
 import { BrandLogo } from '@/components/brand-logo'
-import { industries, industryAccents, industryLabels, type Industry } from '@/lib/lead-demo.config'
+import {
+  industries,
+  industryAccents,
+  industryLabels,
+  type Industry,
+  type LeadLocale,
+} from '@/lib/lead-demo.config'
 import { createLead, type CreateLeadState } from './actions'
 
 const initialState: CreateLeadState = { status: 'idle' }
@@ -11,6 +17,7 @@ export function NewLeadForm() {
   const [state, action, pending] = useActionState(createLead, initialState)
   const [industry, setIndustry] = useState<Industry>('relining')
   const [accent, setAccent] = useState(industryAccents.relining)
+  const [locale, setLocale] = useState<LeadLocale>('sv')
   const [copied, setCopied] = useState(false)
 
   function onIndustryChange(next: Industry) {
@@ -24,6 +31,10 @@ export function NewLeadForm() {
     window.setTimeout(() => setCopied(false), 2000)
   }
 
+  const marketLabel = locale === 'us' ? 'Market (DMA)' : 'Region'
+  const marketPlaceholder =
+    locale === 'us' ? 'e.g. Dallas-Fort Worth DMA' : 't.ex. Skåne, Mellansverige'
+
   return (
     <div className="lead-admin">
       <header className="lead-admin-top">
@@ -35,7 +46,7 @@ export function NewLeadForm() {
         <p className="kicker">Ny outreach-sida</p>
         <h1>Skapa en lead-sida</h1>
         <p className="lead-admin-intro">
-          Fyll i företaget, region, Loom-ID och bokningslänk. Sluggen skapas automatiskt. Efter
+          Fyll i företaget, marknad, Loom-ID och bokningslänk. Sluggen skapas automatiskt. Efter
           submit får du länken att klistra in i mejlet.
         </p>
 
@@ -57,11 +68,35 @@ export function NewLeadForm() {
         {state.status === 'error' && <p className="lead-admin-error">{state.message}</p>}
 
         <form action={action} className="lead-admin-form">
+          <fieldset className="lead-admin-locale">
+            <legend>Marknad</legend>
+            <label className="lead-admin-radio">
+              <input
+                type="radio"
+                name="locale"
+                value="sv"
+                checked={locale === 'sv'}
+                onChange={() => setLocale('sv')}
+              />
+              Sverige (SV)
+            </label>
+            <label className="lead-admin-radio">
+              <input
+                type="radio"
+                name="locale"
+                value="us"
+                checked={locale === 'us'}
+                onChange={() => setLocale('us')}
+              />
+              USA (US)
+            </label>
+          </fieldset>
+
           <label htmlFor="companyName">Företagsnamn</label>
           <input id="companyName" name="companyName" required placeholder="t.ex. Svealands Relining" />
 
-          <label htmlFor="region">Region</label>
-          <input id="region" name="region" required placeholder="t.ex. Skåne, Mellansverige" />
+          <label htmlFor="region">{marketLabel}</label>
+          <input id="region" name="region" required placeholder={marketPlaceholder} />
 
           <label htmlFor="logoUrl">Logotyp-URL</label>
           <input id="logoUrl" name="logoUrl" type="url" placeholder="https://…" />

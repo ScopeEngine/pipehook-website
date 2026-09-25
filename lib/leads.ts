@@ -1,12 +1,13 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
-import type { AidaCopy, Industry, LeadDemoConfig } from '@/lib/lead-demo.config'
-import { isIndustry } from '@/lib/lead-demo.config'
+import type { AidaCopy, Industry, LeadDemoConfig, LeadLocale } from '@/lib/lead-demo.config'
+import { isIndustry, isLeadLocale } from '@/lib/lead-demo.config'
 
 export type LeadRow = {
   id: string
   lead_slug: string
   company_name: string
   region: string
+  locale: LeadLocale
   logo_url: string | null
   accent_color: string | null
   industry: Industry
@@ -55,6 +56,7 @@ export function leadFromRow(row: LeadRow): LeadDemoConfig {
     leadSlug: row.lead_slug,
     companyName: row.company_name,
     region: row.region,
+    locale: isLeadLocale(row.locale) ? row.locale : 'sv',
     logoUrl: row.logo_url,
     accentColor: row.accent_color,
     industry: row.industry,
@@ -70,7 +72,7 @@ export async function getLeadBySlug(leadSlug: string): Promise<LeadDemoConfig | 
   const { data, error } = await supabase
     .from('leads')
     .select(
-      'id, lead_slug, company_name, region, logo_url, accent_color, industry, loom_video_id, contact_name, contact_booking_url, copy_override, created_at, og_image_url, viewed_at, demo_clicked_at',
+      'id, lead_slug, company_name, region, locale, logo_url, accent_color, industry, loom_video_id, contact_name, contact_booking_url, copy_override, created_at, og_image_url, viewed_at, demo_clicked_at',
     )
     .eq('lead_slug', leadSlug)
     .maybeSingle()
@@ -94,6 +96,7 @@ export async function insertLead(input: {
   leadSlug: string
   companyName: string
   region: string
+  locale: LeadLocale
   logoUrl: string | null
   accentColor: string | null
   industry: Industry
@@ -107,6 +110,7 @@ export async function insertLead(input: {
     lead_slug: input.leadSlug,
     company_name: input.companyName,
     region: input.region,
+    locale: input.locale,
     logo_url: input.logoUrl,
     accent_color: input.accentColor,
     industry: input.industry,

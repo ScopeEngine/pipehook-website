@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useActionState } from 'react'
 import { ArrowRight } from 'lucide-react'
+import type { DemoCopy } from '@/lib/demo-copy'
 import { requestCallback, type CallbackFormState } from './request-callback'
 
 const initialState: CallbackFormState = { status: 'idle' }
@@ -12,15 +13,22 @@ type CallbackFormProps = {
   region: string
   leadSlug: string
   whatsappUrl: string | null
+  copy: DemoCopy['callback']
 }
 
-export function CallbackForm({ companyName, region, leadSlug, whatsappUrl }: CallbackFormProps) {
+export function CallbackForm({
+  companyName,
+  region,
+  leadSlug,
+  whatsappUrl,
+  copy,
+}: CallbackFormProps) {
   const [state, action, pending] = useActionState(requestCallback, initialState)
 
   if (state.status === 'success') {
     return (
       <div className="callback-success" role="status">
-        <strong>Tack! Vi hör av oss inom kort.</strong>
+        <strong>{copy.success}</strong>
       </div>
     )
   }
@@ -32,60 +40,57 @@ export function CallbackForm({ companyName, region, leadSlug, whatsappUrl }: Cal
         <input type="hidden" name="region" value={region} />
         <input type="hidden" name="leadSlug" value={leadSlug} />
 
-        <label htmlFor="callback-phone">Telefonnummer</label>
+        <label htmlFor="callback-phone">{copy.phoneLabel}</label>
         <input
           id="callback-phone"
           name="phone"
           type="tel"
           required
           autoComplete="tel"
-          placeholder="07X XXX XX XX"
+          placeholder={copy.phonePlaceholder}
         />
 
         <label htmlFor="callback-note" className="sr-only">
-          Något du vill att vi vet innan vi ringer? (valfritt)
+          {copy.notePlaceholder}
         </label>
         <textarea
           id="callback-note"
           name="note"
           rows={3}
-          placeholder="Något du vill att vi vet innan vi ringer? (valfritt)"
+          placeholder={copy.notePlaceholder}
         />
 
         {state.status === 'error' ? <p className="callback-error">{state.message}</p> : null}
 
         <button className="primary-button" type="submit" disabled={pending}>
-          {pending ? 'Skickar…' : 'Be oss ringa upp'} <ArrowRight size={16} />
+          {pending ? copy.submitting : copy.submit} <ArrowRight size={16} />
         </button>
       </form>
 
-      <small>
-        Vi jobbar bara med en partner per område, så vi hör av oss om {region} fortfarande är
-        ledigt.
-      </small>
+      <small>{copy.microcopy(region)}</small>
 
-      <div className="callback-whatsapp">
-        <p className="callback-whatsapp-text">
-          Vill du inte vänta på ett samtal? Skriv till oss på WhatsApp:
-        </p>
-        <a
-          className="callback-whatsapp-button"
-          href={whatsappUrl ?? '#'}
-          target={whatsappUrl ? '_blank' : undefined}
-          rel="noreferrer"
-          aria-label="Öppna WhatsApp"
-        >
-          <Image
-            src="/demo/whatsapp-icon.png"
-            alt=""
-            width={88}
-            height={88}
-            className="callback-whatsapp-icon"
-            priority
-          />
-          <span>Skicka WhatsApp</span>
-        </a>
-      </div>
+      {copy.showWhatsApp ? (
+        <div className="callback-whatsapp">
+          <p className="callback-whatsapp-text">{copy.whatsappPrompt}</p>
+          <a
+            className="callback-whatsapp-button"
+            href={whatsappUrl ?? '#'}
+            target={whatsappUrl ? '_blank' : undefined}
+            rel="noreferrer"
+            aria-label={copy.whatsappButton}
+          >
+            <Image
+              src="/demo/whatsapp-icon.png"
+              alt=""
+              width={88}
+              height={88}
+              className="callback-whatsapp-icon"
+              priority
+            />
+            <span>{copy.whatsappButton}</span>
+          </a>
+        </div>
+      ) : null}
     </div>
   )
 }
